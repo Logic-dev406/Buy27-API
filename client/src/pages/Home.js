@@ -1,4 +1,3 @@
-import { Divider } from '@material-ui/core';
 import React from 'react';
 import Banner from '../components/Banner';
 import FeaturedProduct from '../components/FeaturedProduct';
@@ -11,7 +10,7 @@ const Home = () => {
             <FeaturedProduct />
             <div className="flex flex-col items-center">
                 <div className="  w-full md:w-2/3 mb-4 md:mb-8 bg-primary-dark text-white">
-                    <h1 className="text-center mt-8 text-sm mx-2 md:mx-0 md:text-lg font-normal">
+                    <h1 className="text-center mt-6 text-sm mx-2 md:mx-0 md:text-lg font-normal">
                         Online Shopping on Buy27.com – Nigeria’s Largest Online
                         Mall
                     </h1>
@@ -30,7 +29,7 @@ const Home = () => {
                     <h1 className="text-center text-sm md:text-normal font-normal">
                         Mr.Sunday Patrick
                     </h1>
-                    <h1 className="text-center text-xs mb-2 md:mb-2 font-light">
+                    <h1 className="text-center text-xs mb-2 md:mb-6 font-light">
                         Buy27 Manager
                     </h1>
                 </div>

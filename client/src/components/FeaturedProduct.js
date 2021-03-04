@@ -24,10 +24,10 @@ const FeaturedProduct = () => {
                     <h1 className="text-primary-dark font-bold text-3xl">
                         Featured Product
                     </h1>
-                    <a className="text-gray-500 text-sm">
+                    <h1 className="text-gray-500 text-sm">
                         These are some of our top best selling products on our
                         site.
-                    </a>
+                    </h1>
                 </div>
                 <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-16 gap-x-2 md:gap-x-14">
                     {items.map((item) => (

@@ -30,9 +30,9 @@ const Banner = () => {
                         <h1 className="text-primary-dark font-bold text-sm">
                             Free Shipping Worldwild
                         </h1>{' '}
-                        <a className="text-xs md:text-sm text-gray-500">
+                        <h1 className="text-xs md:text-sm text-gray-500">
                             We diliver to your door step worldwild for free.
-                        </a>
+                        </h1>
                     </div>
                 </div>
                 <div className="flex items-center">
@@ -41,9 +41,9 @@ const Banner = () => {
                         <h1 className="text-primary-dark font-bold text-sm">
                             24/7 Customer Service
                         </h1>{' '}
-                        <a className="text-xs md:text-sm text-gray-500">
+                        <h1 className="text-xs md:text-sm text-gray-500">
                             We make sure you get the best user experience.
-                        </a>
+                        </h1>
                     </div>
                 </div>
                 <div className="flex items-center">
@@ -52,9 +52,9 @@ const Banner = () => {
                         <h1 className="text-primary-dark font-bold text-sm">
                             Money Back Garantee
                         </h1>{' '}
-                        <a className="text-xs md:text-sm text-gray-500">
+                        <h1 className="text-xs md:text-sm text-gray-500">
                             Checkout our return policy for more info.
-                        </a>
+                        </h1>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import Shop from './pages/Shop';
 import About from './pages/About';
 import ContactUs from './pages/ContactUs';
 import Navbar from './components/Navbar';
+import Footer from './components/Footer';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
                         <Route path="/about" component={About} />
                         <Route path="/contactUs" component={ContactUs} />
                     </Switch>
+                    <Footer />
                 </div>
             </div>
         </Router>
