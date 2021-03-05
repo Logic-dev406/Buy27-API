@@ -12,7 +12,7 @@ import buy27logo from '../assets/images/buy27.png';
 
 const Footer = () => {
     return (
-        <div className=" items-center bg-primary-dark h-96 w-full py-8 px-64 text-white">
+        <div className=" items-center bg-primary-dark  w-full py-8 px-64 text-white">
             <div className="flex justify-between items-center ">
                 <div>
                     <h1 className=" text-2xl font-bold">
@@ -26,23 +26,23 @@ const Footer = () => {
                         placeholder="Email Address"
                     />{' '}
                     <button className="bg-white h-10 w-28 text-primary-dark focus:outline-none rounded-r">
-                        <h1 className="text-lg font-semibold">Sign Up</h1>
+                        <h1 className=" font-semibold">Sign Up</h1>
                     </button>
                 </div>
             </div>
-            <div className="border-b-2 border-primary-light my-8"></div>
+            <div className="border-b border-primary-light my-8"></div>
             <div className="flex justify-center pb-4">
                 <img src={buy27logo} width="150" alt="logo" />
             </div>
-            <div className="flex items-center justify-between divide-x">
-                <div>
+            <div className="flex items-center justify-between divide-x divide-primary-light">
+                <div className="">
                     <h1 className=" font-semibold">Social Media</h1>
-                    <div className="border-b-2 border-white w-10 my-1"></div>
+                    <div className="border-b-2 border-white w-10 mt-1"></div>
                     <TwitterIcon fontSize="small" />
                     <FacebookIcon className="mx-1" fontSize="small" />
                     <LinkedInIcon className="mx-1" fontSize="small" />
                 </div>
-                <div className="text-center">
+                <div className="text-center pl-40">
                     <h1 className="text-sm font-light">
                         <LocationOnIcon className="mr-2" fontSize="small" />
                         Corner shop dei-dei Abuja
@@ -56,7 +56,7 @@ const Footer = () => {
                         E-mail: Buy27store@gmail.com
                     </h1>
                 </div>
-                <div>
+                <div className="pl-40">
                     <h1 className=" font-semibold">Payment Option</h1>
                     <div className="border-b-2 border-white w-10 my-2"></div>
                     <div className="flex">
@@ -70,7 +70,20 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div></div>
+            <div className="border-b border-primary-light my-8"></div>
+            <div className=" items-center ">
+                <div className="flex justify-center text-sm font-light divide-x">
+                    <h1 className="px-2">Search Terms</h1>
+                    <h1 className="px-2">Advance Search</h1>
+                    <h1 className="px-2">Orders And Return </h1>
+                    <h1 className="px-2">Contact Us</h1>
+                </div>
+                <div>
+                    <p className="flex justify-center text-sm font-light py-4">
+                        Copyright &copy; 2021 Buy27.com.
+                    </p>
+                </div>
+            </div>
         </div>
     );
 };
