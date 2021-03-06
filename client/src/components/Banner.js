@@ -7,7 +7,7 @@ const Banner = () => {
     return (
         <div>
             <div className="flex flex-col md:flex-row justify-center items-center my-4 md:my-8">
-                <div className="bg-header1 rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center h-44 md:h-96 w-full md:w-2/5"></div>
+                <div className="bg-header1 rounded-md bg-contain mr-0 md:mr-12 md:bg-cover bg-no-repeat bg-center h-56 md:h-96 w-full md:w-2/5"></div>
                 <div className="flex grid grid-cols-2 gap-y-4 md:gap-y-8 gap-x-4 md:gap-x-12 mt-4 md:mt-0 ">
                     <div className="h-36 md:h-44 w-36 md:w-44 bg-primary-light rounded-md">
                         1

@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 const App = () => {
     return (
         <Router>
-            <div className="relative">
+            <div className="flex flex-col min-h-screen">
                 <div>
                     <Navbar />
                     <Switch>
@@ -19,7 +19,7 @@ const App = () => {
                         <Route path="/about" component={About} />
                         <Route path="/contactUs" component={ContactUs} />
                     </Switch>
-                    <Footer />
+                    <Footer className="fixed" />
                 </div>
             </div>
         </Router>
