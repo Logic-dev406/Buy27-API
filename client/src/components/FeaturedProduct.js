@@ -29,23 +29,22 @@ const FeaturedProduct = () => {
                         site.
                     </h1>
                 </div>
-                <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-16 gap-x-2 md:gap-x-14">
+                <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-0 md:gap-y-5 gap-x-1 md:gap-x-14">
                     {items.map((item) => (
-                        <div key={item.id} className="  mt-8  h-40 w-36">
-                            <div className=" h-48 w-36 md:w-44 bg-black bg-gray-400">
-                                {/* <img
-                                    src={item.image}
-                                    width="100"
-                                    height="100"
-                                    alt="image"
-                                /> */}
-                            </div>
-
-                            <h1 className="text-left text-black text-sm font-semibold mt-2">
+                        <div
+                            key={item.id}
+                            className="bg-white mt-8 h-72 md:h-72 w-40 md:w-44 rounded"
+                        >
+                            <img
+                                className="h-48 w-48 rounded-t"
+                                src={item.image}
+                                alt="product"
+                            />
+                            <h1 className="text-left text-black text-sm font-semibold pl-2 pt-2">
                                 {item.name}
                             </h1>
 
-                            <h5 className="text-left text-gray-500 text-xs font-semibold">
+                            <h5 className="text-left text-gray-500 text-xs pl-2 font-semibold">
                                 {item.price}
                             </h5>
                         </div>

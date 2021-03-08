@@ -27,7 +27,7 @@ const MobileTopMenuBar = () => {
                         <MenuIcon />
                     </button>
                     {active && (
-                        <div className="flex flex-col absolute text-white w-80 h-screen bg-primary-dark py-2 text-sm">
+                        <div className="flex flex-col absolute text-white w-screen h-full bg-primary-dark py-2 text-sm">
                             <a href="/" className="px-4 py-3">
                                 MY ACCOUNT{' '}
                                 <ChevronRightIcon className="ml-36 " />

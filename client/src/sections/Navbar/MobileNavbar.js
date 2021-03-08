@@ -13,7 +13,7 @@ const MobileNavbar = () => {
             <div className="flex px-0 md:px-52 w-full h-32 border-b-2 border-secondary-dark items-center justify-center md:justify-between">
                 <div className="flex flex-col items-center">
                     <Link to="/">
-                        <img src={logo} width="150" alt="buy27 logo" />
+                        <img src={logo} width="100" alt="buy27 logo" />
                     </Link>
                     <div>
                         <input
