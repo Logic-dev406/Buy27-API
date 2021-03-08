@@ -46,7 +46,7 @@ const Banner = () => {
                         </h1>
                     </div>
                 </div>
-                <div className="flex items-center">
+                <div className="flex items-center ">
                     <AttachMoneyOutlinedIcon className="text-primary-light" />{' '}
                     <div className="ml-3 md:ml-5">
                         <h1 className="text-primary-dark font-bold text-sm">

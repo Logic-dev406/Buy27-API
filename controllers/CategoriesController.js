@@ -28,7 +28,6 @@ class CategoriesController {
         let category = new Category({
             name: req.body.name,
             icon: req.body.icon,
-            color: req.body.color,
         });
         category = await category.save();
 
@@ -44,7 +43,6 @@ class CategoriesController {
             {
                 name: req.body.name,
                 icon: req.body.icon,
-                color: req.body.color,
             },
             { new: true }
         );
