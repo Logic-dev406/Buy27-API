@@ -38,11 +38,11 @@ const MobileTopMenuBar = () => {
                             <a href="/" className="px-4 py-3">
                                 <FavoriteBorderIcon /> Saved items
                             </a>
-                            <a href="/" className="px-4 py-3 border-t">
+                            <a href="/" className="flex px-4 py-3 border-t">
                                 OUR CATEGORIES{' '}
-                                <a href="" className="ml-28 text-xs underline">
+                                <h1 className="ml-24 text-xs underline">
                                     See All
-                                </a>
+                                </h1>
                             </a>
                             <a href="/" className="px-4 py-3">
                                 <HomeOutlinedIcon /> Home
