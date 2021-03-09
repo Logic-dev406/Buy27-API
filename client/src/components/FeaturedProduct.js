@@ -40,7 +40,7 @@ const FeaturedProduct = () => {
                                 src={item.image}
                                 alt="product"
                             />
-                            <h1 className="text-left text-black text-sm font-semibold pl-2 pt-2">
+                            <h1 className="text-left text-black text-xs font-semibold pl-2 pt-2">
                                 {item.name}
                             </h1>
 
@@ -51,7 +51,7 @@ const FeaturedProduct = () => {
                     ))}
                 </div>
                 <a
-                    href="/"
+                    href="/shop"
                     className="flex flex-col mt-32 mb-8 bg-primary-dark h-10 w-40 items-center justify-center"
                 >
                     <h1 className="text-white text-center text-sm">
