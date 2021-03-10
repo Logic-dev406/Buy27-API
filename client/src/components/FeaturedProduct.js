@@ -52,7 +52,7 @@ const FeaturedProduct = () => {
                 </div>
                 <a
                     href="/shop"
-                    className="flex flex-col mt-32 mb-8 bg-primary-dark h-10 w-40 items-center justify-center"
+                    className="flex flex-col mt-8 md:mt-32 mb-8 bg-primary-dark h-10 w-40 items-center justify-center"
                 >
                     <h1 className="text-white text-center text-sm">
                         VIEW ALL PRODUCTS
