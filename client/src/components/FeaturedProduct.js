@@ -29,14 +29,14 @@ const FeaturedProduct = () => {
                         site.
                     </h1>
                 </div>
-                <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-0 md:gap-y-5 gap-x-1 md:gap-x-14">
+                <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-0 md:gap-y-5 gap-x-1 md:gap-x-14 bg-white p-2 md:p-5 mt-5">
                     {items.map((item) => (
                         <div
                             key={item.id}
-                            className="bg-white mt-8 h-72 md:h-72 w-40 md:w-44 rounded"
+                            className="bg-transparent * hover:shadow-lg h-60 md:h-72 w-40 md:w-44 rounded"
                         >
                             <img
-                                className="h-48 w-48 rounded-t"
+                                className="h-40 md:h-48 w-40 md:w-48 rounded-t"
                                 src={item.image}
                                 alt="product"
                             />
@@ -45,6 +45,7 @@ const FeaturedProduct = () => {
                             </h1>
 
                             <h5 className="text-left text-gray-500 text-xs pl-2 font-semibold">
+                                <span className="mr-1">&#8358;</span>
                                 {item.price}
                             </h5>
                         </div>

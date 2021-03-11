@@ -36,6 +36,7 @@ const Shop = () => {
                                 </h1>
 
                                 <h5 className="text-left text-gray-500 text-xs pl-2 font-semibold">
+                                    <span className="mr-1">&#8358;</span>
                                     {item.price}
                                 </h5>
                                 <button className="mt-10 mx-2 bg-transparent hover:bg-primary-dark rounded border text-primary-dark hover:text-white border-primary-dark w-44 h-10">
