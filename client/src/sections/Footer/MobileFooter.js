@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 const MobileFooter = () => {
-    function topFunction() {
+    const topFunction = () => {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
-    }
+    };
 
     return (
         <div className="items-center bg-primary-dark mt-4  w-full pb-4 pt-1 px-2 text-white">
