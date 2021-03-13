@@ -19,11 +19,13 @@ const ScrollArrow = () => {
     window.addEventListener('scroll', checkScrollTop);
 
     return (
-        <ExpandLessIcon
-            className="h-10 w-10 rounded bg-red-500"
-            onClick={scrollTop}
-            style={{ height: 40, display: showScroll ? 'flex' : 'none' }}
-        />
+        <div className="">
+            <ExpandLessIcon
+                className="flex ml-10 text-white fixed h-16 w-16 rounded-lg bg-primary-dark "
+                onClick={scrollTop}
+                style={{ display: showScroll ? 'flex' : 'none' }}
+            />
+        </div>
     );
 };
 

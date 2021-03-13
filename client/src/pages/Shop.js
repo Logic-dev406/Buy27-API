@@ -8,7 +8,7 @@ const Shop = () => {
             <div className="flex justify-center mx-52">
                 <div className="h-96 w-72 bg-white mr-5"></div>
                 <ShopProduct />
-                <ScrollToTop />
+                <ScrollToTop className="" />
             </div>
         </div>
     );
