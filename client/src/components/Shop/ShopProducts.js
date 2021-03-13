@@ -17,12 +17,12 @@ const ShopProducts = () => {
 
     return (
         <div>
-            <div className="  bg-white">
-                <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-0 md:gap-y-2 gap-x-1 md:gap-x-2 py-4 px-4 bg-transparent">
+            <div className="  bg-transparent md:bg-white">
+                <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-y-2 gap-x-2 md:gap-x-2 py-2 md:py-4 px2 md:px-4 bg-transparent">
                     {items.map((item) => (
                         <div
                             key={item.id}
-                            className=" bg-white * hover:shadow-lg h-72 md:h-80 w-40 md:w-48 rounded justify-center"
+                            className=" bg-white * hover:shadow-lg h-72 md:h-80 w-40 md:w-48 rounded justify-center "
                         >
                             <img
                                 className="h-48 w-48 rounded-t"
@@ -37,8 +37,8 @@ const ShopProducts = () => {
                                 <span className="mr-1">&#8358;</span>
                                 {item.price}
                             </h5>
-                            <button className="mt-10 mx-2 bg-transparent hover:bg-primary-dark rounded border text-primary-dark hover:text-white border-primary-dark w-44 h-10">
-                                <h1 className=" text-sm font-bold">
+                            <button className="mt-4 md:mt-10 mx-0 md:mx-2 bg-primary-dark md:bg-transparent hover:bg-primary-dark rounded border border-primary-dark text-white md:text-primary-dark hover:text-white w-36 ml-2 md:w-44 h-8 md:h-10 focus:outline-none">
+                                <h1 className=" text-sm font-normal md:font-bold">
                                     Add To Cart
                                 </h1>
                             </button>

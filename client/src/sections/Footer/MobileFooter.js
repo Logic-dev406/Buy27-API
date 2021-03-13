@@ -8,7 +8,7 @@ const MobileFooter = () => {
     };
 
     return (
-        <div className="items-center bg-primary-dark mt-4  w-full pb-4 pt-1 px-2 text-white">
+        <div className="items-center bg-primary-dark  w-full pb-4 pt-1 px-2 text-white">
             <div onClick={topFunction} className="flex flex-col items-center">
                 <ExpandLessIcon fontSize="small" />
                 <h1 className="text-xs font-light">BACK TO TOP</h1>

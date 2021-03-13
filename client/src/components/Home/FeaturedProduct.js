@@ -29,11 +29,11 @@ const FeaturedProduct = () => {
                         site.
                     </h1>
                 </div>
-                <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-0 md:gap-y-5 gap-x-1 md:gap-x-14 bg-white p-2 md:p-5 mt-5">
+                <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-y-5 gap-x-2 md:gap-x-14 bg-transparent md:bg-white p-2 md:p-5 mt-5">
                     {items.map((item) => (
                         <div
                             key={item.id}
-                            className="bg-transparent * hover:shadow-lg h-60 md:h-72 w-40 md:w-44 rounded"
+                            className="bg-white * hover:shadow-lg h-60 md:h-72 w-40 md:w-44 rounded"
                         >
                             <img
                                 className="h-40 md:h-48 w-40 md:w-48 rounded-t"
@@ -53,7 +53,7 @@ const FeaturedProduct = () => {
                 </div>
                 <a
                     href="/shop"
-                    className="flex flex-col mt-8 md:mt-32 mb-8 bg-primary-dark h-10 w-40 items-center justify-center"
+                    className="flex flex-col mt-5 md:mt-8 mb-5 bg-primary-dark h-10 w-40 items-center justify-center"
                 >
                     <h1 className="text-white text-center text-sm">
                         VIEW ALL PRODUCTS
