@@ -14,7 +14,7 @@ const Shop = () => {
     });
 
     return (
-        <div className="flex flex-col bg-gray-100 h">
+        <div className="flex flex-col bg-gray-100 h-full w-full">
             <div className="flex justify-center mx-0 md:mx-52">
                 <div>
                     {isMobile ? (

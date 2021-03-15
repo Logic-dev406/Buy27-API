@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const ShopProducts = () => {
     useEffect(() => {
@@ -20,7 +21,8 @@ const ShopProducts = () => {
             <div className="  bg-transparent md:bg-white">
                 <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-y-2 gap-x-2 md:gap-x-2 py-2 md:py-2 px2 md:px-2 bg-transparent">
                     {items.map((item) => (
-                        <div
+                        <Link
+                            to={`/shop/${item.id}`}
                             key={item.id}
                             className=" bg-white * hover:shadow-lg h-68 md:h-80 w-36 md:w-44 rounded justify-center "
                         >
@@ -42,7 +44,7 @@ const ShopProducts = () => {
                                     Add To Cart
                                 </h1>
                             </button>
-                        </div>
+                        </Link>
                     ))}
                 </div>
             </div>
