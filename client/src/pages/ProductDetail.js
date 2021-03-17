@@ -17,6 +17,7 @@ const ProductDetail = ({ match }) => {
 
     const [count, setCount] = useState(1);
     const [item, setItem] = useState({});
+    const [image, setImage] = useState(0);
 
     const onDecrement = () => {
         if (count <= 1) {
@@ -38,12 +39,32 @@ const ProductDetail = ({ match }) => {
         setItem(response.data);
     };
 
+    const HandleClick = (index) => {
+        setImage({ index: index });
+    };
+
     return (
         <div className="flex flex-col items-center bg-gray-100 h-full w-full">
             <div className="h-24 w-full bg-white"></div>
-            <div className="flex items-center justify-between h-screen w-9/12 bg-white my-8">
-                <div className="w-80 ml-24">
-                    <img src={item.image} alt="Product" />
+            <div className="flex items-center justify-between w-9/12 bg-white my-8">
+                <div key={item._id}>
+                    <div className="w-80 ml-24">
+                        <img src={item.images[image]} alt="Product" />
+                    </div>
+                    <div className="flex items-center ml-24 mt-8">
+                        {item.images &&
+                            item.images.map((image, index) => {
+                                return (
+                                    <img
+                                        key={index}
+                                        className="h-16 w-14 mr-2"
+                                        src={image}
+                                        alt="Product gallery"
+                                        onClick={() => HandleClick(index)}
+                                    />
+                                );
+                            })}
+                    </div>
                 </div>
                 <div className="bg-transparent h-full w-1/2 py-8 px-8">
                     <h1 className="text-3xl font-semibold">
@@ -108,12 +129,12 @@ const ProductDetail = ({ match }) => {
                             </h1>
                             <h1 className="mt-4">
                                 <LocalShippingOutlinedIcon className="text-primary-dark mr-2" />
-                                express Delivery Available
+                                Express Delivery Available
                             </h1>
                         </div>
                     </div>
                     <div className="border-b my-5"></div>
-                    <h1 className-="text-sm font-semibold">
+                    <h1 className="text-sm font-semibold">
                         Share This Product
                     </h1>
                     <div className="flex items-center my-2 text-primary-dark">
