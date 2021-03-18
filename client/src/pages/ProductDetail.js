@@ -45,7 +45,10 @@ const ProductDetail = ({ match }) => {
 
     return (
         <div className="flex flex-col items-center bg-gray-100 h-full w-full">
-            <div className="h-24 w-full bg-white"></div>
+            <div className="h-24 w-full bg-white">
+                <h1>Todo Product brand</h1>
+                <h2> breadcrum</h2>
+            </div>
             <div className="flex items-center justify-between w-9/12 bg-white my-8">
                 <div key={item._id}>
                     <div className="w-80 ml-24">
@@ -63,7 +66,7 @@ const ProductDetail = ({ match }) => {
                                 return (
                                     <img
                                         key={index}
-                                        className="h-16 w-14 mr-2 * hover:border border-gray-400 "
+                                        className="h-16 w-14 mr-2 border border-gray-400 "
                                         src={image}
                                         alt="Product gallery"
                                         onClick={() => HandleClick(index)}
