@@ -49,8 +49,12 @@ const ProductDetail = ({ match }) => {
             <div className="flex items-center justify-between w-9/12 bg-white my-8">
                 <div key={item._id}>
                     <div className="w-80 ml-24">
-                        {item.images && (
-                            <img src={item.images[image]} alt="Product" />
+                        {item.images && item.images[image] ? (
+                            item.images && (
+                                <img src={item.images[image]} alt="Product" />
+                            )
+                        ) : (
+                            <img src={item.image} alt="Product" />
                         )}
                     </div>
                     <div className="flex items-center ml-24 mt-8">
