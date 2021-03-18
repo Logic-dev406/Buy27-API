@@ -19,6 +19,10 @@ const ProductDetail = ({ match }) => {
     const [item, setItem] = useState({});
     const [image, setImage] = useState(0);
 
+    const HandleClick = (index) => {
+        setImage(index);
+    };
+
     const onDecrement = () => {
         if (count <= 1) {
             setCount(1);
@@ -39,17 +43,15 @@ const ProductDetail = ({ match }) => {
         setItem(response.data);
     };
 
-    const HandleClick = (index) => {
-        setImage({ index: index });
-    };
-
     return (
         <div className="flex flex-col items-center bg-gray-100 h-full w-full">
             <div className="h-24 w-full bg-white"></div>
             <div className="flex items-center justify-between w-9/12 bg-white my-8">
                 <div key={item._id}>
                     <div className="w-80 ml-24">
-                        <img src={item.images[image]} alt="Product" />
+                        {item.images && (
+                            <img src={item.images[image]} alt="Product" />
+                        )}
                     </div>
                     <div className="flex items-center ml-24 mt-8">
                         {item.images &&
@@ -57,7 +59,7 @@ const ProductDetail = ({ match }) => {
                                 return (
                                     <img
                                         key={index}
-                                        className="h-16 w-14 mr-2"
+                                        className="h-16 w-14 mr-2 * hover:border border-gray-400 "
                                         src={image}
                                         alt="Product gallery"
                                         onClick={() => HandleClick(index)}
