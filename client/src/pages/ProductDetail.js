@@ -10,6 +10,16 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import WhatsAppIcon from '@material-ui/icons/WhatsApp';
 
 const ProductDetail = ({ match }) => {
+    const [isMobile, setisMobile] = useState(
+        window.matchMedia('(max-width:768px)').matches
+    );
+
+    useEffect(() => {
+        window.addEventListener('resize', () => {
+            setisMobile(window.matchMedia('(max-width:768px)').matches);
+        });
+    });
+
     useEffect(() => {
         fechItem();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -49,9 +59,9 @@ const ProductDetail = ({ match }) => {
                 <h1>Todo Product brand</h1>
                 <h2> breadcrum</h2>
             </div>
-            <div className="flex items-center justify-between w-9/12 bg-white my-8">
+            <div className="flex md:flex-row flex-col items-center justify-center md:justify-between mx-0 md:mx-4 w-full md:w-9/12 bg-white my-8">
                 <div key={item._id}>
-                    <div className="w-80 ml-24">
+                    <div className="mt-8 md:mt-0 w-72 md:w-80 ml-0 md:ml-24">
                         {item.images && item.images[image] ? (
                             item.images && (
                                 <img src={item.images[image]} alt="Product" />
@@ -60,13 +70,13 @@ const ProductDetail = ({ match }) => {
                             <img src={item.image} alt="Product" />
                         )}
                     </div>
-                    <div className="flex items-center ml-24 mt-8">
+                    <div className="flex items-center ml-0 md:ml-24 mt-4 md:mt-8">
                         {item.images &&
                             item.images.map((image, index) => {
                                 return (
                                     <img
                                         key={index}
-                                        className="h-16 w-14 mr-2 border border-gray-400 "
+                                        className="h-14 md:h-16 w-12 md:w-14 mr-2 border border-gray-400 "
                                         src={image}
                                         alt="Product gallery"
                                         onClick={() => HandleClick(index)}
@@ -75,8 +85,8 @@ const ProductDetail = ({ match }) => {
                             })}
                     </div>
                 </div>
-                <div className="bg-transparent h-full w-1/2 py-8 px-8">
-                    <h1 className="text-3xl font-semibold">
+                <div className="bg-transparent h-full w-full md:w-1/2 py-8 px-2 md:px-8">
+                    <h1 className="text-xl md:text-3xl font-semibold">
                         {item.description}
                     </h1>
                     <div className="border-b my-5"></div>
@@ -111,42 +121,63 @@ const ProductDetail = ({ match }) => {
                     </button>
                     <div className="border-b my-5"></div>
                     <div className="flex items-center items-center">
-                        <button className="h-10 w-72 mr-8 rounded text-lg font-semibold bg-primary-dark text-white focus:outline-none">
+                        <button className="h-10 w-full md:w-72 mr-5 md:mr-8 rounded text-lg font-semibold bg-primary-dark text-white focus:outline-none">
                             Buy Now
                         </button>
-                        <h1 className="text-sm text-gray-500">
-                            <FavoriteIcon className="mr-2 h-10 w-14 rounded text-white bg-gray-500" />
-                            Save For Later
-                        </h1>
+                        {isMobile ? (
+                            <h1 className=" text-gray-500">
+                                <FavoriteIcon className="mr-5 md:mr-2 h-10 w-14 rounded text-white bg-gray-500" />
+                            </h1>
+                        ) : (
+                            <h1 className="text-sm text-gray-500">
+                                <FavoriteIcon className="mr-2 h-10 w-14 rounded text-white bg-gray-500" />
+                                Save For Later
+                            </h1>
+                        )}
                     </div>
                     <div className="border-b my-5"></div>
-                    <div className="flex items-center justify-between text-black text-sm font-semibold">
-                        <div>
-                            <h1 className="mb-4">
-                                <EmojiTransportationIcon className="text-primary-dark mr-2" />{' '}
-                                Pickup & Pay on Collection Available
-                            </h1>
-                            <h1 className="mt-4">
-                                <AttachMoneyOutlinedIcon className="text-primary-dark mr-2" />
-                                Money Back Garantee
-                            </h1>
+                    {isMobile ? (
+                        <div className="text-black text-sm font-semibold">
+                            <div>
+                                <h1 className="mb-4">
+                                    <EmojiTransportationIcon className="text-primary-dark mr-2" />{' '}
+                                    Pickup & Pay on Collection Available
+                                </h1>
+                                <h1 className="mt-4">
+                                    <LocalShippingOutlinedIcon className="text-primary-dark mr-2" />
+                                    Express Delivery Available
+                                </h1>
+                            </div>
                         </div>
-                        <div>
-                            <h1 className="mb-4">
-                                <StorefrontIcon className="text-primary-dark mr-2" />{' '}
-                                Buy27 Warehouse
-                            </h1>
-                            <h1 className="mt-4">
-                                <LocalShippingOutlinedIcon className="text-primary-dark mr-2" />
-                                Express Delivery Available
-                            </h1>
+                    ) : (
+                        <div className="flex flex-col md:flex-row items-center justify-between text-black text-sm font-semibold">
+                            <div className="">
+                                <h1 className="mb-4">
+                                    <EmojiTransportationIcon className="text-primary-dark mr-2" />{' '}
+                                    Pickup & Pay on Collection Available
+                                </h1>
+                                <h1 className="mt-4">
+                                    <LocalShippingOutlinedIcon className="text-primary-dark mr-2" />
+                                    Express Delivery Available
+                                </h1>
+                            </div>
+                            <div>
+                                <h1 className="mb-4">
+                                    <StorefrontIcon className="text-primary-dark mr-2" />{' '}
+                                    Buy27 Warehouse
+                                </h1>
+                                <h1 className="mt-4">
+                                    <AttachMoneyOutlinedIcon className="text-primary-dark mr-2" />
+                                    Money Back Garantee
+                                </h1>
+                            </div>
                         </div>
-                    </div>
+                    )}
                     <div className="border-b my-5"></div>
                     <h1 className="text-sm font-semibold">
                         Share This Product
                     </h1>
-                    <div className="flex items-center my-2 text-primary-dark">
+                    <div className="flex items-center my-0 md:my-2 text-primary-dark">
                         <FacebookIcon className="mx-1" fontSize="small" />
                         <TwitterIcon className="mx-1" fontSize="small" />
                         <WhatsAppIcon className="mx-1" fontSize="small" />
