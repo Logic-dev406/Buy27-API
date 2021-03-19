@@ -1,5 +1,5 @@
 const Order = require('../models/order');
-const OrderItem = require('../models/order-item');
+const OrderItem = require('../models/order-Items');
 
 class OrdersController {
     static async getListOfOrders(req, res) {
@@ -132,7 +132,7 @@ class OrdersController {
         return res.send({ totalsales: totalsales.pop().totalsales });
     }
 
-    static async getTotalNumberOfAllProducts(req, res) {
+    static async getTotalNumberOfAllOrders(req, res) {
         const orderCount = await Order.countDocuments((count) => count);
 
         if (!orderCount) {

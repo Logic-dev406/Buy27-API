@@ -7,7 +7,7 @@ const {
     updateOrderById,
     deleteOrderById,
     getTotalSales,
-    getTotalNumberOfAllProducts,
+    getTotalNumberOfAllOrders,
     getUserOrders,
 } = require('../controllers/OrdersController');
 
@@ -30,7 +30,7 @@ router.delete('/:id', deleteOrderById);
 router.get('/get/totalsales', getTotalSales);
 
 //Get number of all product
-router.get('/get/count', getTotalNumberOfAllProducts);
+router.get('/get/count', getTotalNumberOfAllOrders);
 
 //Get user orders
 router.get('/get/userorders/:userid', getUserOrders);
