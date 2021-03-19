@@ -29,8 +29,8 @@ const DesktopNavbar = () => {
                         <a href="/" className="px-4">
                             Home
                         </a>
-                        <a href="/" className="px-4">
-                            NewCollections
+                        <a href="/shop" className="px-4">
+                            Shop
                         </a>
                         <a href="/" className="px-4">
                             Cameras

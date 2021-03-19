@@ -6,6 +6,7 @@ import ContactUs from './pages/ContactUs';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProductDetail from './pages/ProductDetail';
+import Cart from './pages/Cart';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
                         <Route path="/shop/:id" component={ProductDetail} />
                         <Route path="/about" component={About} />
                         <Route path="/contactUs" component={ContactUs} />
+                        <Route path="/cart" component={Cart} />
                     </Switch>
                     <Footer className="fixed" />
                 </div>
