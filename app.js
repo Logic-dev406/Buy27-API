@@ -12,7 +12,6 @@ const productRouter = require('./routers/products');
 const userRouter = require('./routers/users');
 const orderRouter = require('./routers/orders');
 const categoryRouter = require('./routers/categories');
-const orderItemsRouter = require('./routers/order-Items');
 
 app.use(cors());
 app.options('*', cors());
@@ -23,14 +22,12 @@ app.use(morgan('tiny'));
 app.use(authJwt());
 app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
 app.use(errorHandler);
-// app.use('/public/uploads', express.static('public/uploads'));
 
 //routs
 app.use('/api/products', productRouter);
 app.use('/api/categories', categoryRouter);
 app.use('/api/users', userRouter);
 app.use('/api/orders', orderRouter);
-app.use('/api/order-Items', orderItemsRouter);
 
 //port
 const port = process.env.PORT || 3000;

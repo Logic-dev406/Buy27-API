@@ -54,9 +54,13 @@ class OrdersController {
                 const orderItem = await OrderItem.findById(
                     orderItemId
                 ).populate({
-                    path: 'product',
-                    model: 'Product',
-                    select: 'price',
+                    path: 'orderitem',
+                    model: 'OrderItem',
+                    populate: {
+                        path: 'product',
+                        model: 'Product',
+                        select: 'price',
+                    },
                 });
                 const totalPrice = orderItem.product.price * orderItem.quantity;
                 return totalPrice;
