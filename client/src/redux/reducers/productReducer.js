@@ -23,7 +23,7 @@ export const getProductsReducer = (state = { products: [] }, action) => {
     }
 };
 
-export const getProductDeatailsReducer = (state = { products: {} }, action) => {
+export const getProductDetailsReducer = (state = { product: {} }, action) => {
     switch (action.type) {
         case actionTypes.GET_PRODUCTS_DETAILS_REQUEST:
             return {
@@ -32,7 +32,7 @@ export const getProductDeatailsReducer = (state = { products: {} }, action) => {
         case actionTypes.GET_PRODUCTS_DETAILS_SUCCESS:
             return {
                 loading: false,
-                products: action.payload,
+                product: action.payload,
             };
         case actionTypes.GET_PRODUCTS_DETAILS_FAIL:
             return {
