@@ -11,7 +11,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 //Actions
 import { getProductDetails } from '.././redux/actions/productActions';
-import { addToCart } from '.././redux/actions/cartAction';
+import { addToCart } from '../redux/actions/cartAction';
 
 const ProductDetail = ({ match, history }) => {
     const [isMobile, setisMobile] = useState(
@@ -24,7 +24,6 @@ const ProductDetail = ({ match, history }) => {
         });
     });
 
-    const [count, setCount] = useState(1);
     const [image, setImage] = useState(0);
     const [qty, setQty] = useState(1);
 
@@ -37,24 +36,17 @@ const ProductDetail = ({ match, history }) => {
         if (product && match.params.id !== product._id) {
             dispatch(getProductDetails(match.params.id));
         }
-        // dispatch(getProductDetails(match.params.id));
     }, [dispatch, match, product]);
-    console.log(product);
 
-    const HandleClick = (index) => {
+    const addToCartHandler = () => {
+        dispatch(addToCart(product._id, qty));
+        history.push('/cart');
+        console.log(product._id);
+    };
+
+    const HandleImageClick = (index) => {
         setImage(index);
     };
-
-    const onDecrement = () => {
-        if (count <= 1) {
-            setCount(1);
-            return;
-        }
-
-        setCount(count - 1);
-    };
-
-    const onIncrement = () => setCount(count + 1);
 
     return (
         <div>
@@ -96,7 +88,7 @@ const ProductDetail = ({ match, history }) => {
                                                     src={image}
                                                     alt="Product gallery"
                                                     onClick={() =>
-                                                        HandleClick(index)
+                                                        HandleImageClick(index)
                                                     }
                                                 />
                                             );
@@ -115,9 +107,11 @@ const ProductDetail = ({ match, history }) => {
                                 <div className="border-b my-5"></div>
                                 <div className="flex items-center">
                                     <h1>Quantity:</h1>
-                                    <select className="flex items-center justify-between * hover:shadow-lg px-2 divide-x h-8 w-24 bg-transparent border rounded ml-5 focus:outline-none">
-                                        value={qty}
+                                    <select
                                         onChange={(e) => setQty(e.target.value)}
+                                        value={qty}
+                                        className="flex items-center justify-between * hover:shadow-lg px-2 divide-x h-8 w-24 bg-transparent border rounded ml-5 focus:outline-none"
+                                    >
                                         {[
                                             ...Array(
                                                 product.countInStock
@@ -137,7 +131,11 @@ const ProductDetail = ({ match, history }) => {
                                 </button>
                                 <div className="border-b my-5"></div>
                                 <div className="flex items-center items-center">
-                                    <button className="h-10 w-full md:w-72 mr-5 md:mr-8 rounded text-lg font-semibold bg-primary-dark text-white focus:outline-none">
+                                    <button
+                                        type="button"
+                                        onClick={addToCartHandler}
+                                        className="h-10 w-full md:w-72 mr-5 md:mr-8 rounded text-lg font-semibold bg-primary-dark text-white focus:outline-none"
+                                    >
                                         Buy Now
                                     </button>
                                     {isMobile ? (
