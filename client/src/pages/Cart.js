@@ -90,9 +90,7 @@ export const Cart = ({ addToCart, cartItems, qty }) => {
                                 <h1>Order Surmmary: </h1>
                                 <h1>
                                     {getCartCount()}
-                                    {cartItems.map((item) => {
-                                        return item.qty > 1 ? 'Items' : 'Item';
-                                    })}
+                                    {getCartCount() > 1 ? 'Items' : 'Item'}
                                 </h1>
                             </div>
                             <div className="border-b border-gray-200"></div>
