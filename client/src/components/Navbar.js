@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DesktopNavbar from '../sections/Navbar/DesktopNavbar';
 import MobileNavbar from '../sections/Navbar/MobileNavbar';
 
-const Navbar = () => {
+const Navbar = ({ cartItems }) => {
     const [isMobile, setisMobile] = useState(
         window.matchMedia('(max-width:768px)').matches
     );
@@ -13,7 +13,15 @@ const Navbar = () => {
         });
     });
 
-    return <div>{isMobile ? <MobileNavbar /> : <DesktopNavbar />}</div>;
+    return (
+        <div>
+            {isMobile ? (
+                <MobileNavbar />
+            ) : (
+                <DesktopNavbar cartItems={cartItems} />
+            )}
+        </div>
+    );
 };
 
 export default Navbar;

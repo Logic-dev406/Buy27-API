@@ -8,6 +8,7 @@ import Footer from './components/Footer';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 //Action
 import { addToCart } from './redux/actions/cartAction';
@@ -15,11 +16,14 @@ import { addToCart } from './redux/actions/cartAction';
 const App = () => {
     const [qty, setQty] = useState(1);
 
+    const cart = useSelector((state) => state.cart);
+    const { cartItems } = cart;
+
     return (
         <Router>
             <div className="flex flex-col min-h-screen">
                 <div>
-                    <Navbar />
+                    <Navbar cartItems={cartItems} />
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <Route
@@ -46,7 +50,16 @@ const App = () => {
                         />
                         <Route path="/about" component={About} />
                         <Route path="/contactUs" component={ContactUs} />
-                        <Route path="/cart" component={Cart} />
+                        <Route
+                            path="/cart"
+                            render={(props) => (
+                                <Cart
+                                    {...props}
+                                    cartItems={cartItems}
+                                    addToCart={addToCart}
+                                />
+                            )}
+                        />
                     </Switch>
                     <Footer className="fixed" />
                 </div>

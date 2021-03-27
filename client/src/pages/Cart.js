@@ -1,17 +1,14 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CartItem from '../components/Cart/cartItems';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 //Action
-import { addToCart, removeFromCart } from '../redux/actions/cartAction';
+import { removeFromCart } from '../redux/actions/cartAction';
 
-export const Cart = () => {
+export const Cart = ({ addToCart, cartItems }) => {
     const dispatch = useDispatch();
-
-    const cart = useSelector((state) => state.cart);
-    const { cartItems } = cart;
 
     const qtyChangeHandler = (id, qty) => {
         dispatch(addToCart(id, qty));
@@ -19,6 +16,17 @@ export const Cart = () => {
 
     const removeFromCartHandler = (id) => {
         dispatch(removeFromCart(id));
+    };
+
+    const getCartCount = () => {
+        return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
+    };
+
+    const getCartTotalPrice = () => {
+        return cartItems.reduce(
+            (price, item) => item.price * item.qty + price,
+            0
+        );
     };
 
     return (
@@ -35,7 +43,7 @@ export const Cart = () => {
                 <div>
                     <div className="flex flex-col justify-center mt-8 mx-52 ">
                         <Link to="/shop">
-                            <span className="font-semibold text-sm text-primary-dark border-2 border-primary-dark bg-transparent px-2 py-2 rounded ">
+                            <span className="font-semibold text-sm text-primary-dark hover:text-white border-2 border-primary-dark bg-transparent hover:bg-primary-dark px-2 py-2 rounded ">
                                 <ArrowBackIcon fontSize="small" /> Continue
                                 Shopping
                             </span>
@@ -64,13 +72,17 @@ export const Cart = () => {
                         <div className="h-96 w-96 bg-white ">
                             <div className="flex justify-between px-3 my-2 font-bold">
                                 <h1>Order Surmmary: </h1>
-                                <h1>4 Items</h1>
+                                <h1>
+                                    {getCartCount()} Item
+                                    {/* {cartItems.lenght === 1 ? 'Item' : 'Items'} */}
+                                </h1>
                             </div>
                             <div className="border-b border-gray-200"></div>
                             <div className="flex justify-between px-3 my-2 text-sm">
                                 <h1>Subtotal: </h1>
                                 <h1 className="font-semibold">
-                                    <span className="">&#8358;</span> 6,000
+                                    <span className="">&#8358;</span>{' '}
+                                    {getCartTotalPrice().toFixed(2)}
                                 </h1>
                             </div>
                             <div className="border-b border-gray-200"></div>
@@ -83,8 +95,10 @@ export const Cart = () => {
                             </div>
                             <div className="border-b border-gray-200"></div>
                             <div className="flex justify-between px-3 my-2 font-bold">
+                                <h1>Total</h1>
                                 <h1>
-                                    <span className="">&#8358;</span> 6,000
+                                    <span className="">&#8358;</span>{' '}
+                                    {getCartTotalPrice().toFixed(2)}
                                 </h1>
                             </div>
                             <div className="border-b border-gray-200"></div>

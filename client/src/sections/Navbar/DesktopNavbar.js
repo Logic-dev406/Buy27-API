@@ -3,13 +3,13 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import logo from '../../assets/images/buy27logo.png';
-import { IconButton } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartOutlined from '@material-ui/icons/ShoppingCartOutlined';
 import TopMenuBar from '../../components/TopMenuBar';
 import { Link } from 'react-router-dom';
 
-const DesktopNavbar = () => {
+const DesktopNavbar = ({ cartItems }) => {
+    console.log(cartItems);
     return (
         <div>
             <TopMenuBar />
@@ -43,18 +43,22 @@ const DesktopNavbar = () => {
                         </a>
                     </div>
                 </div>
-                <div>
-                    <input
-                        type="text"
-                        placeholder="Search Products"
-                        className="focus: outline-none bg-transparent"
-                    />{' '}
-                    <IconButton className="focus:outline-none">
+                <div className="flex">
+                    <div>
+                        <input
+                            type="text"
+                            placeholder="Search Products"
+                            className="focus: outline-none bg-transparent"
+                        />{' '}
                         <SearchIcon className="text-primary-dark" />
-                    </IconButton>
-                    <IconButton className="focus:outline-none">
-                        <ShoppingCartOutlined className="text-primary-dark" />
-                    </IconButton>
+                    </div>
+                    <button className="flex items-center ml-4 px-2 py-1 rounded bg-primary-dark hover:bg-primary-light focus:outline-none">
+                        <ShoppingCartOutlined className="text-white" />
+                        <h1 className="text-white">Cart</h1>
+                        <h1 className="h-5 w-5 bg-white text-black rounded ml-2">
+                            {/* {cartItems.lenght === 0 ? '0' : `${cartItems}`} */}
+                        </h1>
+                    </button>
                 </div>
             </div>
         </div>
