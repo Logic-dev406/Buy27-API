@@ -11,9 +11,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 //Actions
 import { getProductDetails } from '.././redux/actions/productActions';
-import { addToCart } from '../redux/actions/cartAction';
 
-const ProductDetail = ({ match, history }) => {
+const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
     const [isMobile, setisMobile] = useState(
         window.matchMedia('(max-width:768px)').matches
     );
@@ -25,7 +24,6 @@ const ProductDetail = ({ match, history }) => {
     });
 
     const [image, setImage] = useState(0);
-    const [qty, setQty] = useState(1);
 
     const dispatch = useDispatch();
 
@@ -41,7 +39,6 @@ const ProductDetail = ({ match, history }) => {
     const addToCartHandler = () => {
         dispatch(addToCart(product._id, qty));
         history.push('/cart');
-        console.log(product._id);
     };
 
     const HandleImageClick = (index) => {
@@ -105,24 +102,42 @@ const ProductDetail = ({ match, history }) => {
                                     {product.price}
                                 </h1>
                                 <div className="border-b my-5"></div>
-                                <div className="flex items-center">
-                                    <h1>Quantity:</h1>
-                                    <select
-                                        onChange={(e) => setQty(e.target.value)}
-                                        value={qty}
-                                        className="flex items-center justify-between * hover:shadow-lg px-2 divide-x h-8 w-24 bg-transparent border rounded ml-5 focus:outline-none"
-                                    >
-                                        {[
-                                            ...Array(
-                                                product.countInStock
-                                            ).keys(),
-                                        ].map((x) => (
-                                            <option key={x + 1} value={x + 1}>
-                                                {x + 1}
-                                            </option>
-                                        ))}
-                                    </select>
+                                <div className="flex items-center justify-between">
+                                    <div className="flex items-center">
+                                        <h1>Quantity:</h1>
+                                        <select
+                                            onChange={(e) =>
+                                                setQty(e.target.value)
+                                            }
+                                            value={qty}
+                                            className="flex items-center justify-between * hover:shadow-lg px-2 divide-x h-8 w-24 bg-transparent border rounded ml-5 focus:outline-none"
+                                        >
+                                            {[
+                                                ...Array(
+                                                    product.countInStock
+                                                ).keys(),
+                                            ].map((x) => (
+                                                <option
+                                                    key={x + 1}
+                                                    value={x + 1}
+                                                >
+                                                    {x + 1}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <h1 className="">
+                                            Status:{' '}
+                                            <span>
+                                                {product.countInStock > 0
+                                                    ? 'InStock'
+                                                    : 'Out of Stock'}
+                                            </span>
+                                        </h1>
+                                    </div>
                                 </div>
+
                                 <h1 className="mt-5  text-sm text-gray-500">
                                     Call Us for bulk purchases:
                                 </h1>

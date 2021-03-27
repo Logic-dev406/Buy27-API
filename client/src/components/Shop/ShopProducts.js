@@ -43,10 +43,8 @@ const ShopProducts = () => {
                                     <span className="mr-1">&#8358;</span>
                                     {product.price}
                                 </h5>
-                                <button className=" mb-2 md:mb-0 mt-4 md:mt-10 mx-0 md:mx-2 ml-2 bg-primary-dark md:bg-transparent hover:bg-primary-dark rounded border border-primary-dark text-white md:text-primary-dark hover:text-white w-32 md:w-40 h-8 md:h-10 focus:outline-none">
-                                    <h1 className=" text-sm font-normal md:font-bold">
-                                        Add To Cart
-                                    </h1>
+                                <button className="text-sm font-normal md:font-bold mb-2 md:mb-0 mt-4 md:mt-10 mx-0 md:mx-2 ml-2 bg-primary-dark md:bg-transparent hover:bg-primary-dark rounded border border-primary-dark text-white md:text-primary-dark hover:text-white w-32 md:w-40 h-8 md:h-10 focus:outline-none">
+                                    View Product
                                 </button>
                             </Link>
                         ))

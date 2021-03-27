@@ -2,9 +2,6 @@ import React, { useEffect, useState } from 'react';
 import ShopProduct from '../components/Shop/ShopProducts';
 import ScrollToTop from '../components/Shop/ScrollToTop';
 
-//Action
-import { addToCart } from '../redux/actions/cartAction';
-
 const Shop = () => {
     const [isMobile, setisMobile] = useState(
         window.matchMedia('(max-width:768px)').matches
@@ -26,7 +23,7 @@ const Shop = () => {
                         <div className="h-96 w-72 bg-white mr-5"></div>
                     )}
                 </div>
-                <ShopProduct addToCartAction={addToCart} />
+                <ShopProduct />
                 <div>{isMobile ? '' : <ScrollToTop />}</div>
             </div>
         </div>

@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import { Link } from 'react-router-dom';
 
 export const Cart = () => {
+    const dispatch = useDispatch();
+
+    const cart = useSelector((state) => state.cart);
+    const { cartItems } = cart;
+
     return (
-        <div className="flex flex-col items-center bg-gray-100 h-screen w-full">
+        <div className="flex flex-col bg-gray-100 h-screen w-full">
             <div className="flex flex-col justify-center h-24 w-full bg-white px-52">
                 <h1>breadcrum</h1>
                 <h1 className="text-4xl font-bold"> Shopping Cart</h1>
             </div>
-            <div className="flex py-10 px-52">
+            {cartItems === 0 ? ' ' : ''}
+            <div className="flex flex-col justify-center mt-8 mx-52 ">
+                <Link to="/shop">
+                    <span className="font-semibold text-sm text-primary-dark border-2 border-primary-dark bg-transparent px-2 py-2 rounded ">
+                        <ArrowBackIcon fontSize="small" /> Continue Shopping
+                    </span>
+                </Link>
+            </div>
+            <div className="flex py-8 px-52">
                 <div className="h-40 w-2/3 bg-white mr-8">
                     <div className="flex items-center justify-between text-white font-semibold bg-primary-dark h-10 w-full px-5">
                         <h1>Item Details</h1>
@@ -46,7 +62,7 @@ export const Cart = () => {
                     <div className="border-b border-gray-200"></div>
                     <div className="flex flex-col px-3 my-5 items-center ">
                         <button className="bg-primary-dark text-sm rounded text-white font-semibold h-10 w-full focus:outline-none">
-                            Continue to Checkout
+                            Proceed to Checkout
                         </button>
                     </div>
                     <div className="border-b border-gray-200"></div>
