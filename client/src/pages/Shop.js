@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import ShopProduct from '../components/Shop/ShopProducts';
 import ScrollToTop from '../components/Shop/ScrollToTop';
+import { useSelector, useDispatch } from 'react-redux';
+
+//Action
+import { getProducts as listProducts } from '../redux/actions/productActions';
 
 const Shop = () => {
     const [isMobile, setisMobile] = useState(
@@ -13,6 +17,15 @@ const Shop = () => {
         });
     });
 
+    const dispatch = useDispatch();
+
+    const getProducts = useSelector((state) => state.getProducts);
+    const { products, loading, error } = getProducts;
+
+    useEffect(() => {
+        dispatch(listProducts());
+    }, [dispatch]);
+
     return (
         <div className="flex flex-col bg-gray-100 h-full w-full">
             <div className="flex justify-center mx-0 md:mx-52">
@@ -23,7 +36,11 @@ const Shop = () => {
                         <div className="h-96 w-72 bg-white mr-5"></div>
                     )}
                 </div>
-                <ShopProduct />
+                <ShopProduct
+                    products={products}
+                    loading={loading}
+                    error={error}
+                />
                 <div>{isMobile ? '' : <ScrollToTop />}</div>
             </div>
         </div>
