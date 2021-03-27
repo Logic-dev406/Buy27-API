@@ -7,9 +7,16 @@ import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartOutlined from '@material-ui/icons/ShoppingCartOutlined';
 import TopMenuBar from '../../components/TopMenuBar';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
-const DesktopNavbar = ({ cartItems }) => {
-    console.log(cartItems);
+const DesktopNavbar = () => {
+    const cart = useSelector((state) => state.cart);
+    const { cartItems } = cart;
+
+    const getCartCount = () => {
+        return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
+    };
+
     return (
         <div>
             <TopMenuBar />
@@ -52,13 +59,16 @@ const DesktopNavbar = ({ cartItems }) => {
                         />{' '}
                         <SearchIcon className="text-primary-dark" />
                     </div>
-                    <button className="flex items-center ml-4 px-2 py-1 rounded bg-primary-dark hover:bg-primary-light focus:outline-none">
+                    <Link
+                        to="/cart"
+                        className="flex items-center ml-4 px-2 py-1 rounded bg-primary-dark hover:bg-primary-light focus:outline-none"
+                    >
                         <ShoppingCartOutlined className="text-white" />
                         <h1 className="text-white">Cart</h1>
-                        <h1 className="h-5 w-5 bg-white text-black rounded ml-2">
-                            {/* {cartItems.lenght === 0 ? '0' : `${cartItems}`} */}
+                        <h1 className="h-5 w-5 bg-white text-center text-black font-semibold rounded ml-2">
+                            {getCartCount()}
                         </h1>
-                    </button>
+                    </Link>
                 </div>
             </div>
         </div>

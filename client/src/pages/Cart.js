@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import CartItem from '../components/Cart/cartItems';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import cart from '../assets/icons/cart.png';
 
 //Action
 import { removeFromCart } from '../redux/actions/cartAction';
@@ -36,8 +37,22 @@ export const Cart = ({ addToCart, cartItems }) => {
                 <h1 className="text-4xl font-bold"> Shopping Cart</h1>
             </div>
             {cartItems.length === 0 ? (
-                <div>
-                    Your cart is empty <Link to="/shop">Go Back</Link>
+                <div className="flex flex-col items-center">
+                    <div className="flex flex-col w-96 h-96 bg-white my-40 items-center justify-center">
+                        <img src={cart} alt="cart" className="h-44" />
+                        <h1 className="text-lg font-bold">
+                            Your cart is empty.
+                        </h1>
+                        <span className="text-gray-500">
+                            Your have not added any item to your cart.
+                        </span>
+                        <Link
+                            className="text-black hover:text-white font-semibold bg-transparent hover:bg-primary-dark border-2 border-primary-dark px-4 py-1 mt-4 rounded"
+                            to="/shop"
+                        >
+                            <ArrowBackIcon fontSize="small" /> Go Back
+                        </Link>
+                    </div>
                 </div>
             ) : (
                 <div>
@@ -60,6 +75,7 @@ export const Cart = ({ addToCart, cartItems }) => {
                             {cartItems.map((item) => {
                                 return (
                                     <CartItem
+                                        key={item.product}
                                         item={item}
                                         removeFromCartHandler={
                                             removeFromCartHandler
@@ -73,8 +89,8 @@ export const Cart = ({ addToCart, cartItems }) => {
                             <div className="flex justify-between px-3 my-2 font-bold">
                                 <h1>Order Surmmary: </h1>
                                 <h1>
-                                    {getCartCount()} Item
-                                    {/* {cartItems.lenght === 1 ? 'Item' : 'Items'} */}
+                                    {getCartCount()}
+                                    {cartItems.product < 2 ? 'Item' : 'Items'}
                                 </h1>
                             </div>
                             <div className="border-b border-gray-200"></div>
