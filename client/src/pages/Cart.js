@@ -8,7 +8,7 @@ import cart from '../assets/icons/cart.png';
 //Action
 import { removeFromCart } from '../redux/actions/cartAction';
 
-export const Cart = ({ addToCart, cartItems }) => {
+export const Cart = ({ addToCart, cartItems, qty }) => {
     const dispatch = useDispatch();
 
     const qtyChangeHandler = (id, qty) => {
@@ -90,7 +90,9 @@ export const Cart = ({ addToCart, cartItems }) => {
                                 <h1>Order Surmmary: </h1>
                                 <h1>
                                     {getCartCount()}
-                                    {cartItems.product < 2 ? 'Item' : 'Items'}
+                                    {cartItems.map((item) => {
+                                        return item.qty > 1 ? 'Items' : 'Item';
+                                    })}
                                 </h1>
                             </div>
                             <div className="border-b border-gray-200"></div>
