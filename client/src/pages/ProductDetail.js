@@ -110,7 +110,7 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
                                                 setQty(e.target.value)
                                             }
                                             value={qty}
-                                            className="flex items-center justify-between * hover:shadow-lg px-2 divide-x h-8 w-24 bg-transparent border rounded ml-5 focus:outline-none"
+                                            className="flex items-center justify-between * hover:shadow-lg px-2 h-8 w-20 bg-transparent border rounded ml-5 focus:outline-none"
                                         >
                                             {[
                                                 ...Array(
