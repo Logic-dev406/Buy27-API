@@ -7,16 +7,8 @@ import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartOutlined from '@material-ui/icons/ShoppingCartOutlined';
 import TopMenuBar from '../../components/TopMenuBar';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
-const DesktopNavbar = () => {
-    const cart = useSelector((state) => state.cart);
-    const { cartItems } = cart;
-
-    const getCartCount = () => {
-        return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
-    };
-
+const DesktopNavbar = ({ getCartCount }) => {
     return (
         <div>
             <TopMenuBar />

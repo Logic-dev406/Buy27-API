@@ -6,7 +6,7 @@ import TopMenuBar from '../../components/TopMenuBar';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/images/buy27logo.png';
 
-const MobileNavbar = () => {
+const MobileNavbar = ({ getCartCount }) => {
     return (
         <div>
             <TopMenuBar />
@@ -15,7 +15,7 @@ const MobileNavbar = () => {
                     <Link to="/">
                         <img src={logo} width="100" alt="buy27 logo" />
                     </Link>
-                    <div>
+                    <div className="flex items-center justify-between">
                         <input
                             type="text"
                             placeholder="Search Products"
@@ -24,9 +24,12 @@ const MobileNavbar = () => {
                         <IconButton className="focus:outline-none">
                             <SearchIcon className="text-primary-dark" />
                         </IconButton>
-                        <IconButton className="focus:outline-none">
+                        <Link to="/cart" className="flex items-center ">
                             <ShoppingCartOutlined className="text-primary-dark" />
-                        </IconButton>
+                            <h1 className="h-4 w-4 bg-primary-dark text-sm text-center text-white font-semibold rounded ml-">
+                                {getCartCount()}
+                            </h1>
+                        </Link>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 export const MobileCartItem = ({
     item,
@@ -48,7 +49,7 @@ export const MobileCartItem = ({
                     onClick={() => removeFromCartHandler(item.product)}
                     className="text-primary-dark rounded text-sm font-semibold focus:outline-none border-2 border-primary-dark py-2"
                 >
-                    Remove item
+                    <CancelIcon fontSize="small" /> Remove item
                 </button>
             </div>
         </div>

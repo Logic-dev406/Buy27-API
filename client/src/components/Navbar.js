@@ -13,12 +13,16 @@ const Navbar = ({ cartItems }) => {
         });
     });
 
+    const getCartCount = () => {
+        return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
+    };
+
     return (
         <div>
             {isMobile ? (
-                <MobileNavbar />
+                <MobileNavbar getCartCount={getCartCount} />
             ) : (
-                <DesktopNavbar cartItems={cartItems} />
+                <DesktopNavbar getCartCount={getCartCount} />
             )}
         </div>
     );
