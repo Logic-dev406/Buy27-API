@@ -45,6 +45,17 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
         setImage(index);
     };
 
+    const [didMount, setDidMount] = useState(false);
+
+    useEffect(() => {
+        setDidMount(true);
+        return () => setDidMount(false);
+    }, []);
+
+    if (!didMount) {
+        return null;
+    }
+
     return (
         <div>
             {loading ? (

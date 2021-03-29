@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import DesktopCart from '../sections/cart/DesktopCart';
-import MobileCart from '../sections/cart/MobileCart';
+import DesktopCart from '../sections/Cart/DesktopCart';
+import MobileCart from '../sections/Cart/MobileCart';
 
 //Action
 import { removeFromCart } from '../redux/actions/cartAction';
@@ -16,16 +16,6 @@ export const Cart = ({ addToCart, cartItems }) => {
             setisMobile(window.matchMedia('(max-width:768px)').matches);
         });
     });
-
-    // const [isMedium, setisMedium] = useState(
-    //     window.matchMedia('(max-width:990px)').matches
-    // );
-
-    // useEffect(() => {
-    //     window.addEventListener('resize', () => {
-    //         setisMedium(window.matchMedia('(max-width:990px)').matches);
-    //     });
-    // });
 
     const dispatch = useDispatch();
 

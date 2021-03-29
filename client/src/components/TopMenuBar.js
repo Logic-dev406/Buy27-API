@@ -13,6 +13,17 @@ const TopMenuBar = () => {
         });
     });
 
+    const [didMount, setDidMount] = useState(false);
+
+    useEffect(() => {
+        setDidMount(true);
+        return () => setDidMount(false);
+    }, []);
+
+    if (!didMount) {
+        return null;
+    }
+
     return <div>{isMobile ? <MobileTopMenuBar /> : <DesktopTopMenuBar />}</div>;
 };
 

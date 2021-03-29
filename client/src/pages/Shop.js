@@ -26,6 +26,17 @@ const Shop = () => {
         dispatch(listProducts());
     }, [dispatch]);
 
+    const [didMount, setDidMount] = useState(false);
+
+    useEffect(() => {
+        setDidMount(true);
+        return () => setDidMount(false);
+    }, []);
+
+    if (!didMount) {
+        return null;
+    }
+
     return (
         <div className="flex flex-col bg-gray-100 h-full w-full">
             <div className="flex justify-center mx-0 md:mx-52">

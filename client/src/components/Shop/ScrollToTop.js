@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 const ScrollArrow = () => {
@@ -17,6 +17,17 @@ const ScrollArrow = () => {
     };
 
     window.addEventListener('scroll', checkScrollTop);
+
+    const [didMount, setDidMount] = useState(false);
+
+    useEffect(() => {
+        setDidMount(true);
+        return () => setDidMount(false);
+    }, []);
+
+    if (!didMount) {
+        return null;
+    }
 
     return (
         <div className="">

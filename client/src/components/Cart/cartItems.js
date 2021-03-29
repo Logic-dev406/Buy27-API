@@ -13,6 +13,17 @@ const CartItems = ({ item, qtyChangeHandler, removeFromCartHandler }) => {
         });
     });
 
+    const [didMount, setDidMount] = useState(false);
+
+    useEffect(() => {
+        setDidMount(true);
+        return () => setDidMount(false);
+    }, []);
+
+    if (!didMount) {
+        return null;
+    }
+
     return (
         <div>
             {isMobile ? (
