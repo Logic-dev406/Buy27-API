@@ -9,6 +9,7 @@ import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Breadcrumbs from './components/Breadcrumbs';
 
 //Action
 import { addToCart } from './redux/actions/cartAction';
@@ -24,6 +25,7 @@ const App = () => {
             <div className="flex flex-col min-h-screen">
                 <div>
                     <Navbar cartItems={cartItems} />
+                    <Breadcrumbs />
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <Route
