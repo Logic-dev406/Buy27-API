@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const DesktopCartItem = ({
     item,
@@ -7,13 +8,13 @@ export const DesktopCartItem = ({
 }) => {
     return (
         <div>
-            <div className="flex justify-between h-24 px-5 py-6 w-full bg-white border-b">
-                <div className="flex">
+            <div className="flex justify-between px-5 py-6 w-full bg-white border-b">
+                <Link to={`/shop/${item.product}`} className="flex">
                     <img src={item.image} alt="item" className="w-10 mr-4" />
                     <h1 className="font-semibold text-primary-dart">
                         {item.name}
                     </h1>
-                </div>
+                </Link>
                 <div>
                     <select
                         onChange={(e) =>

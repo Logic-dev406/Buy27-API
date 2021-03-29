@@ -5,10 +5,8 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import cart from '../../assets/icons/cart.png';
 
 export const MobileCart = ({
-    getCartTotalPrice,
     removeFromCartHandler,
     qtyChangeHandler,
-    getCartCount,
     cartItems,
 }) => {
     return (
@@ -22,7 +20,7 @@ export const MobileCart = ({
                 </div>
                 {cartItems.length === 0 ? (
                     <div className="flex flex-col items-center">
-                        <div className="flex flex-col w-80 md:w-96 h-80 md:h-96 bg-white my-40 items-center justify-center">
+                        <div className="flex flex-col w-80 md:w-96 h-80 md:h-96 bg-white my-20 items-center justify-center">
                             <img src={cart} alt="cart" className="h-44" />
                             <h1 className="text-lg font-bold">
                                 Your cart is empty.
