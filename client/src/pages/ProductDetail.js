@@ -60,16 +60,18 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
                         </div>
                         <div className="flex md:flex-row flex-col items-center justify-center md:justify-between mx-0 md:mx-4 w-full md:w-9/12 bg-white my-8">
                             <div key={product._id}>
-                                <div className="mt-8 md:mt-0 w-72 md:w-80 ml-0 md:ml-24">
+                                <div className=" md:ml-32 ">
                                     {product.images && product.images[image] ? (
                                         product.images && (
                                             <img
+                                                className="w-72 md:w-80 mt-8 md:mt-0"
                                                 src={product.images[image]}
                                                 alt="Product"
                                             />
                                         )
                                     ) : (
                                         <img
+                                            className="w-72 md:w-80 mt-8 md:mt-0"
                                             src={product.image}
                                             alt="Product"
                                         />
@@ -92,7 +94,7 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
                                         })}
                                 </div>
                             </div>
-                            <div className="bg-transparent h-full w-full md:w-1/2 py-8 px-2 md:px-8">
+                            <div className="bg-transparent h-full w-full md:w-1/2 py-8 px-4 md:px-8">
                                 <h1 className="text-xl md:text-3xl font-semibold">
                                     {product.description}
                                 </h1>
