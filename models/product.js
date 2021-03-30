@@ -1,4 +1,7 @@
 const mongoose = require('mongoose');
+const slug = require('mongoose-slug-generator');
+
+mongoose.plugin(slug);
 
 const productSchema = mongoose.Schema({
     name: {
@@ -53,6 +56,7 @@ const productSchema = mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    slug: { type: String, slug: 'name' },
 });
 
 productSchema.virtual('id').get(function () {

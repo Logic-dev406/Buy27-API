@@ -19,7 +19,7 @@ class ProductController {
     static async getProductById(req, res) {
         const product = await Product.findById(req.params.id)
             .select(
-                'name image images price description category richDescription countInStock'
+                'name image images price description category richDescription countInStock slug'
             )
             .populate({ path: 'category', model: 'Category' });
 
@@ -28,6 +28,7 @@ class ProductController {
         }
 
         res.send(product);
+        console.log(product.slug);
     }
 
     static async createProduct(req, res) {
