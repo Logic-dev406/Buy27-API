@@ -14,10 +14,6 @@ export const DesktopCart = ({
     return (
         <div>
             <div className="flex flex-col bg-gray-100 w-full">
-                {/* <div className="flex flex-col justify-center h-24 w-full bg-white px-52">
-                    <h1>breadcrum</h1>
-                    <h1 className="text-4xl font-bold"> Shopping Cart</h1>
-                </div> */}
                 {cartItems.length === 0 ? (
                     <div className="flex flex-col items-center">
                         <div className="flex flex-col w-96 h-96 bg-white my-40 items-center justify-center">
@@ -70,10 +66,16 @@ export const DesktopCart = ({
                             <div className="h-96 w-96 bg-white ">
                                 <div className="flex justify-between px-3 my-2 font-bold">
                                     <h1>Order Surmmary: </h1>
-                                    <h1>
-                                        {getCartCount()}
-                                        {getCartCount() > 1 ? 'Items' : 'Item'}
-                                    </h1>
+                                    <div className="flex items-center ">
+                                        <h1 className="mr-1">
+                                            {getCartCount()}
+                                        </h1>
+                                        <h1>
+                                            {getCartCount() > 1
+                                                ? 'Items'
+                                                : 'Item'}
+                                        </h1>
+                                    </div>
                                 </div>
                                 <div className="border-b border-gray-200"></div>
                                 <div className="flex justify-between px-3 my-2 text-sm">

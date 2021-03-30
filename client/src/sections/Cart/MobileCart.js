@@ -14,12 +14,6 @@ export const MobileCart = ({
     return (
         <div>
             <div className="flex flex-col bg-gray-100 w-full">
-                <div className="flex flex-col justify-center h-24 w-full bg-white px-0 md:px-52">
-                    <h1>breadcrum</h1>
-                    <h1 className="text-normal md:text-4xl font-semibold md:font-bold">
-                        Shopping Cart
-                    </h1>
-                </div>
                 {cartItems.length === 0 ? (
                     <div className="flex flex-col items-center">
                         <div className="flex flex-col w-80 md:w-96 h-80 md:h-96 bg-white my-20 items-center justify-center">

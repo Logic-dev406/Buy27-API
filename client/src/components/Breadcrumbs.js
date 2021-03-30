@@ -20,7 +20,7 @@ const Breadcrumbs = (props) => {
             ) : (
                 <MUIBreadcrumbs
                     separator={<NavigateNextIcon fontSize="small" />}
-                    className="flex flex-col justify-center items-start px-52 h-24"
+                    className="flex  items-center items-start px-4 md:px-52 h-24"
                 >
                     {pathnames.length > 0 ? (
                         <Link onClick={() => history.push('/')}>Home</Link>
@@ -32,7 +32,6 @@ const Breadcrumbs = (props) => {
                             .slice(0, index + 1)
                             .join('/')}`;
                         const isLast = index === pathnames.length - 1;
-                        console.log(pathname);
                         return isLast ? (
                             <Typography key={name}>{name}</Typography>
                         ) : (
