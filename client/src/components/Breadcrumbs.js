@@ -7,34 +7,46 @@ import {
 import { withRouter } from 'react-router-dom';
 import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 
-const Breadcrumbs = (props, { products }) => {
+const Breadcrumbs = (props) => {
     const {
         history,
         location: { pathname },
     } = props;
     const pathnames = pathname.split('/').filter((x) => x);
     return (
-        <MUIBreadcrumbs
-            separator={<NavigateNextIcon fontSize="small" />}
-            className="flex flex-col justify-center items-start px-52 h-24"
-        >
-            {pathnames.length > 0 ? (
-                <Link onClick={() => history.push('/')}>Home</Link>
+        <div>
+            {pathname === '/' ? (
+                ''
             ) : (
-                <Typography> Home </Typography>
+                <MUIBreadcrumbs
+                    separator={<NavigateNextIcon fontSize="small" />}
+                    className="flex flex-col justify-center items-start px-52 h-24"
+                >
+                    {pathnames.length > 0 ? (
+                        <Link onClick={() => history.push('/')}>Home</Link>
+                    ) : (
+                        <Typography> Home </Typography>
+                    )}
+                    {pathnames.map((name, index) => {
+                        const routeTo = `/${pathnames
+                            .slice(0, index + 1)
+                            .join('/')}`;
+                        const isLast = index === pathnames.length - 1;
+                        console.log(pathname);
+                        return isLast ? (
+                            <Typography key={name}>{name}</Typography>
+                        ) : (
+                            <Link
+                                key={name}
+                                onClick={() => history.push(routeTo)}
+                            >
+                                {name}
+                            </Link>
+                        );
+                    })}
+                </MUIBreadcrumbs>
             )}
-            {pathnames.map((name, index) => {
-                const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
-                const isLast = index === pathnames.length - 1;
-                return isLast ? (
-                    <Typography key={name}>{name}</Typography>
-                ) : (
-                    <Link key={name} onClick={() => history.push(routeTo)}>
-                        {name}
-                    </Link>
-                );
-            })}
-        </MUIBreadcrumbs>
+        </div>
     );
 };
 
