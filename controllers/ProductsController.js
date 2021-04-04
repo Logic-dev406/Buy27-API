@@ -28,7 +28,6 @@ class ProductController {
         }
 
         res.send(product);
-        console.log(product.slug);
     }
 
     static async createProduct(req, res) {
@@ -56,8 +55,6 @@ class ProductController {
             price: req.body.price,
             category: req.body.category,
             countInStock: req.body.countInStock,
-            rating: req.body.rating,
-            numReviews: req.body.numReviews,
             dateCreated: req.body.dateCreated,
             isFeatured: req.body.isFeatured,
         });
@@ -125,8 +122,6 @@ class ProductController {
                 price: req.body.price,
                 category: req.body.category,
                 countInStock: req.body.countInStock,
-                rating: req.body.rating,
-                numReviews: req.body.numReviews,
                 dateCreated: req.body.dateCreated,
                 isFeatured: req.body.isFeatured,
             },

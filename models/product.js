@@ -40,14 +40,6 @@ const productSchema = mongoose.Schema({
         min: 0,
         max: 250,
     },
-    rating: {
-        type: Number,
-        default: 0,
-    },
-    numReviews: {
-        type: Number,
-        default: 0,
-    },
     isFeatured: {
         type: Boolean,
         default: false,
