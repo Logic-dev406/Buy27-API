@@ -41,7 +41,7 @@ const uploadOptions = multer({ storage: storage });
 router.get('/', getAllProducts);
 
 //Get product by id
-router.get('/:id', getProductById);
+router.get('/:slug', getProductById);
 
 //Create product
 router.post('/', uploadOptions.single('image'), createProduct);

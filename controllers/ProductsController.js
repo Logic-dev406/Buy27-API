@@ -17,7 +17,7 @@ class ProductController {
     }
 
     static async getProductById(req, res) {
-        const product = await Product.findById(req.params.id)
+        const product = await Product.findOne({ slug: req.params.slug })
             .select(
                 'name image images price description category richDescription countInStock slug'
             )
