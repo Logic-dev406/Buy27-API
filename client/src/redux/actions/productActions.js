@@ -22,12 +22,12 @@ export const getProducts = () => async (dispatch) => {
     }
 };
 
-export const getProductDetails = (id) => async (dispatch) => {
+export const getProductDetails = (slug) => async (dispatch) => {
     try {
         dispatch({ type: actionTypes.GET_PRODUCTS_DETAILS_REQUEST });
 
         const { data } = await axios.get(
-            `http://localhost:3000/api/products/${id}`
+            `http://localhost:3000/api/products/${slug}`
         );
 
         dispatch({

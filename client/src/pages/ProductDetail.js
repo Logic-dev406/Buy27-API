@@ -32,7 +32,7 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
 
     useEffect(() => {
         if (product && match.params.id !== product._id) {
-            dispatch(getProductDetails(match.params.id));
+            dispatch(getProductDetails(match.params.slug));
         }
     }, [dispatch, match, product]);
 

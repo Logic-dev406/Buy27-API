@@ -13,6 +13,7 @@ const Breadcrumbs = (props) => {
         location: { pathname },
     } = props;
     const pathnames = pathname.split('/').filter((x) => x);
+    // console.log(pathnames);
     return (
         <div>
             {pathname === '/' ? (
