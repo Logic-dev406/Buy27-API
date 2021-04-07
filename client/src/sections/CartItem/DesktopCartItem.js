@@ -6,6 +6,7 @@ export const DesktopCartItem = ({
     qtyChangeHandler,
     removeFromCartHandler,
 }) => {
+    console.log(item.slug);
     return (
         <div>
             <div className="flex justify-between px-5 py-6 w-full bg-white border-b">
@@ -18,7 +19,7 @@ export const DesktopCartItem = ({
                 <div>
                     <select
                         onChange={(e) =>
-                            qtyChangeHandler(item.product, e.target.value)
+                            qtyChangeHandler(item.slug, e.target.value)
                         }
                         value={item.qty}
                         className="flex items-center justify-between * hover:shadow-lg px-2  h-8 w-20 bg-transparent border rounded ml-5 focus:outline-none"

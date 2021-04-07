@@ -19,8 +19,8 @@ export const Cart = ({ addToCart, cartItems }) => {
 
     const dispatch = useDispatch();
 
-    const qtyChangeHandler = (id, qty) => {
-        dispatch(addToCart(id, qty));
+    const qtyChangeHandler = (slug, qty) => {
+        dispatch(addToCart(slug, qty));
     };
 
     const removeFromCartHandler = (slug) => {
