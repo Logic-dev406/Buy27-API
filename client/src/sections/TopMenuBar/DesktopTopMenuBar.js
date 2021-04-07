@@ -36,6 +36,8 @@ const DesktopTopMenuBar = () => {
                         onClick={() => {
                             setActive(!active);
                         }}
+
+                        // style={{ hover ? `${setActive(!active)}` : 'none' }}
                     >
                         My Acount <ArrowDropDownIcon />
                     </button>

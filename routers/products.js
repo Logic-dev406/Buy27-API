@@ -10,6 +10,7 @@ const {
     deleteProductById,
     getFeaturedProducts,
     getTotalAmountOfAllProducts,
+    searchForProduct,
 } = require('../controllers/ProductsController');
 
 const FILE_TYPE_MAP = {
@@ -36,6 +37,9 @@ var storage = multer.diskStorage({
 });
 
 const uploadOptions = multer({ storage: storage });
+
+//Search for product
+router.get('/search', searchForProduct);
 
 //Get all products
 router.get('/', getAllProducts);

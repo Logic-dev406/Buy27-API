@@ -3,6 +3,19 @@ const Category = require('../models/category');
 const mongoose = require('mongoose');
 
 class ProductController {
+    static async searchForProduct(req, res) {
+        const searchInput = req.query.name;
+
+        const search = await Product.find({
+            name: { $regex: searchInput, $options: '$i' },
+        });
+
+        if (!search) {
+            res.status(500).json({ success: false });
+        }
+        res.send(search);
+    }
+
     static async getAllProducts(req, res) {
         let filter = {};
         if (req.query.categories) {

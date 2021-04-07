@@ -23,8 +23,8 @@ export const Cart = ({ addToCart, cartItems }) => {
         dispatch(addToCart(id, qty));
     };
 
-    const removeFromCartHandler = (id) => {
-        dispatch(removeFromCart(id));
+    const removeFromCartHandler = (slug) => {
+        dispatch(removeFromCart(slug));
     };
 
     const getCartCount = () => {
