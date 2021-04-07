@@ -37,7 +37,7 @@ const FeaturedProduct = () => {
                     ) : (
                         products.map((product) => (
                             <Link
-                                to={`/shop/${product.id}`}
+                                to={`/shop/${product.slug}`}
                                 key={product.id}
                                 className="bg-white * hover:shadow-lg h-60 md:h-72 w-36 md:w-44 rounded"
                             >
