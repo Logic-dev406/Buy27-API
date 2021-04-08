@@ -17,6 +17,9 @@ import { addToCart } from './redux/actions/cartAction';
 const App = () => {
     const [qty, setQty] = useState(1);
 
+    const SearchedProducts = useSelector((state) => state.getSearchedProducts);
+    const { loading, error, products } = SearchedProducts;
+
     const cart = useSelector((state) => state.cart);
     const { cartItems } = cart;
 
@@ -36,6 +39,9 @@ const App = () => {
                                     {...props}
                                     qty={qty}
                                     addToCart={addToCart}
+                                    searchLoading={loading}
+                                    searchError={error}
+                                    searchedProducts={products}
                                 />
                             )}
                         />

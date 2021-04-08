@@ -8,6 +8,7 @@ import {
     getFeaturedProductsReducer,
     getProductsReducer,
     getProductDetailsReducer,
+    getSearchedProductsReducer,
 } from './reducers/productReducer';
 
 const reducer = combineReducers({
@@ -15,6 +16,7 @@ const reducer = combineReducers({
     getProducts: getProductsReducer,
     getFeaturedProducts: getFeaturedProductsReducer,
     getProductDetails: getProductDetailsReducer,
+    getSearchedProducts: getSearchedProductsReducer,
 });
 
 const middleware = [thunk];

@@ -6,7 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 //Action
 import { getProducts as listProducts } from '../redux/actions/productActions';
 
-const Shop = () => {
+const Shop = ({ searchLoading, searchError, searchedProducts }) => {
     const [isMobile, setisMobile] = useState(
         window.matchMedia('(max-width:768px)').matches
     );
@@ -51,6 +51,9 @@ const Shop = () => {
                     products={products}
                     loading={loading}
                     error={error}
+                    searchedProducts={searchedProducts}
+                    searchError={searchError}
+                    searchLoadin={searchLoading}
                 />
                 <div>{isMobile ? '' : <ScrollToTop />}</div>
             </div>

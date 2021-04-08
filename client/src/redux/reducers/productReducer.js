@@ -23,6 +23,35 @@ export const getProductsReducer = (state = { products: [] }, action) => {
     }
 };
 
+export const getSearchedProductsReducer = (
+    state = { products: [] },
+    action
+) => {
+    switch (action.type) {
+        case actionTypes.GET_SEARCHED_PRODUCTS_REQUEST:
+            return {
+                loading: true,
+                products: [],
+            };
+        case actionTypes.GET_SEARCHED_PRODUCTS_SUCCESS:
+            return {
+                loading: false,
+                products: action.payload,
+            };
+        case actionTypes.GET_SEARCHED_PRODUCTS_FAIL:
+            return {
+                loading: false,
+                error: action.payload,
+            };
+        case actionTypes.GET_SEARCHED_PRODUCTS_RESET:
+            return {
+                products: [],
+            };
+        default:
+            return state;
+    }
+};
+
 export const getProductDetailsReducer = (state = { product: {} }, action) => {
     switch (action.type) {
         case actionTypes.GET_PRODUCTS_DETAILS_REQUEST:

@@ -30,8 +30,6 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
     const productDetails = useSelector((state) => state.getProductDetails);
     const { loading, error, product } = productDetails;
 
-    console.log(match.params.id);
-
     useEffect(() => {
         if (product && match.params.id !== product.slug) {
             dispatch(getProductDetails(match.params.id));

@@ -45,6 +45,29 @@ export const getProductDetails = (slug) => async (dispatch) => {
     }
 };
 
+export const getSearchedProducts = (input) => async (dispatch) => {
+    try {
+        dispatch({ type: actionTypes.GET_SEARCHED_PRODUCTS_REQUEST });
+
+        const { data } = await axios.get(
+            `http://localhost:3000/api/products/search?name=${input}`
+        );
+
+        dispatch({
+            type: actionTypes.GET_SEARCHED_PRODUCTS_SUCCESS,
+            payload: data,
+        });
+    } catch (error) {
+        dispatch({
+            type: actionTypes.GET_SEARCHED_PRODUCTS_FAIL,
+            payload:
+                error.response && error.response.data.message
+                    ? error.response.data.message
+                    : error.message,
+        });
+    }
+};
+
 export const getFeaturedProducts = () => async (dispatch) => {
     try {
         dispatch({ type: actionTypes.GET_FEATURED_PRODUCTS_REQUEST });
@@ -66,6 +89,12 @@ export const getFeaturedProducts = () => async (dispatch) => {
                     : error.message,
         });
     }
+};
+
+export const removeSearchedProducts = () => (dispatch) => {
+    dispatch({
+        type: actionTypes.GET_SEARCHED_PRODUCTS_RESET,
+    });
 };
 
 export const removeProductDetails = () => (dispatch) => {

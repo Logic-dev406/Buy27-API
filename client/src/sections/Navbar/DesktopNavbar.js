@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
@@ -7,8 +7,38 @@ import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartOutlined from '@material-ui/icons/ShoppingCartOutlined';
 import TopMenuBar from '../../components/TopMenuBar';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+//Actions
+import { getSearchedProducts } from '../../redux/actions/productActions';
 
 const DesktopNavbar = ({ getCartCount }) => {
+    const [searchTerm, setSearchTerm] = useState('');
+
+    const dispatch = useDispatch();
+
+    let history = useHistory();
+
+    const handleInput = (e) => {
+        const inputText = e.target.value;
+        setSearchTerm(inputText);
+    };
+
+    const handleEnterKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            dispatch(getSearchedProducts(searchTerm));
+            history.push('/shop');
+            setSearchTerm('');
+        }
+    };
+
+    const handleSearchClicked = (e) => {
+        dispatch(getSearchedProducts(searchTerm));
+        history.push('/shop');
+        setSearchTerm('');
+    };
+
     return (
         <div>
             <TopMenuBar />
@@ -43,13 +73,21 @@ const DesktopNavbar = ({ getCartCount }) => {
                     </div>
                 </div>
                 <div className="flex">
-                    <div>
+                    <div className="items-center justify-center border pl-2 rounded bg-primary-light text-white">
                         <input
-                            type="text"
+                            onChange={handleInput}
+                            onKeyPress={handleEnterKeyPress}
+                            type="search"
+                            value={searchTerm}
                             placeholder="Search Products"
                             className="focus: outline-none bg-transparent"
                         />{' '}
-                        <SearchIcon className="text-primary-dark" />
+                        <button
+                            onClick={handleSearchClicked}
+                            className="focus:outline-none bg-primary-dark py-1 px-1 rounded-r"
+                        >
+                            <SearchIcon className="text-white" />
+                        </button>
                     </div>
                     <Link
                         to="/cart"
