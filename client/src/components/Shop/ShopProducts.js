@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 const ShopProducts = ({
     products,
@@ -8,7 +9,10 @@ const ShopProducts = ({
     searchLoading,
     searcherror,
     searchedProducts,
+    getSearchedProducts,
 }) => {
+    const dispatch = useDispatch();
+
     console.log(searchedProducts);
     return (
         <div>

@@ -6,7 +6,12 @@ import { useSelector, useDispatch } from 'react-redux';
 //Action
 import { getProducts as listProducts } from '../redux/actions/productActions';
 
-const Shop = ({ searchLoading, searchError, searchedProducts }) => {
+const Shop = ({
+    searchLoading,
+    searchError,
+    searchedProducts,
+    getSearchedProducts,
+}) => {
     const [isMobile, setisMobile] = useState(
         window.matchMedia('(max-width:768px)').matches
     );
@@ -24,7 +29,7 @@ const Shop = ({ searchLoading, searchError, searchedProducts }) => {
 
     useEffect(() => {
         dispatch(listProducts());
-    }, [dispatch]);
+    }, [dispatch, searchedProducts]);
 
     const [didMount, setDidMount] = useState(false);
 
@@ -54,6 +59,7 @@ const Shop = ({ searchLoading, searchError, searchedProducts }) => {
                     searchedProducts={searchedProducts}
                     searchError={searchError}
                     searchLoadin={searchLoading}
+                    getSearchedProducts={getSearchedProducts}
                 />
                 <div>{isMobile ? '' : <ScrollToTop />}</div>
             </div>

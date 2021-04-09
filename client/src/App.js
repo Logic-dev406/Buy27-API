@@ -13,6 +13,7 @@ import Breadcrumbs from './components/Breadcrumbs';
 
 //Action
 import { addToCart } from './redux/actions/cartAction';
+import { getSearchedProducts } from './redux/actions/productActions';
 
 const App = () => {
     const [qty, setQty] = useState(1);
@@ -27,7 +28,10 @@ const App = () => {
         <Router>
             <div className="flex flex-col min-h-screen">
                 <div>
-                    <Navbar cartItems={cartItems} />
+                    <Navbar
+                        cartItems={cartItems}
+                        getSearchedProducts={getSearchedProducts}
+                    />
                     <Breadcrumbs />
                     <Switch>
                         <Route path="/" exact component={Home} />
@@ -42,6 +46,7 @@ const App = () => {
                                     searchLoading={loading}
                                     searchError={error}
                                     searchedProducts={products}
+                                    getSearchedProducts={getSearchedProducts}
                                 />
                             )}
                         />

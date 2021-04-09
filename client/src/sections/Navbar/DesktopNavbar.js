@@ -10,10 +10,7 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-//Actions
-import { getSearchedProducts } from '../../redux/actions/productActions';
-
-const DesktopNavbar = ({ getCartCount }) => {
+const DesktopNavbar = ({ getCartCount, getSearchedProducts }) => {
     const [searchTerm, setSearchTerm] = useState('');
 
     const dispatch = useDispatch();
