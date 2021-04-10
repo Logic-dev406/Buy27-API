@@ -11,7 +11,9 @@ import Search from './pages/Search';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Breadcrumbs from './components/Breadcrumbs';
-import UserDashboard from './pages/UserDashboard';
+import AccountInfo from './pages/AccountInformation';
+import DeliveryAddres from './pages/DeliveryAddress';
+import PreviousOrders from './pages/PreviousOrders';
 
 //Action
 import { addToCart } from './redux/actions/cartAction';
@@ -75,8 +77,16 @@ const App = () => {
                             )}
                         />
                         <Route
-                            path="/Account"
-                            render={(props) => <UserDashboard {...props} />}
+                            path="/My Account"
+                            render={(props) => <AccountInfo {...props} />}
+                        />
+                        <Route
+                            path="/My Account/My Delivery Address"
+                            render={(props) => <DeliveryAddres {...props} />}
+                        />
+                        <Route
+                            path="/My Account/My Orders"
+                            render={(props) => <PreviousOrders {...props} />}
                         />
                         <Route path="/About" component={About} />
                         <Route path="/ContactUs" component={ContactUs} />
