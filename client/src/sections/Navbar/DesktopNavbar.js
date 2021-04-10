@@ -3,12 +3,12 @@ import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import logo from '../../assets/images/buy27logo.png';
-import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCartOutlined from '@material-ui/icons/ShoppingCartOutlined';
 import TopMenuBar from '../../components/TopMenuBar';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import SearchBar from '../../components/Search/SearchBar';
 
 const DesktopNavbar = ({ getCartCount, getSearchedProducts }) => {
     const [searchTerm, setSearchTerm] = useState('');
@@ -25,14 +25,14 @@ const DesktopNavbar = ({ getCartCount, getSearchedProducts }) => {
     const handleEnterKeyPress = (e) => {
         if (e.key === 'Enter') {
             dispatch(getSearchedProducts(searchTerm));
-            history.push('/shop');
+            history.push(`/search`);
             setSearchTerm('');
         }
     };
 
     const handleSearchClicked = (e) => {
         dispatch(getSearchedProducts(searchTerm));
-        history.push('/shop');
+        history.push(`/search`);
         setSearchTerm('');
     };
 
@@ -70,22 +70,12 @@ const DesktopNavbar = ({ getCartCount, getSearchedProducts }) => {
                     </div>
                 </div>
                 <div className="flex">
-                    <div className="items-center justify-center border pl-2 rounded bg-primary-light text-white">
-                        <input
-                            onChange={handleInput}
-                            onKeyPress={handleEnterKeyPress}
-                            type="search"
-                            value={searchTerm}
-                            placeholder="Search Products"
-                            className="focus: outline-none bg-transparent"
-                        />{' '}
-                        <button
-                            onClick={handleSearchClicked}
-                            className="focus:outline-none bg-primary-dark py-1 px-1 rounded-r"
-                        >
-                            <SearchIcon className="text-white" />
-                        </button>
-                    </div>
+                    <SearchBar
+                        handleEnterKeyPress={handleEnterKeyPress}
+                        handleInput={handleInput}
+                        handleSearchClicked={handleSearchClicked}
+                        searchTerm={searchTerm}
+                    />
                     <Link
                         to="/cart"
                         className="flex items-center ml-4 px-2 py-1 rounded bg-primary-dark hover:bg-primary-light focus:outline-none"

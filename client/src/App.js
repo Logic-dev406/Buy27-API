@@ -7,6 +7,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
+import Search from './pages/Search';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Breadcrumbs from './components/Breadcrumbs';
@@ -43,10 +44,6 @@ const App = () => {
                                     {...props}
                                     qty={qty}
                                     addToCart={addToCart}
-                                    searchLoading={loading}
-                                    searchError={error}
-                                    searchedProducts={products}
-                                    getSearchedProducts={getSearchedProducts}
                                 />
                             )}
                         />
@@ -58,6 +55,17 @@ const App = () => {
                                     qty={qty}
                                     setQty={setQty}
                                     addToCart={addToCart}
+                                />
+                            )}
+                        />
+                        <Route
+                            path="/search"
+                            render={(props) => (
+                                <Search
+                                    {...props}
+                                    searchLoading={loading}
+                                    searchError={error}
+                                    searchedProducts={products}
                                 />
                             )}
                         />

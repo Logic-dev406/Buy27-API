@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import ShopProduct from '../components/Shop/ShopProducts';
+import SearchedProducts from '../components/Search/SearchedProducts';
 import ScrollToTop from '../components/Shop/ScrollToTop';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 //Action
 import { getProducts as listProducts } from '../redux/actions/productActions';
 
-const Shop = ({
-    searchLoading,
-    searchError,
-    searchedProducts,
-    getSearchedProducts,
-}) => {
+const Search = ({ searchLoading, searchError, searchedProducts }) => {
     const [isMobile, setisMobile] = useState(
         window.matchMedia('(max-width:768px)').matches
     );
@@ -23,9 +18,6 @@ const Shop = ({
     });
 
     const dispatch = useDispatch();
-
-    const getProducts = useSelector((state) => state.getProducts);
-    const { products, loading, error } = getProducts;
 
     useEffect(() => {
         dispatch(listProducts());
@@ -52,14 +44,10 @@ const Shop = ({
                         <div className="h-96 w-72 bg-white mr-5"></div>
                     )}
                 </div>
-                <ShopProduct
-                    products={products}
-                    loading={loading}
-                    error={error}
+                <SearchedProducts
                     searchedProducts={searchedProducts}
                     searchError={searchError}
-                    searchLoadin={searchLoading}
-                    getSearchedProducts={getSearchedProducts}
+                    searchLoading={searchLoading}
                 />
                 <div>{isMobile ? '' : <ScrollToTop />}</div>
             </div>
@@ -67,4 +55,4 @@ const Shop = ({
     );
 };
 
-export default Shop;
+export default Search;
