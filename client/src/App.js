@@ -19,6 +19,8 @@ import { getSearchedProducts } from './redux/actions/productActions';
 const App = () => {
     const [qty, setQty] = useState(1);
 
+    const [searchTerm, setSearchTerm] = useState('');
+
     const SearchedProducts = useSelector((state) => state.getSearchedProducts);
     const { loading, error, products } = SearchedProducts;
 
@@ -32,6 +34,8 @@ const App = () => {
                     <Navbar
                         cartItems={cartItems}
                         getSearchedProducts={getSearchedProducts}
+                        searchTerm={searchTerm}
+                        setSearchTerm={setSearchTerm}
                     />
                     <Breadcrumbs />
                     <Switch>

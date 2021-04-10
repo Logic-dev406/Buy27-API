@@ -8,14 +8,14 @@ const SearchedProducts = ({ searchedProducts, searchError, searchLoading }) => {
             <div className="  bg-transparent md:bg-transparent">
                 <div>
                     {searchedProducts.length === 0 ? (
-                        <div className="flex flex-col items-center my-28 mx-28 h-72 w-96 bg-white rounded shadow-lg text-primary-dark">
+                        <div className="flex flex-col items-center px-2 my-28 mx-0 md:mx-28 h-72 md:w-96 bg-white rounded shadow-lg text-primary-dark">
                             <img
                                 className="mt-10"
                                 src={CancelSearchIcon}
                                 width="100"
                                 alt="SearchIcon"
                             />
-                            <h1 className="font-bold mt-5 mb-2">
+                            <h1 className="font-bold text-sm md:text-normal mt-5 mb-2">
                                 We couldn’t find what you were looking for.
                             </h1>
                             <h3 className="text-sm ">
@@ -26,7 +26,7 @@ const SearchedProducts = ({ searchedProducts, searchError, searchLoading }) => {
                             </h3>
                         </div>
                     ) : (
-                        <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-y-2 gap-x-2 md:gap-x-2 py-2 md:py-2 px2 md:px-2 bg-white">
+                        <div className=" grid grid-cols-2 md:grid-cols-4 gap-y-2 md:gap-y-2 gap-x-2 md:gap-x-2 py-2 md:py-2 px2 md:px-2 bg-transparent md:bg-white">
                             {searchLoading ? (
                                 <h1>Loading...</h1>
                             ) : searchError ? (
@@ -43,7 +43,7 @@ const SearchedProducts = ({ searchedProducts, searchError, searchLoading }) => {
                                             src={product.image}
                                             alt="product"
                                         />
-                                        <h1 className="text-left text-black text-xs font-semibold pl-2 pt-2">
+                                        <h1 className="text-left text-black text-xs font-semibold pl-2 pt-2 truncate">
                                             {product.name}
                                         </h1>
 

@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react';
 import DesktopNavbar from '../sections/Navbar/DesktopNavbar';
 import MobileNavbar from '../sections/Navbar/MobileNavbar';
 
-const Navbar = ({ cartItems, getSearchedProducts }) => {
+const Navbar = ({
+    cartItems,
+    getSearchedProducts,
+    searchTerm,
+    setSearchTerm,
+}) => {
     const [isMobile, setisMobile] = useState(
         window.matchMedia('(max-width:768px)').matches
     );
@@ -23,11 +28,15 @@ const Navbar = ({ cartItems, getSearchedProducts }) => {
                 <MobileNavbar
                     getCartCount={getCartCount}
                     getSearchedProducts={getSearchedProducts}
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
                 />
             ) : (
                 <DesktopNavbar
                     getCartCount={getCartCount}
                     getSearchedProducts={getSearchedProducts}
+                    searchTerm={searchTerm}
+                    setSearchTerm={setSearchTerm}
                 />
             )}
         </div>
