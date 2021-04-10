@@ -2,15 +2,15 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import PhoneIcon from '@material-ui/icons/Phone';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
-import PersonOutlineIcon from '@material-ui/icons/PersonOutline';
+import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import ShoppingBasketIcon from '@material-ui/icons/ShoppingBasket';
+import ShoppingBasketOutlinedIcon from '@material-ui/icons/ShoppingBasketOutlined';
 
 const DesktopTopMenuBar = () => {
     const [active, setActive] = useState(false);
 
     return (
-        <div className="flex bg-primary-dark w-full h-6 text-white text-sm items-center justify-between px-52">
+        <div className="flex bg-primary-dark w-full h-6 text-white text-sm items-center justify-between px-52 relative ">
             <div className="">
                 <a
                     className="px-2 border-l-2 border-r-2 border-primary-light "
@@ -36,18 +36,16 @@ const DesktopTopMenuBar = () => {
                         onClick={() => {
                             setActive(!active);
                         }}
-
-                        // style={{ hover ? `${setActive(!active)}` : 'none' }}
                     >
                         My Acount <ArrowDropDownIcon />
                     </button>
                     {active && (
                         <div className="bg-primary-dark flex flex-col absolute border-t-2 py-4 border-grey-200 w-52 rounded">
                             <a href="/" className="px-4 py-1">
-                                <PersonOutlineIcon /> Account
+                                <AccountCircleOutlinedIcon /> Account
                             </a>
                             <a href="/" className="px-4 py-1">
-                                <ShoppingBasketIcon /> Orders
+                                <ShoppingBasketOutlinedIcon /> Orders
                             </a>
                             <a href="/" className="px-4 pt-1 pb-5 ">
                                 <FavoriteBorderIcon /> Saved Items

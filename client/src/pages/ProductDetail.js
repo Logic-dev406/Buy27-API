@@ -66,7 +66,7 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
                 <>
                     <div className="flex flex-col items-center bg-gray-100 h-full w-full">
                         <div className="flex md:flex-row flex-col items-center justify-center md:justify-between mx-0 md:mx-4 w-full md:w-9/12 bg-white my-8">
-                            <div key={product._id}>
+                            <div key={product.id}>
                                 <div className=" md:ml-32 ">
                                     {product.images && product.images[image] ? (
                                         product.images && (

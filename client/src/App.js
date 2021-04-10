@@ -11,6 +11,7 @@ import Search from './pages/Search';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Breadcrumbs from './components/Breadcrumbs';
+import UserDashboard from './pages/UserDashboard';
 
 //Action
 import { addToCart } from './redux/actions/cartAction';
@@ -72,6 +73,10 @@ const App = () => {
                                     searchedProducts={products}
                                 />
                             )}
+                        />
+                        <Route
+                            path="/account"
+                            render={(props) => <UserDashboard {...props} />}
                         />
                         <Route path="/about" component={About} />
                         <Route path="/contactUs" component={ContactUs} />
