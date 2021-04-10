@@ -28,14 +28,14 @@ const DesktopNavbar = ({
     const handleEnterKeyPress = (e) => {
         if (e.key === 'Enter') {
             dispatch(getSearchedProducts(searchTerm));
-            history.push(`/search`);
+            history.push(`/Search`);
             setSearchTerm('');
         }
     };
 
     const handleSearchClicked = (e) => {
         dispatch(getSearchedProducts(searchTerm));
-        history.push(`/search`);
+        history.push(`/Search`);
         setSearchTerm('');
     };
 
@@ -58,7 +58,7 @@ const DesktopNavbar = ({
                         <a href="/" className="px-4">
                             Home
                         </a>
-                        <a href="/shop" className="px-4">
+                        <a href="/Shop" className="px-4">
                             Shop
                         </a>
                         <a href="/" className="px-4">
@@ -90,7 +90,7 @@ const DesktopNavbar = ({
                         </button>
                     </div>
                     <Link
-                        to="/cart"
+                        to="/Cart"
                         className="flex items-center ml-4 px-2 py-1 rounded bg-primary-dark hover:bg-primary-light focus:outline-none"
                     >
                         <ShoppingCartOutlined className="text-white" />

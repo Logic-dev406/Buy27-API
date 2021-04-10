@@ -38,7 +38,7 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
 
     const addToCartHandler = () => {
         dispatch(addToCart(product.slug, qty));
-        history.push('/cart');
+        history.push('/Cart');
     };
 
     const HandleImageClick = (index) => {

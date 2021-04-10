@@ -14,10 +14,10 @@ export const UserDashboard = () => {
                             </i>
                             My Profile
                         </h1>
-                        <a href="/account" className="pl-8 text-sm py-1">
+                        <a href="/Account" className="pl-8 text-sm py-1">
                             Account Information
                         </a>
-                        <a href="/account" className="pl-8 text-sm py-1">
+                        <a href="/Account" className="pl-8 text-sm py-1">
                             Delivery Address
                         </a>
                         <div className="border-b border-gray w-56 my-2"></div>
@@ -27,7 +27,7 @@ export const UserDashboard = () => {
                             </i>
                             My Orders
                         </h1>
-                        <a href="/account" className="pl-8 text-sm py-1">
+                        <a href="/Account" className="pl-8 text-sm py-1">
                             Buy27.com
                         </a>
                     </div>

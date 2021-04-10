@@ -57,19 +57,19 @@ const DesktopTopMenuBar = () => {
                     )}
                     <Link
                         className="px-2 border-r-2 border-primary-light"
-                        to="/contactUs"
+                        to="/ContactUs"
                     >
                         Contact Us
                     </Link>
                     <Link
                         className="px-2 border-r-2 border-primary-light"
-                        to="/about"
+                        to="/About"
                     >
                         About Us
                     </Link>
                     <Link
                         className="px-2 border-r-2 border-primary-light"
-                        to="/help"
+                        to="/Help"
                     >
                         Help
                     </Link>

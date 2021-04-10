@@ -34,7 +34,7 @@ const SearchedProducts = ({ searchedProducts, searchError, searchLoading }) => {
                             ) : (
                                 searchedProducts.map((product) => (
                                     <Link
-                                        to={`/shop/${product.slug}`}
+                                        to={`/Shop/${product.slug}`}
                                         key={product.id}
                                         className=" bg-white * hover:shadow-lg h-68 md:h-80 w-36 md:w-44 rounded justify-center "
                                     >

@@ -42,7 +42,7 @@ const App = () => {
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <Route
-                            path="/shop"
+                            path="/Shop"
                             exact
                             render={(props) => (
                                 <Shop
@@ -53,7 +53,7 @@ const App = () => {
                             )}
                         />
                         <Route
-                            path="/shop/:id"
+                            path="/Shop/:id"
                             render={(props) => (
                                 <ProductDetail
                                     {...props}
@@ -64,7 +64,7 @@ const App = () => {
                             )}
                         />
                         <Route
-                            path="/search"
+                            path="/Search"
                             render={(props) => (
                                 <Search
                                     {...props}
@@ -75,13 +75,13 @@ const App = () => {
                             )}
                         />
                         <Route
-                            path="/account"
+                            path="/Account"
                             render={(props) => <UserDashboard {...props} />}
                         />
-                        <Route path="/about" component={About} />
-                        <Route path="/contactUs" component={ContactUs} />
+                        <Route path="/About" component={About} />
+                        <Route path="/ContactUs" component={ContactUs} />
                         <Route
-                            path="/cart"
+                            path="/Cart"
                             render={(props) => (
                                 <Cart
                                     {...props}
