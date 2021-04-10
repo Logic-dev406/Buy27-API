@@ -12,7 +12,7 @@ export const MobileCartItem = ({
             <div className="flex flex-col justify-between px-5 pt-4 pb-3 w-full bg-white border-b">
                 <Link to={`/shop/${item.product}`} className="flex">
                     <img src={item.image} alt="item" className="w-10 mr-4" />
-                    <h1 className="font-semibold text-primary-dart">
+                    <h1 className="font-semibold text-primary-dart truncate">
                         {item.name}
                     </h1>
                 </Link>

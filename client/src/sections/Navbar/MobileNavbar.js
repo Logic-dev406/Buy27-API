@@ -61,7 +61,7 @@ const MobileNavbar = ({
                         </div>
                         <Link to="/cart" className="flex items-center ml-2 ">
                             <ShoppingCartOutlined className="text-primary-dark" />
-                            <h1 className="h-4 w-4 bg-primary-dark text-sm text-center text-white font-semibold rounded ml-">
+                            <h1 className="h-4 w-4 bg-primary-dark text-sm text-center text-white font-semibold rounded">
                                 {getCartCount()}
                             </h1>
                         </Link>
