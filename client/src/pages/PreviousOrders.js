@@ -1,7 +1,7 @@
 import React from 'react';
 import UserDashboardController from '../components/UsersDashboardControl';
 
-export const UserDashboard = () => {
+export const PreviousOrders = () => {
     return (
         <div className="flex flex-col items-center bg-gray-100 ">
             <div className=" flex justify-between my-8 ">
@@ -12,4 +12,4 @@ export const UserDashboard = () => {
     );
 };
 
-export default UserDashboard;
+export default PreviousOrders;

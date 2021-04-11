@@ -77,7 +77,7 @@ const App = () => {
                             )}
                         />
                         <Route
-                            path="/My Account"
+                            path="/My Account/My Profile"
                             render={(props) => <AccountInfo {...props} />}
                         />
                         <Route

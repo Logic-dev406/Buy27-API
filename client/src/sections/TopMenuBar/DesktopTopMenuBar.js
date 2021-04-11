@@ -42,14 +42,17 @@ const DesktopTopMenuBar = () => {
                     {active && (
                         <div className="bg-primary-dark flex flex-col absolute border-t-2 py-4 border-grey-200 w-52 rounded">
                             <Link
-                                to={`/My Account/${'My Profile'} `}
+                                to="/My Account/My Profile"
                                 className="px-4 py-1"
                             >
                                 <AccountCircleOutlinedIcon /> My Profile
                             </Link>
-                            <a href="/" className="px-4 py-1">
+                            <Link
+                                to="/My Account/My Orders"
+                                className="px-4 py-1"
+                            >
                                 <ShoppingBasketOutlinedIcon /> My Orders
-                            </a>
+                            </Link>
                             <a href="/" className="px-4 pt-1 pb-5 ">
                                 <FavoriteBorderIcon /> Saved Items
                             </a>
