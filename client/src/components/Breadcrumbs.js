@@ -13,7 +13,6 @@ const Breadcrumbs = (props) => {
         location: { pathname },
     } = props;
     const pathnames = pathname.split('/').filter((x) => x);
-    // console.log(pathnames);
     return (
         <div>
             {pathname === '/' ? (
@@ -33,6 +32,7 @@ const Breadcrumbs = (props) => {
                             .slice(0, index + 1)
                             .join('/')}`;
                         const isLast = index === pathnames.length - 1;
+                        // console.log(isLast);
                         return isLast ? (
                             <Typography key={name}>{name}</Typography>
                         ) : (
