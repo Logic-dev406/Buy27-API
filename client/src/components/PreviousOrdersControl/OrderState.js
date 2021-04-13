@@ -1,7 +1,6 @@
 import React from 'react';
 import { TabGroup } from '@statikly/funk';
 import { Link } from 'react-router-dom';
-import ReceiptIcon from '@material-ui/icons/Receipt';
 
 export const OrderState = () => {
     return (
@@ -54,46 +53,74 @@ export const OrderState = () => {
                         >
                             <Link
                                 to="#"
-                                className="h-44 w-96 bg-transparent border border-primary-dark rounded my-8"
+                                className="h-52 w-96 bg-transparent border border-primary-dark rounded my-8"
                             >
-                                <div className="flex items-center h-10 w-full bg-primary-light">
-                                    {' '}
-                                    <h1 className="ml-3 text-white text-xs ">
-                                        Order Date: 19 Oct 2020
+                                <div className="flex items-center justify-between h-14 w-full px-4 bg-primary-light text-white">
+                                    <div>
+                                        <h1 className="flex text-sm font-normal">
+                                            Tracking ID:{' '}
+                                            <h3 className="font-semibold ml-2">
+                                                A2Dw42F3e42
+                                            </h3>
+                                        </h1>
+                                        <h1 className="flex text-sm font-normal">
+                                            Sold By:{' '}
+                                            <h3 className="font-semibold ml-2">
+                                                Buy27
+                                            </h3>
+                                        </h1>
+                                    </div>
+                                    <div>
+                                        <h1 className="flex text-sm font-normal">
+                                            Shipping Fee:{' '}
+                                            <h3 className="font-semibold ml-2">
+                                                000.00
+                                            </h3>
+                                        </h1>
+                                        <h1 className="flex text-sm font-normal">
+                                            Total:{' '}
+                                            <h3 className="font-semibold ml-2">
+                                                3,890
+                                            </h3>
+                                        </h1>
+                                    </div>
+                                </div>
+                                <div className=" flex items-center justify-between px-4  w-full bg-transparent border-b py-2">
+                                    <h1 className="text-primary-dark">
+                                        Track Order
+                                    </h1>
+                                    <h1 className="bg-primary-light py-1 px-2 text-xs text-white rounded">
+                                        Delivered
                                     </h1>
                                 </div>
-                                <div className="flex justify-between mx-3 mt-4 text-primary-dark">
-                                    <div className="text-sm font-semibold ">
-                                        <h1 className="flex">
-                                            Total:{' '}
-                                            <h2 className="text-sm font-normal ml-1">
-                                                1,000
-                                            </h2>
-                                        </h1>
-                                        <h1 className="flex">
-                                            Order No:{' '}
-                                            <h2 className="text-sm font-normal ml-1">
-                                                14R3H0JGn3
-                                            </h2>
-                                        </h1>
-                                        <h1 className="flex">
-                                            Payment Method:{' '}
-                                            <h2 className="text-sm font-normal ml-1">
-                                                Pay Befor Order
-                                            </h2>
-                                        </h1>
-                                        <img
-                                            src=""
-                                            alt="product"
-                                            className="h-10 w-10 mt-2"
-                                        />
+                                <div className="flex justify-between mx-3 mt-3 text-primary-dark">
+                                    <div className=" flex text-sm font-medium ">
+                                        <div className="mr-4">
+                                            <img
+                                                src=""
+                                                alt="product"
+                                                className="h-10 w-10 mt-2 "
+                                            />
+                                        </div>
+                                        <div>
+                                            <h1 className="flex">
+                                                This is a product that was
+                                                ordered by u
+                                            </h1>
+                                            <h1 className="flex font-bold">
+                                                3,000
+                                            </h1>
+                                            <h1 className="flex">
+                                                Quantity:
+                                                <h2 className="text-sm font-normal ml-1">
+                                                    1
+                                                </h2>
+                                            </h1>
+                                        </div>
                                     </div>
                                     <div className="text-right">
-                                        <h1 className="text-sm font-semibold">
-                                            Delivery Address:
-                                        </h1>
-                                        <h1 className="text-sm font-normal">
-                                            Fct Abuja
+                                        <h1 className="text-sm font-meduim">
+                                            Rate This Product
                                         </h1>
                                     </div>
                                 </div>
