@@ -32,7 +32,6 @@ const Breadcrumbs = (props) => {
                             .slice(0, index + 1)
                             .join('/')}`;
                         const isLast = index === pathnames.length - 1;
-                        // console.log(isLast);
                         return isLast ? (
                             <Typography key={name}>{name}</Typography>
                         ) : (

@@ -14,14 +14,11 @@ export const UsersDashboardControl = () => {
                         </i>
                         My Profile
                     </h1>
-                    <Link
-                        to="/My Account/My Profile"
-                        className="pl-8 text-sm py-1"
-                    >
+                    <Link to="/My Profile" className="pl-8 text-sm py-1">
                         Account Information
                     </Link>
                     <Link
-                        to="/My Account/My Delivery Address"
+                        to="/My Delivery Address"
                         className="pl-8 text-sm py-1"
                     >
                         Delivery Address
@@ -33,10 +30,7 @@ export const UsersDashboardControl = () => {
                         </i>
                         My Orders
                     </h1>
-                    <Link
-                        to="/My Account/My Orders"
-                        className="pl-8 text-sm py-1"
-                    >
+                    <Link to="/My Orders" className="pl-8 text-sm py-1">
                         Buy27.com
                     </Link>
                 </div>

@@ -77,15 +77,15 @@ const App = () => {
                             )}
                         />
                         <Route
-                            path="/My Account/My Profile"
+                            path="/My Profile"
                             render={(props) => <AccountInfo {...props} />}
                         />
                         <Route
-                            path="/My Account/My Delivery Address"
+                            path="/My Delivery Address"
                             render={(props) => <DeliveryAddres {...props} />}
                         />
                         <Route
-                            path="/My Account/My Orders"
+                            path="/My Orders"
                             render={(props) => <PreviousOrders {...props} />}
                         />
                         <Route path="/About" component={About} />

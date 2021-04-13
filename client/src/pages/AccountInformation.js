@@ -27,7 +27,7 @@ export const AccountInfomation = () => {
         <div className="flex flex-col items-center bg-gray-100 ">
             <div className=" flex my-8 ">
                 <UserDashboardController />
-                <div className="bg-white pt-4 pb-40 px-8 rounded text-primary-dark">
+                <div className="bg-white pt-4 h-screen px-8 rounded text-primary-dark">
                     <h1 className="font-bold text-lg">Account Information</h1>
                     <div className="border-b  mt-3 mb-8"></div>
                     <div className="flex items-center">
@@ -99,7 +99,7 @@ export const AccountInfomation = () => {
                     </div>
                     <button
                         onClick={handleSubmit}
-                        className="bg-primary-dark py-2 px-10 rounded text-white mb-40"
+                        className="bg-primary-dark py-2 px-10 rounded text-white"
                     >
                         Save Changes
                     </button>
