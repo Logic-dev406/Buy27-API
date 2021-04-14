@@ -14,6 +14,7 @@ import Breadcrumbs from './components/Breadcrumbs';
 import AccountInfo from './pages/AccountInformation';
 import DeliveryAddres from './pages/DeliveryAddress';
 import PreviousOrders from './pages/PreviousOrders';
+import UpdateAddress from './components/DeliveryAddress/UpdateAddress';
 
 //Action
 import { addToCart } from './redux/actions/cartAction';
@@ -83,6 +84,10 @@ const App = () => {
                         <Route
                             path="/My Delivery Address"
                             render={(props) => <DeliveryAddres {...props} />}
+                        />
+                        <Route
+                            path="/My Delivery Address/Edit"
+                            render={(props) => <UpdateAddress {...props} />}
                         />
                         <Route
                             path="/My Orders"

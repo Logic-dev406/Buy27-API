@@ -57,32 +57,32 @@ export const OrderState = () => {
                             >
                                 <div className="flex items-center justify-between h-14 w-full px-4 bg-primary-light text-white">
                                     <div>
-                                        <h1 className="flex text-sm font-normal">
-                                            Tracking ID:{' '}
-                                            <h3 className="font-semibold ml-2">
+                                        <div className="flex text-sm font-normal">
+                                            <h1>Tracking ID:</h1>
+                                            <h1 className="font-semibold ml-2">
                                                 A2Dw42F3e42
-                                            </h3>
-                                        </h1>
-                                        <h1 className="flex text-sm font-normal">
-                                            Sold By:{' '}
-                                            <h3 className="font-semibold ml-2">
+                                            </h1>
+                                        </div>
+                                        <div className="flex text-sm font-normal">
+                                            <h1>Sold By:</h1>
+                                            <h1 className="font-semibold ml-2">
                                                 Buy27
-                                            </h3>
-                                        </h1>
+                                            </h1>
+                                        </div>
                                     </div>
                                     <div>
-                                        <h1 className="flex text-sm font-normal">
-                                            Shipping Fee:{' '}
-                                            <h3 className="font-semibold ml-2">
+                                        <div className="flex text-sm font-normal">
+                                            <h1>Shipping Fee:</h1>
+                                            <h1 className="font-semibold ml-2">
                                                 000.00
-                                            </h3>
-                                        </h1>
-                                        <h1 className="flex text-sm font-normal">
-                                            Total:{' '}
-                                            <h3 className="font-semibold ml-2">
+                                            </h1>
+                                        </div>
+                                        <div className="flex text-sm font-normal">
+                                            <h1>Total:</h1>
+                                            <h1 className="font-semibold ml-2">
                                                 3,890
-                                            </h3>
-                                        </h1>
+                                            </h1>
+                                        </div>
                                     </div>
                                 </div>
                                 <div className=" flex items-center justify-between px-4  w-full bg-transparent border-b py-2">
@@ -110,12 +110,12 @@ export const OrderState = () => {
                                             <h1 className="flex font-bold">
                                                 3,000
                                             </h1>
-                                            <h1 className="flex">
-                                                Quantity:
-                                                <h2 className="text-sm font-normal ml-1">
+                                            <div className="flex">
+                                                <h1>Quantity:</h1>
+                                                <h1 className="text-sm font-normal ml-1">
                                                     1
-                                                </h2>
-                                            </h1>
+                                                </h1>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="text-right">

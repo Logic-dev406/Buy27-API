@@ -15,31 +15,30 @@ export const MyOrders = () => {
                         className="h-44 w-96 bg-transparent border border-primary-dark rounded my-8"
                     >
                         <div className="flex items-center h-10 w-full bg-primary-light">
-                            {' '}
                             <h1 className="ml-3 text-white text-xs ">
                                 Order Date: 19 Oct 2020
                             </h1>
                         </div>
                         <div className="flex justify-between mx-3 mt-4 text-primary-dark">
                             <div className="text-sm font-semibold ">
-                                <h1 className="flex">
-                                    Total:{' '}
-                                    <h2 className="text-sm font-normal ml-1">
+                                <div className="flex">
+                                    <h1>Total:</h1>
+                                    <h1 className="text-sm font-normal ml-1">
                                         1,000
-                                    </h2>
-                                </h1>
-                                <h1 className="flex">
-                                    Order No:{' '}
-                                    <h2 className="text-sm font-normal ml-1">
+                                    </h1>
+                                </div>
+                                <div className="flex">
+                                    <h1>Order No: </h1>
+                                    <h1 className="text-sm font-normal ml-1">
                                         14R3H0JGn3
-                                    </h2>
-                                </h1>
-                                <h1 className="flex">
-                                    Payment Method:{' '}
-                                    <h2 className="text-sm font-normal ml-1">
+                                    </h1>
+                                </div>
+                                <div className="flex">
+                                    <h1>Payment Method:</h1>
+                                    <h1 className="text-sm font-normal ml-1">
                                         Pay Befor Order
-                                    </h2>
-                                </h1>
+                                    </h1>
+                                </div>
                                 <img
                                     src=""
                                     alt="product"
