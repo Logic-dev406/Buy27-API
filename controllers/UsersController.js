@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const { secret } = require('../config/config');
 const jwt = require('jsonwebtoken');
 const { token } = require('morgan');
+const mongoose = require('mongoose');
 
 class UsersController {
     static async getListOfAllUsers(req, res) {
@@ -45,7 +46,35 @@ class UsersController {
         });
         user = await user.save();
 
-        if (!user) return res.status(404).send('The user can not be created');
+        if (!user) return res.status(500).send('The user can not be created');
+
+        res.send(user);
+    }
+
+    static async updateUserById(req, res) {
+        if (!mongoose.isValidObjectId(req.params.id)) {
+            res.status(400).send('Invalid User id');
+        }
+
+        const user = await User.findByIdAndUpdate(
+            req.params.id,
+            {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                passwordHash: bcrypt.hashSync(req.body.password, 10),
+                phone: req.body.phone,
+                isAdmin: req.body.isAdmin,
+                street: req.body.street,
+                lga: req.body.lga,
+                direction: req.body.direction,
+                city: req.body.city,
+                state: req.body.state,
+            },
+            { new: true }
+        );
+
+        if (!user) return res.status(500).send('The user can not be updated');
 
         res.send(user);
     }

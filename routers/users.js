@@ -8,6 +8,7 @@ const {
     registerNewUser,
     getTotalAmountOfAllUsers,
     deleteUserById,
+    updateUserById,
 } = require('../controllers/UsersController');
 
 //TODO
@@ -18,6 +19,9 @@ router.get('/', getListOfAllUsers);
 
 //Get user by id
 router.get('/:id', getUserById);
+
+//Update user information by id
+router.put('/:id', updateUserById);
 
 //Create user by admin
 router.post('/', createAdminUser);
