@@ -1,8 +1,12 @@
 const mongoose = require('mongoose');
-const validator = require('validator');
 
 const userSchema = mongoose.Schema({
-    name: {
+    firstName: {
+        type: String,
+        trim: true,
+        required: true,
+    },
+    lastName: {
         type: String,
         trim: true,
         required: true,
@@ -12,11 +16,6 @@ const userSchema = mongoose.Schema({
         trim: true,
         lowercase: true,
         required: true,
-        validate(value) {
-            if (!validator.isEmail(value)) {
-                throw new Error('Email is invalid');
-            }
-        },
     },
     passwordHash: {
         type: String,
@@ -34,11 +33,11 @@ const userSchema = mongoose.Schema({
         type: String,
         default: '',
     },
-    apartment: {
+    lga: {
         type: String,
         default: '',
     },
-    zip: {
+    direction: {
         type: String,
         default: '',
     },
@@ -46,7 +45,7 @@ const userSchema = mongoose.Schema({
         type: String,
         default: '',
     },
-    country: {
+    state: {
         type: String,
         default: '',
     },

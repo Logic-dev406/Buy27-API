@@ -31,16 +31,17 @@ class UsersController {
 
     static async createAdminUser(req, res) {
         let user = new User({
-            name: req.body.name,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             email: req.body.email,
             passwordHash: bcrypt.hashSync(req.body.password, 10),
             phone: req.body.phone,
             isAdmin: req.body.isAdmin,
             street: req.body.street,
-            apartment: req.body.apartment,
-            zip: req.body.zip,
+            lga: req.body.lga,
+            direction: req.body.direction,
             city: req.body.city,
-            country: req.body.country,
+            state: req.body.state,
         });
         user = await user.save();
 
@@ -76,16 +77,17 @@ class UsersController {
 
     static async registerNewUser(req, res) {
         let user = new User({
-            name: req.body.name,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
             email: req.body.email,
             passwordHash: bcrypt.hashSync(req.body.password, 10),
             phone: req.body.phone,
             isAdmin: req.body.isAdmin,
             street: req.body.street,
-            apartment: req.body.apartment,
-            zip: req.body.zip,
+            lga: req.body.lga,
+            direction: req.body.direction,
             city: req.body.city,
-            country: req.body.country,
+            state: req.body.state,
         });
         user = await user.save();
 

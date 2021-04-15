@@ -4,9 +4,8 @@ import UserDashboardController from '../components/UsersDashboardControl';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
 import PhoneIcon from '@material-ui/icons/Phone';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
-// import UpdateAddress from '../components/DeliveryAddress/UpdateAddress';
 
-export const DeliveryAddress = ({ match }) => {
+export const DeliveryAddress = ({ url }) => {
     return (
         <div className="flex flex-col items-center bg-gray-100 ">
             <div className=" flex justify-between my-8 ">
@@ -23,7 +22,7 @@ export const DeliveryAddress = ({ match }) => {
                             <div>
                                 <h1>Address</h1>
                             </div>
-                            <Link to="#">
+                            <Link to={`${url}/Edit`}>
                                 <h1>Update Address</h1>
                             </Link>
                         </div>

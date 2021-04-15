@@ -86,8 +86,10 @@ const App = () => {
                             render={(props) => <DeliveryAddres {...props} />}
                         />
                         <Route
-                            path="/My Delivery Address/Edit"
-                            render={(props) => <UpdateAddress {...props} />}
+                            path="/Edit"
+                            render={({ match: { url } }) => (
+                                <UpdateAddress url={url} />
+                            )}
                         />
                         <Route
                             path="/My Orders"
