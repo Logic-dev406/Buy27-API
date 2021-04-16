@@ -41,35 +41,37 @@ const DesktopTopMenuBar = () => {
                         My Acount <ArrowDropDownIcon />
                     </button>
                     {active && (
-                        <div className="bg-primary-dark flex flex-col absolute border-t-2 py-4 border-grey-200 w-52 rounded">
-                            <button
-                                onClick={() => {
-                                    history.push('/Dashboard');
-                                    return setActive(!active);
-                                }}
-                                className="px-4 py-1 "
-                            >
-                                <AccountCircleOutlinedIcon /> My Profile
-                            </button>
-                            <button
-                                onClick={() => {
-                                    history.push('/Dashboard/My Orders');
-                                    return setActive(!active);
-                                }}
-                                className="px-4 py-1"
-                            >
-                                <ShoppingBasketOutlinedIcon /> My Orders
-                            </button>
-                            <button
-                                onClick={() => {
-                                    history.push('/My Account Info');
-                                    return setActive(!active);
-                                }}
-                                className="px-4 pt-1 pb-5 "
-                            >
-                                <FavoriteBorderIcon /> Saved Items
-                            </button>
-                            <button className=" border-t-2 border-secondary-dark  pt-3 text-sm font-normal">
+                        <div className="bg-primary-dark flex flex-col items- absolute border-t-2 py-4 border-grey-200 w-52 rounded">
+                            <div>
+                                <button
+                                    onClick={() => {
+                                        history.push('/Dashboard');
+                                        return setActive(!active);
+                                    }}
+                                    className="px-4 py-1 focus:outline-none "
+                                >
+                                    <AccountCircleOutlinedIcon /> My Profile
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        history.push('/Dashboard/My Orders');
+                                        return setActive(!active);
+                                    }}
+                                    className="px-4 py-1 focus:outline-none"
+                                >
+                                    <ShoppingBasketOutlinedIcon /> My Orders
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        history.push('/My Account Info');
+                                        return setActive(!active);
+                                    }}
+                                    className="px-4 pt-1 pb-5 focus:outline-none "
+                                >
+                                    <FavoriteBorderIcon /> Saved Items
+                                </button>
+                            </div>
+                            <button className=" self-auto border-t-2 border-secondary-dark  pt-3 text-sm font-normal">
                                 LOGOUT
                             </button>
                         </div>
