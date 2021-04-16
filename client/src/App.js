@@ -15,6 +15,7 @@ import Breadcrumbs from './components/Breadcrumbs';
 import UserDashboard from './pages/UsersDashboardControl';
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
+import ForgotPassword from './pages/ForgotPassword';
 
 //Action
 import { addToCart } from './redux/actions/cartAction';
@@ -53,6 +54,11 @@ const App = () => {
                         <Route path="/" exact component={Home} />
                         <Route path="/login" exact component={Login} />
                         <Route path="/signup" exact component={SignUp} />
+                        <Route
+                            path="/forgotpassword"
+                            exact
+                            component={ForgotPassword}
+                        />
                         <Route
                             path="/Shop"
                             exact
