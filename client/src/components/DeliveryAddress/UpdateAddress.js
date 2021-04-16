@@ -106,7 +106,7 @@ export const UpdateAddress = () => {
                             value={values.streetaddress}
                             className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
                         />
-                        <label htmlFor="Lga">Lga</label>
+                        <label htmlFor="Lga">LGA</label>
                         <select
                             className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
                             onChange={handleInput}
