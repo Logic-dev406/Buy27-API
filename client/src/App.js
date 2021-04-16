@@ -80,15 +80,6 @@ const App = () => {
                             path="/Dashboard"
                             render={(props) => <UserDashboard {...props} />}
                         />
-                        {/* <Route
-                            exact
-                            path="/My Delivery Address"
-                            render={(props) => <DeliveryAddres {...props} />}
-                        />
-                        <Route
-                            path="/My Orders"
-                            render={(props) => <PreviousOrders {...props} />}
-                        /> */}
                         <Route path="/About" component={About} />
                         <Route path="/ContactUs" component={ContactUs} />
                         <Route
@@ -109,7 +100,6 @@ const App = () => {
                     <Footer className="fixed" />
                 </div>
             </div>
-            Routes
         </Router>
     );
 };
