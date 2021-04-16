@@ -23,7 +23,6 @@ import { getSearchedProducts } from './redux/actions/productActions';
 const App = () => {
     const [qty, setQty] = useState(1);
     const history = createBrowserHistory();
-    console.log(history);
 
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -46,8 +45,10 @@ const App = () => {
                             setSearchTerm={setSearchTerm}
                         />
                     )}
-
-                    <Breadcrumbs />
+                    {history.location.pathname === '/signup' ||
+                    history.location.pathname === '/login' ? null : (
+                        <Breadcrumbs />
+                    )}
                     <Switch>
                         <Route path="/" exact component={Home} />
                         <Route path="/login" exact component={Login} />
@@ -106,7 +107,10 @@ const App = () => {
                             <h1>This page does not exist</h1>{' '}
                         </Route>
                     </Switch>
-                    <Footer className="fixed" />
+                    {history.location.pathname === '/signup' ||
+                    history.location.pathname === '/login' ? null : (
+                        <Footer className="fixed" />
+                    )}
                 </div>
             </div>
         </Router>
