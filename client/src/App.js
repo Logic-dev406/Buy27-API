@@ -77,7 +77,7 @@ const App = () => {
                             )}
                         />
                         <Route
-                            path="/My Account Info"
+                            path="/Dashboard"
                             render={(props) => <UserDashboard {...props} />}
                         />
                         {/* <Route

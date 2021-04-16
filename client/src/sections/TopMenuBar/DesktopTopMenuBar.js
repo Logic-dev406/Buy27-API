@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import PhoneIcon from '@material-ui/icons/Phone';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
@@ -8,6 +8,7 @@ import ShoppingBasketOutlinedIcon from '@material-ui/icons/ShoppingBasketOutline
 
 const DesktopTopMenuBar = () => {
     const [active, setActive] = useState(false);
+    const history = useHistory();
 
     return (
         <div className="flex bg-primary-dark w-full h-6 text-white text-sm items-center justify-between px-52 relative ">
@@ -41,15 +42,33 @@ const DesktopTopMenuBar = () => {
                     </button>
                     {active && (
                         <div className="bg-primary-dark flex flex-col absolute border-t-2 py-4 border-grey-200 w-52 rounded">
-                            <Link to="/My Account Info" className="px-4 py-1">
+                            <button
+                                onClick={() => {
+                                    history.push('/Dashboard');
+                                    return setActive(!active);
+                                }}
+                                className="px-4 py-1 "
+                            >
                                 <AccountCircleOutlinedIcon /> My Profile
-                            </Link>
-                            <Link to="/My Orders" className="px-4 py-1">
+                            </button>
+                            <button
+                                onClick={() => {
+                                    history.push('/Dashboard/My Orders');
+                                    return setActive(!active);
+                                }}
+                                className="px-4 py-1"
+                            >
                                 <ShoppingBasketOutlinedIcon /> My Orders
-                            </Link>
-                            <a href="/" className="px-4 pt-1 pb-5 ">
+                            </button>
+                            <button
+                                onClick={() => {
+                                    history.push('/My Account Info');
+                                    return setActive(!active);
+                                }}
+                                className="px-4 pt-1 pb-5 "
+                            >
                                 <FavoriteBorderIcon /> Saved Items
-                            </a>
+                            </button>
                             <button className=" border-t-2 border-secondary-dark  pt-3 text-sm font-normal">
                                 LOGOUT
                             </button>

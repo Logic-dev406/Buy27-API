@@ -21,7 +21,10 @@ export const UsersDashboardControl = () => {
                                 </i>
                                 My Profile
                             </h1>
-                            <Link to={`${url}`} className="pl-8 text-sm py-1">
+                            <Link
+                                to={`${url}/My Account Info`}
+                                className="pl-8 text-sm py-1"
+                            >
                                 Account Information
                             </Link>
                             <Link
@@ -46,7 +49,6 @@ export const UsersDashboardControl = () => {
                         </div>
                     </div>
                 </div>
-                {/* My Account Info */}
                 <Switch>
                     <Route exact={true} path={path}>
                         <AccountInfor />
