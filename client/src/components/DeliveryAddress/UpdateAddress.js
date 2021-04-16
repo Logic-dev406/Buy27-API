@@ -67,14 +67,15 @@ export const UpdateAddress = () => {
                             className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
                         />
                         <label htmlFor="State">State</label>
-                        <input
+                        <select
+                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
                             onChange={handleInput}
-                            id="State"
-                            type="select"
                             name="State"
                             value={values.State}
-                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
-                        />
+                        >
+                            <option defaultValue>select</option>
+                            <option value="Abuja">Abuja</option>
+                        </select>
                     </div>
                     <div className="flex flex-col ml-5">
                         <label htmlFor="lastname">Last Name</label>
@@ -100,20 +101,28 @@ export const UpdateAddress = () => {
                         <input
                             onChange={handleInput}
                             id="streetaddress"
-                            type="password"
+                            type="text"
                             name="streetaddress"
                             value={values.streetaddress}
                             className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
                         />
                         <label htmlFor="Lga">Lga</label>
-                        <input
+                        <select
+                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
                             onChange={handleInput}
-                            id="Lga"
-                            type="select"
                             name="Lga"
                             value={values.Lga}
-                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
-                        />
+                        >
+                            <option defaultValue>select</option>
+                            <option value="Abuja Municiple">
+                                Abuja Municiple
+                            </option>
+                            <option value="Buari">Buari</option>
+                            <option value="kuje">Kuje</option>
+                            <option value="Gwagwalada">Gwagwalada</option>
+                            <option value="kwali">kwali</option>
+                            <option value="Abaji">Abaji</option>
+                        </select>
                     </div>
                 </div>
                 <button
