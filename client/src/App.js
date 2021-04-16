@@ -9,11 +9,12 @@ import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import Search from './pages/Search';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { createBrowserHistory } from 'history';
 import { useSelector } from 'react-redux';
 import Breadcrumbs from './components/Breadcrumbs';
-// import DeliveryAddres from './components/UserDashboardPages/DeliveryAddress';
-// import PreviousOrders from './components/UserDashboardPages/PreviousOrders';
 import UserDashboard from './pages/UsersDashboardControl';
+import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 
 //Action
 import { addToCart } from './redux/actions/cartAction';
@@ -21,6 +22,8 @@ import { getSearchedProducts } from './redux/actions/productActions';
 
 const App = () => {
     const [qty, setQty] = useState(1);
+    const history = createBrowserHistory();
+    console.log(history);
 
     const [searchTerm, setSearchTerm] = useState('');
 
@@ -34,15 +37,21 @@ const App = () => {
         <Router>
             <div className="flex flex-col min-h-screen">
                 <div>
-                    <Navbar
-                        cartItems={cartItems}
-                        getSearchedProducts={getSearchedProducts}
-                        searchTerm={searchTerm}
-                        setSearchTerm={setSearchTerm}
-                    />
+                    {history.location.pathname === '/signup' ||
+                    history.location.pathname === '/login' ? null : (
+                        <Navbar
+                            cartItems={cartItems}
+                            getSearchedProducts={getSearchedProducts}
+                            searchTerm={searchTerm}
+                            setSearchTerm={setSearchTerm}
+                        />
+                    )}
+
                     <Breadcrumbs />
                     <Switch>
                         <Route path="/" exact component={Home} />
+                        <Route path="/login" exact component={Login} />
+                        <Route path="/signup" exact component={SignUp} />
                         <Route
                             path="/Shop"
                             exact
