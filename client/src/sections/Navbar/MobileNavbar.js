@@ -18,7 +18,7 @@ const MobileNavbar = ({
         setSearchTerm(inputText);
     };
     const dispatch = useDispatch();
-    const history = useHistory();
+    let history = useHistory();
 
     const handleEnterKeyPress = (e) => {
         if (e.key === 'Enter') {

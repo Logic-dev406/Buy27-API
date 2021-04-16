@@ -8,13 +8,12 @@ import Footer from './components/Footer';
 import ProductDetail from './pages/ProductDetail';
 import Cart from './pages/Cart';
 import Search from './pages/Search';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Breadcrumbs from './components/Breadcrumbs';
-import AccountInfo from './pages/AccountInformation';
-import DeliveryAddres from './pages/DeliveryAddress';
-import PreviousOrders from './pages/PreviousOrders';
-import UpdateAddress from './components/DeliveryAddress/UpdateAddress';
+// import DeliveryAddres from './components/UserDashboardPages/DeliveryAddress';
+// import PreviousOrders from './components/UserDashboardPages/PreviousOrders';
+import UserDashboard from './pages/UsersDashboardControl';
 
 //Action
 import { addToCart } from './redux/actions/cartAction';
@@ -78,23 +77,18 @@ const App = () => {
                             )}
                         />
                         <Route
-                            path="/My Profile"
-                            render={(props) => <AccountInfo {...props} />}
+                            path="/My Account Info"
+                            render={(props) => <UserDashboard {...props} />}
                         />
-                        <Route
+                        {/* <Route
+                            exact
                             path="/My Delivery Address"
                             render={(props) => <DeliveryAddres {...props} />}
                         />
                         <Route
-                            path="/Edit"
-                            render={({ match: { url } }) => (
-                                <UpdateAddress url={url} />
-                            )}
-                        />
-                        <Route
                             path="/My Orders"
                             render={(props) => <PreviousOrders {...props} />}
-                        />
+                        /> */}
                         <Route path="/About" component={About} />
                         <Route path="/ContactUs" component={ContactUs} />
                         <Route
@@ -107,10 +101,15 @@ const App = () => {
                                 />
                             )}
                         />
+                        <Route>
+                            {' '}
+                            <h1>This page does not exist</h1>{' '}
+                        </Route>
                     </Switch>
                     <Footer className="fixed" />
                 </div>
             </div>
+            Routes
         </Router>
     );
 };

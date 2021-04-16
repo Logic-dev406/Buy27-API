@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 
-export const UpdateAddress = () => {
+export const AccountInfomation = () => {
     const [values, setvalues] = useState({
         firstname: '',
         emailaddress: '',
@@ -26,12 +25,7 @@ export const UpdateAddress = () => {
     return (
         <div>
             <div className="bg-white pt-4 h-screen px-8 rounded text-primary-dark">
-                <Link
-                    className=" flex w-20 justify-center text-sm font-semibold bg-transparent hover:bg-primary-dark border border-primary-dark text-primary-dark hover:text-white rounded px-2 py-2 "
-                    to="/My Account Info/Delivery Address"
-                >
-                    <h1>Cancel</h1>
-                </Link>
+                <h1 className="font-bold text-lg">Account Information</h1>
                 <div className="border-b  mt-3 mb-8"></div>
                 <div className="flex items-center">
                     <div className="flex flex-col mr-5">
@@ -111,4 +105,4 @@ export const UpdateAddress = () => {
     );
 };
 
-export default UpdateAddress;
+export default AccountInfomation;
