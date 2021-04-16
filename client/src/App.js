@@ -38,7 +38,8 @@ const App = () => {
             <div className="flex flex-col min-h-screen">
                 <div>
                     {history.location.pathname === '/signup' ||
-                    history.location.pathname === '/login' ? null : (
+                    history.location.pathname === '/login' ||
+                    history.location.pathname === '/forgotpassword' ? null : (
                         <Navbar
                             cartItems={cartItems}
                             getSearchedProducts={getSearchedProducts}
@@ -47,7 +48,8 @@ const App = () => {
                         />
                     )}
                     {history.location.pathname === '/signup' ||
-                    history.location.pathname === '/login' ? null : (
+                    history.location.pathname === '/login' ||
+                    history.location.pathname === '/forgotpassword' ? null : (
                         <Breadcrumbs />
                     )}
                     <Switch>
@@ -114,7 +116,8 @@ const App = () => {
                         </Route>
                     </Switch>
                     {history.location.pathname === '/signup' ||
-                    history.location.pathname === '/login' ? null : (
+                    history.location.pathname === '/login' ||
+                    history.location.pathname === '/forgotpassword' ? null : (
                         <Footer className="fixed" />
                     )}
                 </div>
