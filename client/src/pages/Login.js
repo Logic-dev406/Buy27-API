@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import validate from '../helper/validator';
+import buy27logo from '../assets/images/buy27logo.png';
 
 export const SignUp = () => {
     const [values, setvalues] = useState({
@@ -33,6 +34,9 @@ export const SignUp = () => {
 
     return (
         <div className=" flex flex-col items-center justify-center h-screen w-full bg-gray-100">
+            <a href="/">
+                <img className="w-40 mb-8" src={buy27logo} alt="logo" />
+            </a>
             <div className=" flex flex-col items-center pt-4 pb-8 bg-white shadow-lg rounded">
                 <h1 className="text-2xl md:text-3xl font-bold mb-2">Login</h1>
                 <div className="border-b border-gray w-full my-2"></div>
