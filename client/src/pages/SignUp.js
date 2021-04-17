@@ -37,9 +37,11 @@ export const Register = () => {
     return (
         <div className=" flex flex-col items-center justify-center py-16 w-full bg-gray-100">
             <div className=" flex flex-col items-center pt-4 pb-8 bg-white shadow-lg rounded">
-                <h1 className=" text-3xl font-bold mb-2">Create An Account</h1>
+                <h1 className=" text-2x1 md:text-3xl font-bold mb-2">
+                    Create An Account
+                </h1>
                 <div className="border-b border-gray w-full mt-2"></div>
-                <div className="flex flex-col px-8 mt-2">
+                <div className="flex flex-col px-4 md:px-8 mt-2">
                     <div className="text-sm text-primary-dark mb-1">
                         <label htmlFor="firstname">First Name</label>
                     </div>
@@ -50,7 +52,7 @@ export const Register = () => {
                         name="firstname"
                         value={values.firstname}
                         placeholder="Enter First Name"
-                        className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-12 w-96"
+                        className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-10 md:h-12 w-72 md:w-96"
                     />
                     {errors.firstname && (
                         <p className="text-red-500 text-sm ">
@@ -58,7 +60,7 @@ export const Register = () => {
                         </p>
                     )}
                 </div>
-                <div className="flex flex-col px-8 mt-2">
+                <div className="flex flex-col px-4 md:px-8 mt-2">
                     <div className="text-sm text-primary-dark mb-1">
                         <label htmlFor="lastname">Last Name</label>
                     </div>
@@ -69,7 +71,7 @@ export const Register = () => {
                         name="lastname"
                         value={values.lastname}
                         placeholder="Enter Last Name"
-                        className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-12 w-96"
+                        className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-10 md:h-12 w-72 md:w-96"
                     />
                     {errors.lastname && (
                         <p className="text-red-500 text-sm ">
@@ -77,7 +79,7 @@ export const Register = () => {
                         </p>
                     )}
                 </div>
-                <div className="flex flex-col px-8 mt-2">
+                <div className="flex flex-col px-4 md:px-8 mt-2">
                     <div className="text-sm text-primary-dark mb-1">
                         <label htmlFor="emailaddress">Email Address</label>
                     </div>
@@ -88,7 +90,7 @@ export const Register = () => {
                         name="emailaddress"
                         value={values.emailaddress}
                         placeholder="Enter Email Address"
-                        className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-12 w-96"
+                        className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-10 md:h-12 w-72 md:w-96"
                     />
                     {errors.emailaddress && (
                         <p className="text-red-500 text-sm ">
@@ -96,7 +98,7 @@ export const Register = () => {
                         </p>
                     )}
                 </div>
-                <div className="flex flex-col px-8 mt-2">
+                <div className="flex flex-col px-4 md:px-8 mt-2">
                     <div className="text-sm text-primary-dark mb-1">
                         <label htmlFor="mobilenumber">Mobile Number</label>
                     </div>
@@ -107,7 +109,7 @@ export const Register = () => {
                         name="mobilenumber"
                         value={values.mobilenumber}
                         placeholder="Enter Email Address"
-                        className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-12 w-96"
+                        className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-10 md:h-12 w-72 md:w-96"
                     />
                     {errors.mobilenumber && (
                         <p className="text-red-500 text-sm ">
@@ -115,11 +117,11 @@ export const Register = () => {
                         </p>
                     )}
                 </div>
-                <div className="flex flex-col px-8">
+                <div className="flex flex-col px-4 md:px-8">
                     <div className="text-sm text-primary-dark mb-1">
                         <label htmlFor="password">Password</label>
                     </div>
-                    <div className="flex items-center justify-between px-4 focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-12 w-96">
+                    <div className="flex items-center justify-between px-4 focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-10 md:h-12 w-72 md:w-96">
                         <input
                             onChange={handleInput}
                             id="password"
@@ -150,11 +152,11 @@ export const Register = () => {
                 </div>
                 <button
                     onClick={handleSubmit}
-                    className="h-10 px-32 mt-2 bg-primary-dark hover:bg-primary-light focus:outline-none text-white rounded"
+                    className="h-10 px-20 md:px-32 mt-2 bg-primary-dark hover:bg-primary-light focus:outline-none text-white rounded"
                 >
                     Create an Account
                 </button>
-                <div className=" flex flex-col items-center w-96 text-sm text-primary-dark font-normal my-5 ">
+                <div className=" flex flex-col items-center w-72 md:w-96 text-xs md:text-sm text-primary-dark font-semibold md:font-normal my-5 ">
                     <div className="flex items-center ">
                         <h1>By signing up you accept our </h1>
                         <Link to="#" className="underline ml-2">
@@ -169,7 +171,7 @@ export const Register = () => {
                     <h1 className="text-sm">Alredy have an Account?</h1>
                     <Link
                         to="/login"
-                        className="flex items-center h-10 px-44 mt-2 bg-transparent hover:bg-primary-dark border border-primary-dark no-underline font-semibold text-primary-dark hover:text-white rounded"
+                        className="flex items-center h-10 px-32 md:px-44 mt-2 bg-transparent hover:bg-primary-dark border border-primary-dark no-underline font-semibold text-primary-dark hover:text-white rounded"
                     >
                         <h1>Login</h1>
                     </Link>
