@@ -24,11 +24,11 @@ export const AccountInfomation = () => {
 
     return (
         <div>
-            <div className="bg-white pt-4 h-screen px-8 rounded text-primary-dark">
+            <div className="bg-white pt-4 h-full md:h-screen px-4 md:px-8 rounded text-primary-dark">
                 <h1 className="font-bold text-lg">Account Information</h1>
                 <div className="border-b  mt-3 mb-8"></div>
-                <div className="flex items-center">
-                    <div className="flex flex-col mr-5">
+                <div className="flex flex-col md:flex-row items-center">
+                    <div className="flex flex-col mr-0 md:mr-5">
                         <label htmlFor="firstname">First Name</label>
                         <input
                             onChange={handleInput}
@@ -37,7 +37,7 @@ export const AccountInfomation = () => {
                             name="firstname"
                             value={values.firstname}
                             placeholder="Enter First Name"
-                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
+                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-4 md:mb-8 h-10 md:h-12 w-72 md:w-96"
                         />
                         <label htmlFor="emailaddress">Email Address</label>
                         <input
@@ -47,7 +47,7 @@ export const AccountInfomation = () => {
                             name="emailaddress"
                             value={values.emailaddress}
                             placeholder="Enter Email Address"
-                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
+                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-4 md:mb-8 h-10 md:h-12 w-72 md:w-96"
                         />
                         <label htmlFor="newpassword">New Password</label>
                         <input
@@ -56,10 +56,10 @@ export const AccountInfomation = () => {
                             type="password"
                             name="newpassword"
                             value={values.newpassword}
-                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
+                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-4 md:mb-8 h-10 md:h-12 w-72 md:w-96"
                         />
                     </div>
-                    <div className="flex flex-col ml-5">
+                    <div className="flex flex-col ml-0 md:ml-5">
                         <label htmlFor="lastname">Last Name</label>
                         <input
                             onChange={handleInput}
@@ -68,7 +68,7 @@ export const AccountInfomation = () => {
                             name="lastname"
                             value={values.lastname}
                             placeholder="Enter Last Name"
-                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
+                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-4 md:mb-8 h-10 md:h-12 w-72 md:w-96"
                         />
                         <label htmlFor="currentpassword">
                             Current Password
@@ -79,7 +79,7 @@ export const AccountInfomation = () => {
                             type="password"
                             name="currentpassword"
                             value={values.currentpassword}
-                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
+                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-4 md:mb-8 h-10 md:h-12 w-72 md:w-96"
                         />
                         <label htmlFor="confirmpassword">
                             Confirm Password
@@ -90,13 +90,13 @@ export const AccountInfomation = () => {
                             type="password"
                             name="confirmpassword"
                             value={values.confirmpassword}
-                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-8 h-12 w-96"
+                            className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-4 md:mb-8 h-10 md:h-12 w-72 md:w-96"
                         />
                     </div>
                 </div>
                 <button
                     onClick={handleSubmit}
-                    className="bg-primary-dark py-2 px-10 rounded text-white"
+                    className="bg-primary-dark mb-4 md:mb-0 py-2 px-10 focus:outline-none rounded text-white"
                 >
                     Save Changes
                 </button>

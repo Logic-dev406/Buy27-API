@@ -11,6 +11,7 @@ import CameraAltOutlinedIcon from '@material-ui/icons/CameraAltOutlined';
 import WatchOutlinedIcon from '@material-ui/icons/WatchOutlined';
 import WbIncandescentOutlinedIcon from '@material-ui/icons/WbIncandescentOutlined';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
+import HomeWorkOutlinedIcon from '@material-ui/icons/HomeWorkOutlined';
 
 const MobileTopMenuBar = () => {
     const [active, setActive] = useState(false);
@@ -66,14 +67,19 @@ const MobileTopMenuBar = () => {
                                 </a>
                             </div>
                             <a
-                                href="/"
-                                className="px-4 pt-2 border-t border-gray-300"
+                                href="/Dashboard/My Account Info"
+                                className=" flex px-4 pt-2 border-t border-gray-300"
                             >
-                                <AccountCircleOutlinedIcon /> My Profile
+                                <AccountCircleOutlinedIcon />{' '}
+                                <h1 className="ml-1">My Profile</h1>
                             </a>
-                            <a href="/" className="px-4 py-3">
+                            <a href="/" className=" flex px-4 py-2">
+                                <HomeWorkOutlinedIcon />
+                                <h1 className="ml-1">My Address</h1>
+                            </a>
+                            <a href="/" className=" flex px-4 pb-2">
                                 <ShoppingBasketOutlinedIcon />
-                                My Orders
+                                <h1 className="ml-1">My Orders</h1>
                             </a>
                             <a
                                 href="/"
