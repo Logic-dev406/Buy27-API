@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import About from './pages/About';
@@ -22,6 +22,16 @@ import { addToCart } from './redux/actions/cartAction';
 import { getSearchedProducts } from './redux/actions/productActions';
 
 const App = () => {
+    const [isMobile, setisMobile] = useState(
+        window.matchMedia('(max-width:768px)').matches
+    );
+
+    useEffect(() => {
+        window.addEventListener('resize', () => {
+            setisMobile(window.matchMedia('(max-width:768px)').matches);
+        });
+    });
+
     const [qty, setQty] = useState(1);
     const history = createBrowserHistory();
 
@@ -49,7 +59,8 @@ const App = () => {
                     )}
                     {history.location.pathname === '/signup' ||
                     history.location.pathname === '/login' ||
-                    history.location.pathname === '/forgotpassword' ? null : (
+                    history.location.pathname === '/forgotpassword' ||
+                    isMobile ? null : (
                         <Breadcrumbs />
                     )}
                     <Switch>
