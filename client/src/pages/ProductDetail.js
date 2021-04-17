@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import FavoriteIcon from '@material-ui/icons/Favorite';
+// import FavoriteIcon from '@material-ui/icons/Favorite';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import EmojiTransportationIcon from '@material-ui/icons/EmojiTransportation';
 import LocalShippingOutlinedIcon from '@material-ui/icons/LocalShippingOutlined';

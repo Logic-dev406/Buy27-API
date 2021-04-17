@@ -6,7 +6,6 @@ export const DesktopCartItem = ({
     qtyChangeHandler,
     removeFromCartHandler,
 }) => {
-    console.log(item.slug);
     return (
         <div>
             <div className="flex justify-between px-5 py-6 w-full bg-white border-b">
