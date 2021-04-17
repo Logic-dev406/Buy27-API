@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import validate from '../helper/validator';
 
 export const ForgotPassword = () => {
     const [values, setvalues] = useState({
         emailaddress: '',
     });
+
+    const [errors, setErrors] = useState({});
 
     const handleInput = (e) => {
         const { name, value } = e.target;
@@ -15,6 +18,7 @@ export const ForgotPassword = () => {
     };
 
     const handleSubmit = () => {
+        setErrors(validate(values));
         console.log(values);
     };
 
@@ -26,11 +30,11 @@ export const ForgotPassword = () => {
                 <div className=" flex flex-col items-center justify-center text-center text-sm h-28 w-96 px-4 bg-gray-100">
                     <h1>
                         Please enter the e-mail address associated with your
-                        Jumia account. We will send you a link to this e-mail
+                        buy27 account. We will send you a link to this e-mail
                         address to reset your password.
                     </h1>
                 </div>
-                <div className="flex flex-col px-8 mt-2">
+                <div className="flex flex-col px-8 mt-2 mb-4">
                     <div className="text-sm text-primary-dark mb-2">
                         <label htmlFor="emailaddress ">Email Address</label>
                     </div>
@@ -41,17 +45,21 @@ export const ForgotPassword = () => {
                         name="emailaddress"
                         value={values.emailaddress}
                         placeholder="Enter Email Address"
-                        className="focus: outline-none bg-transparent border border-primary-dark rounded px-4 mb-8 h-12 w-96"
+                        className="focus: outline-none bg-transparent border border-primary-dark rounded px-4 h-12 w-96"
                     />
+                    {errors.emailaddress && (
+                        <p className="text-red-500 text-sm ">
+                            {errors.emailaddress}
+                        </p>
+                    )}
                 </div>
-
                 <button
                     onClick={handleSubmit}
-                    className="h-10 px-44  bg-primary-dark hover:bg-primary-light text-white rounded"
+                    className="h-10 px-44 bg-primary-dark hover:bg-primary-light text-white rounded"
                 >
                     Login
                 </button>
-                <div className="flex flex-col items-center mt-10">
+                <div className="flex flex-col items-center mt-8">
                     <h1 className="text-sm">I remember my password?</h1>
                     <Link
                         to="/login"
