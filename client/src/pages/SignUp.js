@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import validate from '../helper/validator';
+import buy27logo from '../assets/images/buy27logo.png';
 
 export const Register = () => {
     const [values, setvalues] = useState({
@@ -36,6 +37,9 @@ export const Register = () => {
 
     return (
         <div className=" flex flex-col items-center justify-center py-16 w-full bg-gray-100">
+            <a href="/">
+                <img className="w-40 mb-8" src={buy27logo} alt="logo" />
+            </a>
             <div className=" flex flex-col items-center pt-4 pb-8 bg-white shadow-lg rounded">
                 <h1 className=" text-2x1 md:text-3xl font-bold mb-2">
                     Create An Account
