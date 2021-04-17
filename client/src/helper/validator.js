@@ -1,9 +1,12 @@
 export default function validateInfo(values) {
     let errors = {};
 
-    // if (!values.username.trim()) {
-    //     errors.username = 'Username required';
-    // }
+    if (!values.firstname < 2) {
+        errors.firstname = 'First Name required';
+    }
+    if (!values.lastname < 2) {
+        errors.lastname = 'Last Name required';
+    }
 
     if (!values.emailaddress) {
         errors.emailaddress = 'Email required';
