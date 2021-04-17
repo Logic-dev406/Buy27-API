@@ -121,7 +121,7 @@ export const Register = () => {
                 </div>
                 <button
                     onClick={handleSubmit}
-                    className="h-10 px-32 mt-2 bg-primary-dark hover:bg-primary-light text-white rounded"
+                    className="h-10 px-32 mt-2 bg-primary-dark hover:bg-primary-light focus:outline-none text-white rounded"
                 >
                     Create an Account
                 </button>

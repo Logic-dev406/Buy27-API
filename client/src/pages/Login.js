@@ -82,7 +82,7 @@ export const SignUp = () => {
                 </div>
                 <button
                     onClick={handleSubmit}
-                    className="h-10 px-44  bg-primary-dark hover:bg-primary-light text-white rounded"
+                    className="h-10 px-44 focus:outline-none bg-primary-dark hover:bg-primary-light text-white rounded"
                 >
                     Login
                 </button>
