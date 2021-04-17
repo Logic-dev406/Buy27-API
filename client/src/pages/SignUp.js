@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import validate from '../helper/validator';
 
 export const Register = () => {
     const [values, setvalues] = useState({
@@ -11,6 +12,8 @@ export const Register = () => {
         mobilenumber: '',
         password: '',
     });
+
+    const [errors, setErrors] = useState({});
 
     const [ShowPassword, setShowPassword] = useState(false);
 
@@ -23,6 +26,7 @@ export const Register = () => {
     };
 
     const handleSubmit = () => {
+        setErrors(validate(values));
         console.log(values);
     };
 
@@ -48,6 +52,11 @@ export const Register = () => {
                         placeholder="Enter First Name"
                         className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-12 w-96"
                     />
+                    {errors.firstname && (
+                        <p className="text-red-500 text-sm ">
+                            {errors.firstname}
+                        </p>
+                    )}
                 </div>
                 <div className="flex flex-col px-8 mt-2">
                     <div className="text-sm text-primary-dark mb-1">
@@ -62,6 +71,11 @@ export const Register = () => {
                         placeholder="Enter Last Name"
                         className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-12 w-96"
                     />
+                    {errors.lastname && (
+                        <p className="text-red-500 text-sm ">
+                            {errors.lastname}
+                        </p>
+                    )}
                 </div>
                 <div className="flex flex-col px-8 mt-2">
                     <div className="text-sm text-primary-dark mb-1">
@@ -76,6 +90,11 @@ export const Register = () => {
                         placeholder="Enter Email Address"
                         className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-12 w-96"
                     />
+                    {errors.emailaddress && (
+                        <p className="text-red-500 text-sm ">
+                            {errors.emailaddress}
+                        </p>
+                    )}
                 </div>
                 <div className="flex flex-col px-8 mt-2">
                     <div className="text-sm text-primary-dark mb-1">
@@ -90,6 +109,11 @@ export const Register = () => {
                         placeholder="Enter Email Address"
                         className="focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-2 h-12 w-96"
                     />
+                    {errors.mobilenumber && (
+                        <p className="text-red-500 text-sm ">
+                            {errors.mobilenumber}
+                        </p>
+                    )}
                 </div>
                 <div className="flex flex-col px-8">
                     <div className="text-sm text-primary-dark mb-1">
@@ -118,6 +142,11 @@ export const Register = () => {
                             )}
                         </button>
                     </div>
+                    {errors.password && (
+                        <p className="text-red-500 text-sm ">
+                            {errors.password}
+                        </p>
+                    )}
                 </div>
                 <button
                     onClick={handleSubmit}
