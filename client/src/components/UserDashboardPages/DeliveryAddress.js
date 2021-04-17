@@ -22,7 +22,7 @@ export const DeliveryAddress = () => {
                             </Link>
                         </div>
                         <div className="border-b mb-4 mt-7 "></div>
-                        <div className="bg-transparent border h-40  md:w-96 mx-4 md:mx-8 rounded">
+                        <div className="bg-transparent border h-40 md:w-96 mx-4 md:mx-8 rounded">
                             <div className="flex items-center justify-between px-4 py-2 text-sm font-semibold text-primary-dark ">
                                 <div>
                                     <h1>Address</h1>
