@@ -73,11 +73,17 @@ const MobileTopMenuBar = () => {
                                 <AccountCircleOutlinedIcon />{' '}
                                 <h1 className="ml-1">My Profile</h1>
                             </a>
-                            <a href="/" className=" flex px-4 py-2">
+                            <a
+                                href="/Dashboard/Delivery Address"
+                                className=" flex px-4 py-2"
+                            >
                                 <HomeWorkOutlinedIcon />
                                 <h1 className="ml-1">My Address</h1>
                             </a>
-                            <a href="/" className=" flex px-4 pb-2">
+                            <a
+                                href="//Dashboard/My Orders"
+                                className=" flex px-4 pb-2"
+                            >
                                 <ShoppingBasketOutlinedIcon />
                                 <h1 className="ml-1">My Orders</h1>
                             </a>
