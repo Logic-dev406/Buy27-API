@@ -33,13 +33,10 @@ export const SignUp = () => {
 
     return (
         <div className=" flex flex-col items-center justify-center h-screen w-full bg-gray-100">
-            <div
-                id="create-course-form"
-                className=" flex flex-col items-center pt-4 pb-8 bg-white shadow-lg rounded"
-            >
-                <h1 className=" text-3xl font-bold mb-2">Login</h1>
+            <div className=" flex flex-col items-center pt-4 pb-8 bg-white shadow-lg rounded">
+                <h1 className="text-2xl md:text-3xl font-bold mb-2">Login</h1>
                 <div className="border-b border-gray w-full my-2"></div>
-                <div className="flex flex-col px-8 mt-2">
+                <div className="flex flex-col px-4 md:px-8 mt-2">
                     <div className="text-sm text-primary-dark mb-2">
                         <label htmlFor="emailaddress ">Email Address</label>
                     </div>
@@ -50,7 +47,7 @@ export const SignUp = () => {
                         name="emailaddress"
                         value={values.emailaddress}
                         placeholder="Enter Email Address"
-                        className="focus: outline-none bg-transparent border border-primary-dark rounded px-4 mb-1 h-12 w-96"
+                        className="focus: outline-none bg-transparent border border-primary-dark rounded px-4 mb-1 h-10 md:h-12 w-72 md:w-96"
                     />
                     {errors.emailaddress && (
                         <p className="text-red-500 text-sm ">
@@ -58,7 +55,7 @@ export const SignUp = () => {
                         </p>
                     )}
                 </div>
-                <div className="flex flex-col px-8 mt-8">
+                <div className="flex flex-col px-4 md:px-8 mt-8">
                     <div className="flex justify-between text-sm text-primary-dark mb-2">
                         <label htmlFor="password">Password</label>
                         <Link
@@ -68,7 +65,7 @@ export const SignUp = () => {
                             Forget Password?
                         </Link>
                     </div>
-                    <div className="flex items-center justify-between px-4 focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-1  h-12 w-96">
+                    <div className="flex items-center justify-between px-4 focus: outline-none bg-transparent border border-primary-dark rounded pl-4 mb-1  h-10 md:h-12 w-72 md:w-96">
                         <input
                             onChange={handleInput}
                             id="password"
@@ -99,7 +96,7 @@ export const SignUp = () => {
                 </div>
                 <button
                     onClick={handleSubmit}
-                    className="h-10 px-44 mt-8 focus:outline-none bg-primary-dark hover:bg-primary-light text-white rounded"
+                    className="h-10 px-32 mt-8 focus:outline-none bg-primary-dark hover:bg-primary-light text-white rounded"
                 >
                     Login
                 </button>
@@ -107,7 +104,7 @@ export const SignUp = () => {
                     <h1 className="text-sm">Dont have an Account?</h1>
                     <Link
                         to="/signup"
-                        className="flex items-center h-10 px-32 mt-2 bg-transparent hover:bg-primary-dark border border-primary-dark no-underline font-semibold text-primary-dark hover:text-white rounded"
+                        className="flex items-center h-10 px-20 mt-2 bg-transparent hover:bg-primary-dark border border-primary-dark no-underline font-semibold text-primary-dark hover:text-white rounded"
                     >
                         <h1>Create an Account</h1>
                     </Link>

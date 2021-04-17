@@ -52,18 +52,18 @@ const MobileTopMenuBar = () => {
                                 </Link>
                             </div>
                             <div className="flex justify-between my-4 mx-4">
-                                <Link
-                                    to="login"
+                                <a
+                                    href="/login"
                                     className=" py-1 px-10 rounded bg-transparent border border-2 border-primary-dark text-primary-dark  "
                                 >
                                     Login
-                                </Link>
-                                <Link
-                                    to="signup"
+                                </a>
+                                <a
+                                    href="/signup"
                                     className=" py-1 px-10 rounded bg-transparent border border-2 border-primary-dark text-primary-dark  "
                                 >
                                     Signup
-                                </Link>
+                                </a>
                             </div>
                             <a
                                 href="/"
