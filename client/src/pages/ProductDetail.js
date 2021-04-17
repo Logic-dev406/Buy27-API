@@ -158,20 +158,10 @@ const ProductDetail = ({ match, history, qty, setQty, addToCart }) => {
                                     <button
                                         type="button"
                                         onClick={addToCartHandler}
-                                        className="h-10 w-full md:w-72 mr-5 md:mr-8 rounded text-lg font-semibold bg-primary-dark text-white focus:outline-none"
+                                        className="h-10 w-full md:w-full  rounded text-lg font-semibold bg-primary-dark text-white focus:outline-none"
                                     >
                                         Buy Now
                                     </button>
-                                    {isMobile ? (
-                                        <h1 className=" text-gray-500">
-                                            <FavoriteIcon className="mr-5 md:mr-2 h-10 w-14 rounded text-white bg-gray-500" />
-                                        </h1>
-                                    ) : (
-                                        <h1 className="text-sm text-gray-500">
-                                            <FavoriteIcon className="mr-2 h-10 w-14 rounded text-white bg-gray-500" />
-                                            Save For Later
-                                        </h1>
-                                    )}
                                 </div>
                                 <div className="border-b my-5"></div>
                                 {isMobile ? (

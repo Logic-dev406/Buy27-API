@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import PhoneIcon from '@material-ui/icons/Phone';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import AccountCircleOutlinedIcon from '@material-ui/icons/AccountCircleOutlined';
-import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+// import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import ShoppingBasketOutlinedIcon from '@material-ui/icons/ShoppingBasketOutlined';
 
 const DesktopTopMenuBar = () => {
@@ -60,15 +60,6 @@ const DesktopTopMenuBar = () => {
                                     className="px-4 py-1 focus:outline-none"
                                 >
                                     <ShoppingBasketOutlinedIcon /> My Orders
-                                </button>
-                                <button
-                                    onClick={() => {
-                                        history.push('/My Account Info');
-                                        return setActive(!active);
-                                    }}
-                                    className="px-4 pt-1 pb-5 focus:outline-none "
-                                >
-                                    <FavoriteBorderIcon /> Saved Items
                                 </button>
                             </div>
                             <button className=" self-auto border-t-2 border-secondary-dark  pt-3 text-sm font-normal">
