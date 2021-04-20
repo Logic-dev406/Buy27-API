@@ -4,6 +4,7 @@ import ShoppingBasketOutlinedIcon from '@material-ui/icons/ShoppingBasketOutline
 import AccountInfor from '../components/UserDashboardPages/AccountInformation';
 import DeliveryAddress from '../components/UserDashboardPages/DeliveryAddress';
 import MyOrders from '../components/UserDashboardPages/PreviousOrders';
+import MobileOrders from '../sections/PreviousOrders/MobilePreviousOrders/MyOrders';
 import { Link, Switch, Route, useRouteMatch } from 'react-router-dom';
 
 export const UsersDashboardControl = () => {
@@ -20,8 +21,8 @@ export const UsersDashboardControl = () => {
     let { path, url } = useRouteMatch();
 
     return (
-        <div className="flex flex-col items-center bg-gray-100 ">
-            <div className=" flex my-8 ">
+        <div className="flex flex-col items-center bg-transparent md:bg-gray-100 ">
+            <div className=" flex flex-col md:flex-row my-0 md:my-8 ">
                 {isMobile ? (
                     ''
                 ) : (

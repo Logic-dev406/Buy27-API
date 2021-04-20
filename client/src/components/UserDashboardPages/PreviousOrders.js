@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import MyOrders from '../../sections/PreviousOrders/DesktopPreviousOrders/MyOrders';
 import OrderState from '../../sections/PreviousOrders/DesktopPreviousOrders/OrderState';
-// import MobileOrders from '../../sections/PreviousOrders/MobilePreviousOrders/MyOrders';
+import MobileOrders from '../../sections/PreviousOrders/MobilePreviousOrders/MyOrders';
 
 export const PreviousOrders = () => {
     const [isMobile, setisMobile] = useState(
@@ -18,8 +18,7 @@ export const PreviousOrders = () => {
         <div>
             <div className="flex items-center bg-white">
                 {isMobile ? (
-                    // <MobileOrders />
-                    ''
+                    <MobileOrders />
                 ) : (
                     <div className="flex">
                         <MyOrders />
