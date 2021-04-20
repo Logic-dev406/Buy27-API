@@ -4,7 +4,6 @@ import ShoppingBasketOutlinedIcon from '@material-ui/icons/ShoppingBasketOutline
 import AccountInfor from '../components/UserDashboardPages/AccountInformation';
 import DeliveryAddress from '../components/UserDashboardPages/DeliveryAddress';
 import MyOrders from '../components/UserDashboardPages/PreviousOrders';
-import MobileOrders from '../sections/PreviousOrders/MobilePreviousOrders/MyOrders';
 import { Link, Switch, Route, useRouteMatch } from 'react-router-dom';
 
 export const UsersDashboardControl = () => {
@@ -75,6 +74,9 @@ export const UsersDashboardControl = () => {
                         <DeliveryAddress />
                     </Route>
                     <Route path={`${path}/My Orders`}>
+                        <MyOrders />
+                    </Route>
+                    <Route path={`${path}/My Orders/Order details`}>
                         <MyOrders />
                     </Route>
                 </Switch>
