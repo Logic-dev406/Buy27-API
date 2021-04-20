@@ -5,7 +5,6 @@ import OrdersDetails from '../PreviousOrders/OrderDetails';
 
 export const PreviousOrders = () => {
     let { path, url } = useRouteMatch();
-    console.log(path);
 
     return (
         <div>
