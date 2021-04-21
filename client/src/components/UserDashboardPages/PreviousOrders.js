@@ -115,7 +115,7 @@ export const PreviousOrders = () => {
                                                     28495839
                                                 </h1>
                                             </div>
-                                            <div className=" flex flex-col  items-center text-white rounded text-sm w-16 bg-primary-dark">
+                                            <div className=" flex flex-col  items-center text-white rounded text-sm w-16 bg-gray-500">
                                                 <h1 className="">Cancelled</h1>
                                             </div>
                                             <div className="flex">
