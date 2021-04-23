@@ -16,6 +16,10 @@ const categoryRouter = require('./routers/categories');
 app.use(cors());
 app.options('*', cors());
 
+app.get('/', (req, res) => {
+    res.send('Welcom to buy27 API');
+});
+
 //middleware
 app.use(bodyParser.json());
 app.use(morgan('tiny'));

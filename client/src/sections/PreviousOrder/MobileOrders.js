@@ -36,7 +36,7 @@ const MobileOrders = ({ path, url }) => {
                                     </TabGroup.Tab>
                                 </TabGroup.TabList>
                             </div>
-                            <div className="flex flex-col items-center h-screen w-screen overflow-y-auto pt-4">
+                            <div className="flex flex-col items-center h-screen w-screen overflow-y-auto pt-4 ">
                                 <TabGroup.TabPanel
                                     index={0}
                                     className=" pb-4 transition-all transform flex flex-col"
@@ -84,7 +84,7 @@ const MobileOrders = ({ path, url }) => {
                                 >
                                     <Link
                                         to={`${url}/Details`}
-                                        className=" flex justify-between text-sm py-4 px-4 bg-transparent border border-primary-dark rounded "
+                                        className=" flex justify-between  text-sm py-4 px-4 bg-transparent border border-primary-dark rounded "
                                     >
                                         <div className="mr-4">
                                             <img

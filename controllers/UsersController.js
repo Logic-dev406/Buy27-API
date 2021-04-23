@@ -31,24 +31,30 @@ class UsersController {
     }
 
     static async createAdminUser(req, res) {
-        let user = new User({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            passwordHash: bcrypt.hashSync(req.body.password, 10),
-            phone: req.body.phone,
-            isAdmin: req.body.isAdmin,
-            street: req.body.street,
-            lga: req.body.lga,
-            direction: req.body.direction,
-            city: req.body.city,
-            state: req.body.state,
-        });
-        user = await user.save();
+        try {
+            let user = new User({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                passwordHash: bcrypt.hashSync(req.body.password, 10),
+                phone: req.body.phone,
+                isAdmin: req.body.isAdmin,
+                street: req.body.street,
+                lga: req.body.lga,
+                direction: req.body.direction,
+                city: req.body.city,
+                state: req.body.state,
+            });
+            user = await user.save();
 
-        if (!user) return res.status(500).send('The user can not be created');
+            if (!user)
+                return res.status(500).send('The user can not be created');
 
-        res.send(user);
+            res.send(user);
+        } catch (error) {
+            res.send({ success: false, message: error.message });
+            console.log(error);
+        }
     }
 
     static async updateUserById(req, res) {
@@ -105,24 +111,30 @@ class UsersController {
     }
 
     static async registerNewUser(req, res) {
-        let user = new User({
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            passwordHash: bcrypt.hashSync(req.body.password, 10),
-            phone: req.body.phone,
-            isAdmin: req.body.isAdmin,
-            street: req.body.street,
-            lga: req.body.lga,
-            direction: req.body.direction,
-            city: req.body.city,
-            state: req.body.state,
-        });
-        user = await user.save();
+        try {
+            let user = new User({
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                email: req.body.email,
+                passwordHash: bcrypt.hashSync(req.body.password, 10),
+                phone: req.body.phone,
+                isAdmin: req.body.isAdmin,
+                street: req.body.street,
+                lga: req.body.lga,
+                direction: req.body.direction,
+                city: req.body.city,
+                state: req.body.state,
+            });
+            user = await user.save();
 
-        if (!user) return res.status(404).send('The user can not be created');
+            if (!user)
+                return res.status(404).send('The user can not be created');
 
-        res.send(user);
+            res.send(user);
+        } catch (error) {
+            res.send({ success: false, message: error.message });
+            console.log(error);
+        }
     }
 
     static async getTotalAmountOfAllUsers(req, res) {
