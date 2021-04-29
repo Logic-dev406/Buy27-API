@@ -17,7 +17,7 @@ app.use(cors());
 app.options('*', cors());
 
 app.get('/', (req, res) => {
-    res.send('Welcom to buy27 API');
+    res.send('WELCOM TO BU27 API');
 });
 
 //middleware
