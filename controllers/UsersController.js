@@ -111,6 +111,14 @@ class UsersController {
     }
 
     static async registerNewUser(req, res) {
+        const userExist = await User.findOne({ email: req.body.email });
+
+        if (userExist) {
+            return res
+                .status(400)
+                .send({ success: false, message: 'Email already exist' });
+        }
+
         try {
             let user = new User({
                 firstName: req.body.firstName,
