@@ -126,7 +126,6 @@ class UsersController {
                 email: req.body.email,
                 passwordHash: bcrypt.hashSync(req.body.password, 10),
                 phone: req.body.phone,
-                isAdmin: req.body.isAdmin,
                 street: req.body.street,
                 lga: req.body.lga,
                 direction: req.body.direction,
