@@ -132,7 +132,7 @@ class UsersController {
                 direction: req.body.direction,
                 city: req.body.city,
                 state: req.body.state,
-            });
+            }).select('-passwordHash');
             user = await user.save();
 
             if (!user)
