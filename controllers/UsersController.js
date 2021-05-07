@@ -102,7 +102,9 @@ class UsersController {
                 { expiresIn: '1d' }
             );
 
-            return res.status(200).send({ user: user.email, token: token });
+            return res
+                .status(200)
+                .send({ user: user.email, token: token, id: user.id });
         } else {
             res.status(400).send('password is wrong!');
         }
