@@ -10,12 +10,13 @@ const {
     deleteUserById,
     updateUserById,
 } = require('../controllers/UsersController');
+const authUser = require('../helpers/basicAuth');
 
 //TODO
 //Integrate sendgrid email service
 
 //Get list of all users
-router.get('/', getListOfAllUsers);
+router.get('/', authUser, getListOfAllUsers);
 
 //Get user by id
 router.get('/:id', getUserById);

@@ -3,9 +3,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
-const authJwt = require('./helpers/jwt');
 const errorHandler = require('./helpers/error-handler');
 require('./db/mongoose');
+const authJwt = require('./helpers/jwt');
 
 //default routs
 const productRouter = require('./routers/products');
@@ -23,9 +23,9 @@ app.get('/', (req, res) => {
 //middleware
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
-app.use(authJwt());
+// app.use(authJwt());
 app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
-app.use(errorHandler);
+// app.use(errorHandler);
 
 //routs
 app.use('/api/products', productRouter);

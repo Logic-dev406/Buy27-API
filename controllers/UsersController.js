@@ -38,7 +38,7 @@ class UsersController {
                 email: req.body.email,
                 passwordHash: bcrypt.hashSync(req.body.password, 10),
                 phone: req.body.phone,
-                isAdmin: req.body.isAdmin,
+                role: req.body.role,
                 street: req.body.street,
                 lga: req.body.lga,
                 direction: req.body.direction,
@@ -70,7 +70,7 @@ class UsersController {
                 email: req.body.email,
                 passwordHash: bcrypt.hashSync(req.body.password, 10),
                 phone: req.body.phone,
-                isAdmin: req.body.isAdmin,
+                role: req.body.role,
                 street: req.body.street,
                 lga: req.body.lga,
                 direction: req.body.direction,
@@ -96,13 +96,13 @@ class UsersController {
             const token = jwt.sign(
                 {
                     userId: user.id,
-                    isAdmin: user.isAdmin,
+                    role: user.role,
                 },
                 secret,
                 { expiresIn: '1d' }
             );
 
-            return res.status(200).send({ user: user, token: token });
+            return res.status(200).send({ user: user.email, token: token });
         } else {
             res.status(400).send('password is wrong!');
         }
