@@ -22,10 +22,10 @@ router.get('/', [authUser, isAdmin], getListOfAllUsers);
 router.get('/:id', getUserById);
 
 //Update user information by id
-router.put('/:id', updateUserById);
+router.put('/:id', [authUser], updateUserById);
 
 //Create user by admin
-router.post('/', createAdminUser);
+router.post('/', [authUser, isAdmin], createAdminUser);
 
 //Login user
 router.post('/login', loginUser);
@@ -34,9 +34,9 @@ router.post('/login', loginUser);
 router.post('/register', registerNewUser);
 
 //Get amount of all users
-router.get('/get/count', getTotalAmountOfAllUsers);
+router.get('/get/count', [authUser, isAdmin], getTotalAmountOfAllUsers);
 
 //Delete user by id
-router.delete('/:id', deleteUserById);
+router.delete('/:id', [authUser, isAdmin], deleteUserById);
 
 module.exports = router;
