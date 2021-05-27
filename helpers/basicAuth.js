@@ -1,19 +1,50 @@
 const jwt = require('jsonwebtoken');
 const { secret } = require('../config/config');
 
-module.exports = (req, res, next) => {
+const authUser = (req, res, next) => {
+    //Find jwt in header
     const token = req.headers['authorization'];
 
     if (!token) {
-        return res.status(403).send('Unauthorized');
+        return res.status(403).send('Please login');
     } else {
+        //Validate jwt token
         const tokenBody = token.slice(7);
-        jwt.verify(tokenBody, secret, (error, decode) => {
+        jwt.verify(tokenBody, secret, (error, user) => {
             if (error) {
-                console.log('Jwt Error:', $(error));
-                return res.status(401).send('Error: Access Denied');
+                console.log('Jwt Error:', error);
+                return res.status(401).send('Error: Unauthorized');
             }
+
+            req.user = user;
             next();
+            // console.log(req.user);
         });
     }
+};
+
+const isAdmin = (req, res, next) => {
+    // console.log(req.user);
+    if (req.user.role === 'admin') {
+        res.status(200);
+        next();
+    } else {
+        return res.status(401).send('Error: Access Denied');
+    }
+};
+
+const isBasicUser = (req, res, next) => {
+    // console.log(req.user);
+    if (req.user.role === 'basic') {
+        res.status(200);
+        next();
+    } else {
+        return res.status(401).send('Error: Access Denied');
+    }
+};
+
+module.exports = {
+    authUser,
+    isAdmin,
+    isBasicUser,
 };
