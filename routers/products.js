@@ -12,6 +12,7 @@ const {
     getTotalAmountOfAllProducts,
     searchForProduct,
 } = require('../controllers/ProductsController');
+const { authUser, isAdmin, isBasicUser } = require('../helpers/basicAuth');
 
 const FILE_TYPE_MAP = {
     'image/png': 'png',
@@ -48,25 +49,31 @@ router.get('/', getAllProducts);
 router.get('/:slug', getProductById);
 
 //Create product
-router.post('/', uploadOptions.single('image'), createProduct);
+router.post(
+    '/',
+    [authUser, isAdmin],
+    uploadOptions.single('image'),
+    createProduct
+);
 
 //Add image gallery for a product
 router.put(
     '/gallery-images/:id',
+    [authUser, isAdmin],
     uploadOptions.array('images', 10),
     addImageGalleryForProduct
 );
 
 //Update product by id
-router.put('/:id', updateProductById);
+router.put('/:id', [authUser, isAdmin], updateProductById);
 
 //Delete product by id
-router.delete('/:id', deleteProductById);
+router.delete('/:id', [authUser, isAdmin], deleteProductById);
 
 //Get featured products
 router.get('/get/featured/:count', getFeaturedProducts);
 
 //Get amount of all product
-router.get('/get/count', getTotalAmountOfAllProducts);
+router.get('/get/count', [authUser, isAdmin], getTotalAmountOfAllProducts);
 
 module.exports = router;
