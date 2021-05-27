@@ -10,7 +10,7 @@ const {
     getTotalNumberOfAllOrders,
     getUserOrders,
 } = require('../controllers/OrdersController');
-const { authUser, isAdmin, isBasicUser } = require('../helpers/basicAuth');
+const { authUser, isAdmin } = require('../helpers/basicAuth');
 
 //Get list of orders
 router.get('/', [authUser, isAdmin], getListOfOrders);

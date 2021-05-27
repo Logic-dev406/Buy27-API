@@ -7,6 +7,7 @@ const {
     updateCategoryById,
     deleteCategoryById,
 } = require('../controllers/CategoriesController');
+const { authUser, isAdmin } = require('../helpers/basicAuth');
 
 //Get all categories
 router.get('/', getCategories);
@@ -15,12 +16,12 @@ router.get('/', getCategories);
 router.get('/:id', getCategoryById);
 
 //Create category
-router.post('/', createCategory);
+router.post('/', [authUser, isAdmin], createCategory);
 
 //Update category by id
-router.put('/:id', updateCategoryById);
+router.put('/:id', [authUser, isAdmin], updateCategoryById);
 
 //Delete category by id
-router.delete('/:id', deleteCategoryById);
+router.delete('/:id', [authUser, isAdmin], deleteCategoryById);
 
 module.exports = router;
