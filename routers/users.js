@@ -10,7 +10,7 @@ const {
     deleteUserById,
     updateUserById,
 } = require('../controllers/UsersController');
-const { authUser, isAdmin } = require('../helpers/basicAuth');
+const { authUser, isAdmin } = require('../helpers/jwt');
 
 //TODO
 //Integrate sendgrid email service

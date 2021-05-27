@@ -7,7 +7,7 @@ const {
     updateCategoryById,
     deleteCategoryById,
 } = require('../controllers/CategoriesController');
-const { authUser, isAdmin } = require('../helpers/basicAuth');
+const { authUser, isAdmin } = require('../helpers/jwt');
 
 //Get all categories
 router.get('/', getCategories);

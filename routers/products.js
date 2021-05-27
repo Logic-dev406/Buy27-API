@@ -12,7 +12,7 @@ const {
     getTotalAmountOfAllProducts,
     searchForProduct,
 } = require('../controllers/ProductsController');
-const { authUser, isAdmin, isBasicUser } = require('../helpers/basicAuth');
+const { authUser, isAdmin, isBasicUser } = require('../helpers/jwt');
 
 const FILE_TYPE_MAP = {
     'image/png': 'png',

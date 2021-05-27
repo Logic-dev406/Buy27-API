@@ -1,29 +1,47 @@
-const expressjwt = require('express-jwt');
+const jwt = require('jsonwebtoken');
 const { secret } = require('../config/config');
 
-function authJwt() {
-    return expressjwt({
-        secret,
-        algorithms: ['HS256'],
-        isRevoked: isRevoked,
-    }).unless({
-        path: [
-            { url: /\/public\/uploads(.*)/, methods: ['GET', 'OPTIONS'] },
-            { url: /\/api\/products(.*)/, methods: ['GET', 'OPTIONS'] },
-            { url: /\/api\/categories(.*)/, methods: ['GET', 'OPTIONS'] },
-            '/api/users/login',
-            '/api/users/register',
-            '/',
-        ],
-    });
-}
+const authUser = (req, res, next) => {
+    //Find jwt in header
+    const token = req.headers['authorization'];
 
-async function isRevoked(req, payload, done) {
-    if (!payload.isAdmin) {
-        done(null, true);
+    if (!token) {
+        return res.status(403).send('Please login');
+    } else {
+        //Validate jwt token
+        const tokenBody = token.slice(7);
+        jwt.verify(tokenBody, secret, (error, user) => {
+            if (error) {
+                console.log('Jwt Error:', error);
+                return res.status(401).send('Error: Unauthorized');
+            }
+
+            req.user = user;
+            next();
+        });
     }
+};
 
-    done();
-}
+const isAdmin = (req, res, next) => {
+    if (req.user.role === 'admin') {
+        res.status(200);
+        next();
+    } else {
+        return res.status(401).send('Error: Access Denied');
+    }
+};
 
-module.exports = authJwt;
+const isBasicUser = (req, res, next) => {
+    if (req.user.role === 'basic') {
+        res.status(200);
+        next();
+    } else {
+        return res.status(401).send('Error: Access Denied');
+    }
+};
+
+module.exports = {
+    authUser,
+    isAdmin,
+    isBasicUser,
+};
