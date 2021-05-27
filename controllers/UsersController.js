@@ -89,7 +89,9 @@ class UsersController {
         const user = await User.findOne({ email: req.body.email });
 
         if (!user) {
-            return res.status(400).send('User not found');
+            return res
+                .status(400)
+                .send({ success: false, message: 'User not found' });
         }
 
         if (user && bcrypt.compareSync(req.body.password, user.passwordHash)) {
@@ -104,7 +106,10 @@ class UsersController {
 
             return res.status(200).send({ user: user.email, token: token });
         } else {
-            res.status(400).send('password is wrong!');
+            res.status(400).send({
+                success: false,
+                message: 'password is wrong!',
+            });
         }
 
         return res.status(200).send(user);
