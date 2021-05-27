@@ -23,7 +23,7 @@ class UsersController {
         if (!user) {
             return res.status(500).json({
                 success: false,
-                message: 'Category with the given ID was not found',
+                message: 'category with the given ID was not found',
             });
         }
 
@@ -59,7 +59,7 @@ class UsersController {
 
     static async updateUserById(req, res) {
         if (!mongoose.isValidObjectId(req.params.id)) {
-            res.status(400).send('Invalid User id');
+            res.status(400).send('invalid User id');
         }
 
         const user = await User.findByIdAndUpdate(
@@ -91,7 +91,7 @@ class UsersController {
         if (!user) {
             return res
                 .status(400)
-                .send({ success: false, message: 'User not found' });
+                .send({ success: false, message: 'user not found' });
         }
 
         if (user && bcrypt.compareSync(req.body.password, user.passwordHash)) {
@@ -121,7 +121,7 @@ class UsersController {
         if (userExist) {
             return res
                 .status(400)
-                .send({ success: false, message: 'Email already exist' });
+                .send({ success: false, message: 'email already exist' });
         }
 
         try {
@@ -172,7 +172,7 @@ class UsersController {
                 } else {
                     return res.status(404).json({
                         success: false,
-                        message: 'Category not found',
+                        message: 'category not found',
                     });
                 }
             })
