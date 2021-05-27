@@ -17,8 +17,17 @@ class UsersController {
         res.send(userList);
     }
 
-    static async getUserProfile(req, res) {
-        res.status(200).send(req.user);
+    static async getUserById(req, res) {
+        const user = await User.findById(req.params.id).select('-passwordHash');
+
+        if (!user) {
+            return res.status(500).json({
+                success: false,
+                message: 'user not found',
+            });
+        }
+
+        res.status(200).send(user);
     }
 
     static async createAdminUser(req, res) {

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const {
     getListOfAllUsers,
-    getUserProfile,
+    getUserById,
     createAdminUser,
     loginUser,
     registerNewUser,
@@ -18,8 +18,8 @@ const { authUser, isAdmin } = require('../helpers/jwt');
 //Get list of all users
 router.get('/', [authUser, isAdmin], getListOfAllUsers);
 
-//Get user profile
-router.get('/me', [authUser], getUserProfile);
+//Get user by id
+router.get('/:id', [authUser], getUserById);
 
 //Update user information by id
 router.put('/:id', [authUser], updateUserById);
