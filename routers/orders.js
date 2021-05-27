@@ -10,29 +10,30 @@ const {
     getTotalNumberOfAllOrders,
     getUserOrders,
 } = require('../controllers/OrdersController');
+const { authUser, isAdmin, isBasicUser } = require('../helpers/basicAuth');
 
 //Get list of orders
-router.get('/', getListOfOrders);
+router.get('/', [authUser, isAdmin], getListOfOrders);
 
 //Get order by id
-router.get('/:id', getOrderById);
+router.get('/:id', [authUser], getOrderById);
 
 //Create order
-router.post('/', createOrder);
+router.post('/', [authUser], createOrder);
 
 //Update order by id
-router.put('/:id', updateOrderById);
+router.put('/:id', [authUser, isAdmin], updateOrderById);
 
 //Delete order by id
-router.delete('/:id', deleteOrderById);
+router.delete('/:id', [authUser, isAdmin], deleteOrderById);
 
 //Get total amount of all sales
-router.get('/get/totalsales', getTotalSales);
+router.get('/get/totalsales', [authUser, isAdmin], getTotalSales);
 
 //Get number of all product
-router.get('/get/count', getTotalNumberOfAllOrders);
+router.get('/get/count', [authUser, isAdmin], getTotalNumberOfAllOrders);
 
 //Get user orders
-router.get('/get/userorders/:userid', getUserOrders);
+router.get('/get/userorders/:userid', [authUser], getUserOrders);
 
 module.exports = router;
