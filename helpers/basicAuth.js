@@ -18,13 +18,11 @@ const authUser = (req, res, next) => {
 
             req.user = user;
             next();
-            // console.log(req.user);
         });
     }
 };
 
 const isAdmin = (req, res, next) => {
-    // console.log(req.user);
     if (req.user.role === 'admin') {
         res.status(200);
         next();
@@ -34,7 +32,6 @@ const isAdmin = (req, res, next) => {
 };
 
 const isBasicUser = (req, res, next) => {
-    // console.log(req.user);
     if (req.user.role === 'basic') {
         res.status(200);
         next();
