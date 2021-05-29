@@ -5,29 +5,27 @@ const { secret } = require('../config/config');
 const jwt = require('jsonwebtoken');
 const { token } = require('morgan');
 const mongoose = require('mongoose');
+const response = require('../helpers/response');
 
 class UsersController {
     static async getListOfAllUsers(req, res) {
         const userList = await User.find().select('-passwordHash');
 
         if (!userList) {
-            res.status(500), json({ success: false });
+            res.status(500).send(response('No user find', {}, false));
         }
 
-        res.send(userList);
+        res.send(response('Fetchted users successfully', userList));
     }
 
     static async getUserById(req, res) {
         const user = await User.findById(req.params.id).select('-passwordHash');
 
         if (!user) {
-            return res.status(500).json({
-                success: false,
-                message: 'user not found',
-            });
+            return res.status(500).send(response('user not found', {}, false));
         }
 
-        res.status(200).send(user);
+        res.status(200).send(response('Fetched users successfully', user));
     }
 
     static async createAdminUser(req, res) {
@@ -48,18 +46,19 @@ class UsersController {
             user = await user.save();
 
             if (!user)
-                return res.status(500).send('The user can not be created');
+                return res
+                    .status(500)
+                    .send(response('The user can not be created', {}, false));
 
-            res.send(user);
+            res.send(response('User was created successfully', user));
         } catch (error) {
-            res.send({ success: false, message: error.message });
-            console.log(error);
+            res.send(response(error.message, {}, false));
         }
     }
 
     static async updateUserById(req, res) {
         if (!mongoose.isValidObjectId(req.params.id)) {
-            res.status(400).send('invalid User id');
+            res.status(400).send(response('invalid User id', {}, false));
         }
 
         const user = await User.findByIdAndUpdate(
@@ -80,18 +79,19 @@ class UsersController {
             { new: true }
         );
 
-        if (!user) return res.status(500).send('The user can not be updated');
+        if (!user)
+            return res
+                .status(500)
+                .send(response('The user can not be updated', {}, false));
 
-        res.send(user);
+        res.send(response('User was successfullly updated', user));
     }
 
     static async loginUser(req, res) {
         const user = await User.findOne({ email: req.body.email });
 
         if (!user) {
-            return res
-                .status(400)
-                .send({ success: false, message: 'user not found' });
+            return res.status(400).send(response('user not found', {}, false));
         }
 
         if (user && bcrypt.compareSync(req.body.password, user.passwordHash)) {
@@ -104,15 +104,17 @@ class UsersController {
                 { expiresIn: '1d' }
             );
 
-            return res.status(200).send({ user: user.email, token: token });
+            return res.status(200).send(
+                response('Login successful', {
+                    user: user.email,
+                    token: token,
+                })
+            );
         } else {
-            res.status(400).send({
-                success: false,
-                message: 'password is wrong!',
-            });
+            res.status(400).send(response('password is wrong!', {}, false));
         }
 
-        return res.status(200).send(user);
+        // return res.status(200).send(response("",user));
     }
 
     static async registerNewUser(req, res) {
@@ -121,7 +123,7 @@ class UsersController {
         if (userExist) {
             return res
                 .status(400)
-                .send({ success: false, message: 'email already exist' });
+                .send(response('email already exist', {}, false));
         }
 
         try {
@@ -140,12 +142,13 @@ class UsersController {
             user = await user.save();
 
             if (!user)
-                return res.status(404).send('The user can not be created');
+                return res
+                    .status(404)
+                    .send(response('The user can not be created', {}, false));
 
-            res.send(user);
+            res.send(response('User created successfully', user));
         } catch (error) {
-            res.send({ success: false, message: error.message });
-            console.log(error);
+            res.send(response(error.message, {}, false));
         }
     }
 
@@ -153,31 +156,29 @@ class UsersController {
         const userCount = await User.countDocuments((count) => count);
 
         if (!userCount) {
-            return res.status(500).json({ success: false });
+            return res
+                .status(500)
+                .send(response('Users count unsuccessful', {}, false));
         }
 
-        res.send({
-            count: userCount,
-        });
+        res.send(response('Users count successful', userCount));
     }
 
     static deleteUserById(req, res) {
         User.findByIdAndDelete(req.params.id)
             .then((user) => {
                 if (user) {
-                    return res.status(200).json({
-                        success: true,
-                        message: 'The category is deleted',
-                    });
+                    return res
+                        .status(200)
+                        .send(response('User was successful deleted ', {}));
                 } else {
-                    return res.status(404).json({
-                        success: false,
-                        message: 'category not found',
-                    });
+                    return res
+                        .status(404)
+                        .send(response('User not found', {}, false));
                 }
             })
-            .catch((e) => {
-                return res.status(400).send({ success: false, error: e });
+            .catch((error) => {
+                return res.status(400).send(response(error.message, {}, false));
             });
     }
 }
