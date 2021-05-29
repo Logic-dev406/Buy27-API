@@ -1,5 +1,6 @@
 const Order = require('../models/order');
 const OrderItem = require('../models/order-Items');
+const response = require('../helpers/response');
 
 class OrdersController {
     static async getListOfOrders(req, res) {
@@ -8,10 +9,12 @@ class OrdersController {
             .sort({ dateOdered: -1 });
 
         if (!orderList) {
-            res.status(500).json({ success: false });
+            res.status(500).send(response('Order not found', {}, false));
         }
 
-        res.send(orderList);
+        res.send(
+            response('Fetched total count of order successfully', orderList)
+        );
     }
 
     static async getOrderById(req, res) {
@@ -27,10 +30,10 @@ class OrdersController {
                 },
             });
         if (!order) {
-            res.status(500).json({ success: false });
+            res.status(500).send(response('Order not found', {}, false));
         }
 
-        res.send(order);
+        res.send(response('Fetched order successfully', order));
     }
 
     static async createOrder(req, res) {
@@ -83,9 +86,12 @@ class OrdersController {
         });
         order = await order.save();
 
-        if (!order) return res.status(404).send('The order can not be created');
+        if (!order)
+            return res
+                .status(404)
+                .send(response('The order can not be created', {}, false));
 
-        return res.send(order);
+        return res.send(response('Order was created successfully', order));
     }
 
     static async updateOrderById(req, res) {
@@ -97,9 +103,12 @@ class OrdersController {
             { new: true }
         );
 
-        if (!order) return res.status(404).send('The order can not be updated');
+        if (!order)
+            return res
+                .status(404)
+                .send(response('The order can not be updated', {}, false));
 
-        res.send(order);
+        res.send(response('Order updated successfully', order));
     }
 
     static deleteOrderById(req, res) {
@@ -109,18 +118,17 @@ class OrdersController {
                     await order.orderItems.map(async (orderItem) => {
                         await OrderItem.findByIdAndRemove(orderItem);
                     });
-                    return res.status(200).json({
-                        success: true,
-                        message: 'The order is deleted',
-                    });
+                    return res
+                        .status(200)
+                        .send(response('Order was deleted successfully', {}));
                 } else {
                     return res
                         .status(404)
-                        .json({ success: false, message: 'order not found' });
+                        .send(response('Order not found', {}, false));
                 }
             })
-            .catch((e) => {
-                return res.status(400).send({ success: false, error: e });
+            .catch((error) => {
+                return res.status(400).send(response(error.message, {}, false));
             });
     }
 
@@ -130,22 +138,33 @@ class OrdersController {
         ]);
 
         if (!totalsales) {
-            return res.status(400).send('The order sales can not be generated');
+            return res
+                .status(400)
+                .send(
+                    response('The order sales can not be generated', {}, false)
+                );
         }
 
-        return res.send({ totalsales: totalsales.pop().totalsales });
+        return res.send(
+            response(
+                'Fetched total sales successfully',
+                totalsales.pop().totalsales
+            )
+        );
     }
 
     static async getTotalNumberOfAllOrders(req, res) {
         const orderCount = await Order.countDocuments((count) => count);
 
         if (!orderCount) {
-            return res.status(500).json({ success: false });
+            return res
+                .status(500)
+                .send(response('Fetch total count of orders faild', {}, false));
         }
 
-        res.send({
-            count: orderCount,
-        });
+        res.send(
+            response('Fetched total count of order successfully', orderCount)
+        );
     }
 
     static async getUserOrders(req, res) {
@@ -162,10 +181,12 @@ class OrdersController {
             .sort({ dateOdered: -1 });
 
         if (!userOrderList) {
-            res.status(500).json({ success: false });
+            res.status(500).send(
+                response('Fetch user order failed', {}, false)
+            );
         }
 
-        res.send(userOrderList);
+        res.send(response('Fetched user order successfully', userOrderList));
     }
 }
 
