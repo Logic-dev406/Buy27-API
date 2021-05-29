@@ -1,27 +1,37 @@
 const Category = require('../models/category');
+const response = require('../helpers/response');
 
 class CategoriesController {
     static async getCategories(req, res) {
         const categoryList = await Category.find();
 
         if (!categoryList) {
-            res.status(500).json({ success: false });
+            res.status(500).send(response('Category not found', {}, false));
         }
 
-        res.status(200).send(categoryList);
+        res.status(200).send(
+            response('Fetched categories successfully', categoryList)
+        );
     }
 
     static async getCategoryById(req, res) {
         const category = await Category.findById(req.params.id);
 
         if (!category) {
-            return res.status(500).json({
-                success: false,
-                message: 'Category with the given ID was not found',
-            });
+            return res
+                .status(500)
+                .send(
+                    response(
+                        'Category with the given ID was not found',
+                        {},
+                        false
+                    )
+                );
         }
 
-        res.status(200).send(category);
+        res.status(200).send(
+            response('Fetched category successfully', category)
+        );
     }
 
     static async createCategory(req, res) {
@@ -32,9 +42,11 @@ class CategoriesController {
         category = await category.save();
 
         if (!category)
-            return res.status(404).send('The category can not be created');
+            return res
+                .status(404)
+                .send(response('The category can not be created', {}, false));
 
-        res.send(category);
+        res.send(response('Category created successfully', category));
     }
 
     static async updateCategoryById(req, res) {
@@ -48,28 +60,33 @@ class CategoriesController {
         );
 
         if (!category)
-            return res.status(404).send('The category can not be updated');
+            return res
+                .status(404)
+                .send(response('The category can not be updated', {}, false));
 
-        res.send(category);
+        res.send(response('Category was successfully updated', category));
     }
 
     static deleteCategoryById(req, res) {
         Category.findByIdAndDelete(req.params.id)
             .then((category) => {
                 if (category) {
-                    return res.status(200).json({
-                        success: true,
-                        message: 'The category is deleted',
-                    });
+                    return res
+                        .status(200)
+                        .send(
+                            response(
+                                'The category was successfully deleted',
+                                {}
+                            )
+                        );
                 } else {
-                    return res.status(404).json({
-                        success: false,
-                        message: 'Category not found',
-                    });
+                    return res
+                        .status(404)
+                        .send(response('Category not found', {}, false));
                 }
             })
-            .catch((e) => {
-                return res.status(400).send({ success: false, error: e });
+            .catch((error) => {
+                return res.status(400).send(response(error.message, {}, false));
             });
     }
 }
