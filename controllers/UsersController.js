@@ -15,7 +15,7 @@ class UsersController {
             res.status(500).send(response('No user find', {}, false));
         }
 
-        res.send(response('Fetchted users successfully', userList));
+        res.send(response('Fetched users successfully', userList));
     }
 
     static async getUserById(req, res) {

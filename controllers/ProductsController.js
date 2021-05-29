@@ -1,6 +1,7 @@
 const Product = require('../models/product');
 const Category = require('../models/category');
 const mongoose = require('mongoose');
+const response = require('../helpers/response');
 
 class ProductController {
     static async searchForProduct(req, res) {
@@ -11,9 +12,9 @@ class ProductController {
         });
 
         if (!search) {
-            res.status(500).json({ success: false });
+            res.status(500).send(response('Product not found', {}, false));
         }
-        res.send(search);
+        res.send(response('Searched result', search));
     }
 
     static async getAllProducts(req, res) {
@@ -24,9 +25,9 @@ class ProductController {
         const productList = await Product.find(filter);
 
         if (!productList) {
-            res.status(500).json({ success: false });
+            res.status(500).send(response('No product was found', {}, false));
         }
-        res.send(productList);
+        res.send(response('Fetched products successfully', productList));
     }
 
     static async getProductById(req, res) {
@@ -37,24 +38,34 @@ class ProductController {
             .populate({ path: 'category', model: 'Category' });
 
         if (!product) {
-            return res.status(500).json({ success: false });
+            return res
+                .status(500)
+                .send(response('Product not found', {}, false));
         }
 
-        res.send(product);
+        res.send(response('Fetched product successfully ', product));
     }
 
     static async createProduct(req, res) {
         const category = await Category.findById(req.body.category);
 
         if (!category) {
-            return res.status(400).send('Invalid Category');
+            return res
+                .status(400)
+                .send(response('Invalid Category', {}, false));
         }
 
         const file = req.file;
         if (!file) {
             return res
                 .status(400)
-                .send('an image is required to create a product');
+                .send(
+                    response(
+                        'an image is required to create a product',
+                        {},
+                        false
+                    )
+                );
         }
 
         const fileName = req.file.filename;
@@ -75,17 +86,16 @@ class ProductController {
         product = await product.save();
 
         if (!product)
-            return res.status(500).json({
-                success: false,
-                message: 'The product can not be created',
-            });
+            return res
+                .status(500)
+                .send(response('The product can not be created', {}, false));
 
-        return res.send(product);
+        return res.send(response('Product was created successfully ', product));
     }
 
     static async addImageGalleryForProduct(req, res) {
         if (!mongoose.isValidObjectId(req.params.id)) {
-            res.status(400).send('Invalid Product id');
+            res.status(400).send(response('Invalid Product id', {}, false));
         }
 
         const files = req.files;
@@ -107,21 +117,22 @@ class ProductController {
         );
 
         if (!product)
-            return res.status(500).json({
-                success: false,
-                message: 'The product can not be created',
-            });
+            return res
+                .status(500)
+                .send(response('The product can not be created', {}, false));
 
-        return res.send(product);
+        return res.send(response('Image gallery successfully added', product));
     }
 
     static async updateProductById(req, res) {
         if (!mongoose.isValidObjectId(req.params.id)) {
-            res.status(400).send('Invalid Product id');
+            res.status(400).send(response('Invalid Product id', {}, false));
         }
         const category = await Category.findById(req.body.category);
         if (!category) {
-            return res.status(400).send('Invalid Category');
+            return res
+                .status(400)
+                .send(response('Invalid Category', {}, false));
         }
 
         const product = await Product.findByIdAndUpdate(
@@ -142,27 +153,28 @@ class ProductController {
         );
 
         if (!product)
-            return res.status(500).send('The product can not be updated');
+            return res
+                .status(500)
+                .send(response('The product can not be updated', {}, false));
 
-        res.send(product);
+        res.send(response('Product updated successfully', product));
     }
 
     static deleteProductById(req, res) {
         Product.findByIdAndDelete(req.params.id)
             .then((product) => {
                 if (product) {
-                    return res.status(200).json({
-                        success: true,
-                        message: 'The product as been deleted',
-                    });
+                    return res
+                        .status(200)
+                        .send(response('The product as been deleted', {}));
                 } else {
                     return res
                         .status(404)
-                        .json({ success: false, message: 'Product not found' });
+                        .send(response('Product not found', {}, false));
                 }
             })
-            .catch((e) => {
-                return res.status(400).send({ success: false, error: e });
+            .catch((error) => {
+                return res.status(400).send(response(error.message, {}, false));
             });
     }
 
@@ -171,22 +183,29 @@ class ProductController {
         const product = await Product.find({ isFeatured: true }).limit(+count);
 
         if (!product) {
-            return res.status(500).json({ success: false });
+            return res
+                .status(500)
+                .send(response('Featured product not found', {}, false));
         }
 
-        res.send(product);
+        res.send(response('Fetched featured product successfully', product));
     }
 
     static async getTotalAmountOfAllProducts(req, res) {
         const productCount = await Product.countDocuments((count) => count);
 
         if (!productCount) {
-            return res.status(500).json({ success: false });
+            return res
+                .status(500)
+                .send(response('Product count not found', {}, false));
         }
 
-        res.send({
-            count: productCount,
-        });
+        res.send(
+            response(
+                'Fetched total count of all product successfully',
+                productCount
+            )
+        );
     }
 }
 
