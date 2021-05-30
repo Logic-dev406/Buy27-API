@@ -19,7 +19,9 @@ class UsersController {
     }
 
     static async getUserById(req, res) {
-        const user = await User.findById(req.params.id).select('-passwordHash');
+        const user = await User.findById(req.user.userId).select(
+            '-passwordHash'
+        );
 
         if (!user) {
             return res.status(500).send(response('user not found', {}, false));

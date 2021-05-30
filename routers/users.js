@@ -19,7 +19,7 @@ const { authUser, isAdmin } = require('../helpers/jwt');
 router.get('/', [authUser, isAdmin], getListOfAllUsers);
 
 //Get user by id
-router.get('/:id', [authUser], getUserById);
+router.get('/me', [authUser], getUserById);
 
 //Update user information by id
 router.put('/:id', [authUser], updateUserById);
