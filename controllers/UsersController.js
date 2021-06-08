@@ -64,7 +64,7 @@ class UsersController {
         }
 
         const user = await User.findByIdAndUpdate(
-            req.params.id,
+            req.user.userId,
             {
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
