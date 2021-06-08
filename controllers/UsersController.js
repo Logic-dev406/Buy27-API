@@ -63,30 +63,35 @@ class UsersController {
             res.status(400).send(response('invalid User id', {}, false));
         }
 
-        const user = await User.findByIdAndUpdate(
-            req.user.userId,
-            {
-                firstName: req.body.firstName,
-                lastName: req.body.lastName,
-                email: req.body.email,
-                passwordHash: bcrypt.hashSync(req.body.password, 10),
-                phone: req.body.phone,
-                role: req.body.role,
-                street: req.body.street,
-                lga: req.body.lga,
-                direction: req.body.direction,
-                city: req.body.city,
-                state: req.body.state,
-            },
-            { new: true }
-        );
+        try {
+            const user = await User.findByIdAndUpdate(
+                req.user.userId,
+                {
+                    firstName: req.body.firstName,
+                    lastName: req.body.lastName,
+                    email: req.body.email,
+                    passwordHash: bcrypt.hashSync(req.body.password, 10),
+                    phone: req.body.phone,
+                    role: req.body.role,
+                    street: req.body.street,
+                    lga: req.body.lga,
+                    direction: req.body.direction,
+                    city: req.body.city,
+                    state: req.body.state,
+                },
+                { new: true }
+            );
 
-        if (!user)
-            return res
-                .status(500)
-                .send(response('The user can not be updated', {}, false));
+            if (!user)
+                return res
+                    .status(500)
+                    .send(response('The user can not be updated', {}, false));
 
-        res.send(response('User was successfullly updated', user));
+            res.send(response('User was successfullly updated', user));
+        } catch (error) {
+            res.status(409).send(response(error.message, {}, false));
+            console.log(error.message);
+        }
     }
 
     static async loginUser(req, res) {
