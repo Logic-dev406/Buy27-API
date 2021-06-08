@@ -59,7 +59,7 @@ class UsersController {
     }
 
     static async updateUserById(req, res) {
-        if (!mongoose.isValidObjectId(req.params.id)) {
+        if (!mongoose.isValidObjectId(req.user.userId)) {
             res.status(400).send(response('invalid User id', {}, false));
         }
 
