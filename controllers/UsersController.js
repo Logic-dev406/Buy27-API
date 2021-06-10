@@ -72,39 +72,18 @@ class UsersController {
         const filter = { email: req.body.email };
 
         try {
-            const updatedDocument = await User.findOneAndUpdate(
-                filter,
-                update,
-                {
-                    new: true,
-                }
-            );
+            const user = await User.findOneAndUpdate(filter, update, {
+                new: true,
+            }).select('-passwordHash');
 
-            return res.status(200).send(updatedDocument);
-            // const user = await User.findByIdAndUpdate(
-            //     req.user.userId,
-            //     {
-            //         firstName: req.body.firstName,
-            //         lastName: req.body.lastName,
-            //         email: req.body.email,
-            //         passwordHash: bcrypt.hashSync(req.body.password, 10),
-            //         phone: req.body.phone,
-            //         role: req.body.role,
-            //         street: req.body.street,
-            //         lga: req.body.lga,
-            //         direction: req.body.direction,
-            //         city: req.body.city,
-            //         state: req.body.state,
-            //     },
-            //     { new: true }
-            // );
+            if (!user)
+                return res
+                    .status(500)
+                    .send(response('The user can not be updated', {}, false));
 
-            // if (!user)
-            //     return res
-            //         .status(500)
-            //         .send(response('The user can not be updated', {}, false));
-
-            // res.send(response('User was successfullly updated', user));
+            return res
+                .status(200)
+                .send(response('User was successfullly updated', user));
         } catch (error) {
             res.status(409).send(response(error.message, {}, false));
             console.log(error.message);
