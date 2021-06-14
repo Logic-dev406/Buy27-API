@@ -63,13 +63,12 @@ class UsersController {
             res.status(400).send(response('invalid User id', {}, false));
         }
 
-        const user = req.user.userId;
+        // const user = req.user.userId;
 
         const update = {
-            ...user,
             ...req.body,
         };
-        const filter = { email: req.body.email };
+        const filter = { _id: req.user.userId };
 
         try {
             const user = await User.findOneAndUpdate(filter, update, {
