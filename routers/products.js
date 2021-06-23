@@ -45,7 +45,7 @@ router.get('/search', searchForProduct);
 //Get all products
 router.get('/', getAllProducts);
 
-//Get product by id
+//Get product by slug
 router.get('/:slug', getProductById);
 
 //Create product

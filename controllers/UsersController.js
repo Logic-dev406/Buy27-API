@@ -63,8 +63,6 @@ class UsersController {
             res.status(400).send(response('invalid User id', {}, false));
         }
 
-        // const user = req.user.userId;
-
         const update = {
             ...req.body,
         };

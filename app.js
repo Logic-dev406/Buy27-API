@@ -5,7 +5,6 @@ const morgan = require('morgan');
 const cors = require('cors');
 const errorHandler = require('./helpers/error-handler');
 require('./db/mongoose');
-const authJwt = require('./helpers/jwt');
 
 //default routs
 const productRouter = require('./routers/products');
