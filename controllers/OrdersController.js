@@ -85,13 +85,12 @@ class OrdersController {
 
             let order = new Order({
                 orderItems: orderItemsIdsResolved,
-                shippingAddress1: req.body.shippingAddress1,
-                shippingAddress2: req.body.shippingAddress2,
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
                 city: req.body.city,
-                zip: req.body.zip,
-                country: req.body.country,
+                street: req.body.street,
+                lga: req.body.lga,
                 phone: req.body.phone,
-                status: req.body.status,
                 totalPrice: totalPrice,
                 user: req.body.user,
             });
