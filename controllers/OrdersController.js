@@ -64,7 +64,6 @@ class OrdersController {
                         )
                     );
             }
-            console.log(orderItemsIdsResolved);
 
             const totalPrices = await Promise.all(
                 orderItemsIdsResolved.map(async (orderItemId) => {
