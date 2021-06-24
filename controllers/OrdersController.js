@@ -53,6 +53,18 @@ class OrdersController {
             );
 
             const orderItemsIdsResolved = await orderItemsIds;
+            if (orderItemsIdsResolved.length === 0) {
+                return res
+                    .status(400)
+                    .send(
+                        response(
+                            'An item is needed to create an order',
+                            {},
+                            false
+                        )
+                    );
+            }
+            console.log(orderItemsIdsResolved);
 
             const totalPrices = await Promise.all(
                 orderItemsIdsResolved.map(async (orderItemId) => {
