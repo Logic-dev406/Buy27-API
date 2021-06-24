@@ -34,6 +34,6 @@ router.get('/get/totalsales', [authUser, isAdmin], getTotalSales);
 router.get('/get/count', [authUser, isAdmin], getTotalNumberOfAllOrders);
 
 //Get user orders
-router.get('/get/userorders/:userid', [authUser], getUserOrders);
+router.get('/get/userorders', [authUser], getUserOrders);
 
 module.exports = router;

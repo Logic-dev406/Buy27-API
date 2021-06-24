@@ -171,25 +171,32 @@ class OrdersController {
     }
 
     static async getUserOrders(req, res) {
-        const userOrderList = await Order.find({ user: req.params.userid })
-            .populate({
-                path: 'orderItems',
-                model: 'OrderItem',
-                populate: {
-                    path: 'product',
-                    model: 'Product',
-                    populate: { path: 'category', model: 'Category' },
-                },
-            })
-            .sort({ dateOdered: -1 });
+        try {
+            const userOrderList = await Order.find({ user: req.user.userId })
+                .populate({
+                    path: 'orderItems',
+                    model: 'OrderItem',
+                    populate: {
+                        path: 'product',
+                        model: 'Product',
+                        populate: { path: 'category', model: 'Category' },
+                    },
+                })
+                .sort({ dateOdered: -1 });
+            console.log(req.user.userId);
 
-        if (!userOrderList) {
-            res.status(500).send(
-                response('Fetch user order failed', {}, false)
+            if (!userOrderList) {
+                res.status(500).send(
+                    response('Fetch user order failed', {}, false)
+                );
+            }
+
+            res.send(
+                response('Fetched user order successfully', userOrderList)
             );
+        } catch (err) {
+            console.log(err.message);
         }
-
-        res.send(response('Fetched user order successfully', userOrderList));
     }
 }
 
