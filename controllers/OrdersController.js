@@ -1,6 +1,7 @@
 const Order = require('../models/order');
 const OrderItem = require('../models/order-Items');
 const response = require('../helpers/response');
+const { model } = require('mongoose');
 
 class OrdersController {
     static async getListOfOrders(req, res) {
@@ -58,22 +59,18 @@ class OrdersController {
                     const orderItem = await OrderItem.findById(
                         orderItemId
                     ).populate({
-                        path: 'orderitem',
-                        model: 'OrderItem',
-                        populate: {
-                            path: 'product',
-                            model: 'Product',
-                            select: 'price',
-                        },
+                        path: 'product',
+                        model: 'Product',
+                        select: 'price',
                     });
                     const totalPrice =
                         orderItem.product.price * orderItem.quantity;
-                    console.log(totalPrice);
                     return totalPrice;
                 })
             );
 
             const totalPrice = totalPrices.reduce((a, b) => a + b, 0);
+            console.log(totalPrice);
 
             let order = new Order({
                 orderItems: orderItemsIdsResolved,
@@ -96,7 +93,7 @@ class OrdersController {
 
             return res.send(response('Order was created successfully', order));
         } catch (err) {
-            console.log(err);
+            console.log(err.message);
         }
     }
 
