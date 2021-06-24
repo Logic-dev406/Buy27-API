@@ -70,7 +70,6 @@ class OrdersController {
             );
 
             const totalPrice = totalPrices.reduce((a, b) => a + b, 0);
-            console.log(totalPrice);
 
             let order = new Order({
                 orderItems: orderItemsIdsResolved,
@@ -98,20 +97,21 @@ class OrdersController {
     }
 
     static async updateOrderById(req, res) {
-        const order = await Order.findByIdAndUpdate(
-            req.params.id,
-            {
-                status: req.body.status,
-            },
-            { new: true }
-        );
+        const update = {
+            ...req.body,
+        };
+        const filter = { _id: req.params.id };
+
+        const order = await Order.findOneAndUpdate(filter, update, {
+            new: true,
+        });
 
         if (!order)
             return res
                 .status(404)
                 .send(response('The order can not be updated', {}, false));
 
-        res.send(response('Order updated successfully', order));
+        res.send(response('Order was updated successfully', order));
     }
 
     static deleteOrderById(req, res) {
