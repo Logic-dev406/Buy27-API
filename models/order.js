@@ -47,6 +47,10 @@ const orderSchema = mongoose.Schema({
         type: Date,
         default: Date.now,
     },
+    orderNo: {
+        type: Date,
+        default: Math.floor(100000000 + Math.random() * 900000000),
+    },
 });
 
 orderSchema.virtual('id').get(function () {
