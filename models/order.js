@@ -49,7 +49,9 @@ const orderSchema = mongoose.Schema({
     },
     orderNo: {
         type: String,
-        default: Math.floor(100000000 + Math.random() * 900000000),
+        default: function () {
+            return Math.floor(100000000 + Math.random() * 900000000);
+        },
     },
 });
 
