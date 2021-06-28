@@ -48,7 +48,7 @@ const orderSchema = mongoose.Schema({
         default: Date.now,
     },
     orderNo: {
-        type: Date,
+        type: String,
         default: Math.floor(100000000 + Math.random() * 900000000),
     },
 });
