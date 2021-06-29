@@ -15,8 +15,8 @@ const { authUser, isAdmin } = require('../helpers/jwt');
 //Get list of orders
 router.get('/', [authUser, isAdmin], getListOfOrders);
 
-//Get order by id
-router.get('/:id', [authUser], getOrderById);
+//Get order by orderNo
+router.get('/:orderNo', [authUser], getOrderById);
 
 //Create order
 router.post('/', [authUser], createOrder);
