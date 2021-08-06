@@ -9,25 +9,35 @@ const response = require('../helpers/response');
 
 class UsersController {
     static async getListOfAllUsers(req, res) {
-        const userList = await User.find().select('-passwordHash');
+        try {
+            const userList = await User.find().select('-passwordHash');
 
-        if (!userList) {
-            res.status(500).send(response('No user find', {}, false));
+            if (!userList) {
+                res.status(500).send(response('No user find', {}, false));
+            }
+
+            res.send(response('Fetched users successfully', userList));
+        } catch (error) {
+            console.log(error.message);
         }
-
-        res.send(response('Fetched users successfully', userList));
     }
 
     static async getUserById(req, res) {
-        const user = await User.findById(req.user.userId).select(
-            '-passwordHash'
-        );
+        try {
+            const user = await User.findById(req.user.userId).select(
+                '-passwordHash'
+            );
 
-        if (!user) {
-            return res.status(500).send(response('user not found', {}, false));
+            if (!user) {
+                return res
+                    .status(500)
+                    .send(response('user not found', {}, false));
+            }
+
+            res.status(200).send(response('Fetched users successfully', user));
+        } catch (error) {
+            console.log(error.message);
         }
-
-        res.status(200).send(response('Fetched users successfully', user));
     }
 
     static async createAdminUser(req, res) {
@@ -88,30 +98,39 @@ class UsersController {
     }
 
     static async loginUser(req, res) {
-        const user = await User.findOne({ email: req.body.email });
+        try {
+            const user = await User.findOne({ email: req.body.email });
 
-        if (!user) {
-            return res.status(400).send(response('user not found', {}, false));
-        }
+            if (!user) {
+                return res
+                    .status(400)
+                    .send(response('user not found', {}, false));
+            }
 
-        if (user && bcrypt.compareSync(req.body.password, user.passwordHash)) {
-            const token = jwt.sign(
-                {
-                    userId: user.id,
-                    role: user.role,
-                },
-                secret,
-                { expiresIn: '1d' }
-            );
+            if (
+                user &&
+                bcrypt.compareSync(req.body.password, user.passwordHash)
+            ) {
+                const token = jwt.sign(
+                    {
+                        userId: user.id,
+                        role: user.role,
+                    },
+                    secret,
+                    { expiresIn: '1d' }
+                );
 
-            return res.status(200).send(
-                response('Login successful', {
-                    user: user.email,
-                    token: token,
-                })
-            );
-        } else {
-            res.status(400).send(response('password is wrong!', {}, false));
+                return res.status(200).send(
+                    response('Login successful', {
+                        user: user.email,
+                        token: token,
+                    })
+                );
+            } else {
+                res.status(400).send(response('password is wrong!', {}, false));
+            }
+        } catch (error) {
+            console.log(error.message);
         }
 
         // return res.status(200).send(response("",user));
@@ -153,15 +172,19 @@ class UsersController {
     }
 
     static async getTotalAmountOfAllUsers(req, res) {
-        const userCount = await User.countDocuments((count) => count);
+        try {
+            const userCount = await User.countDocuments((count) => count);
 
-        if (!userCount) {
-            return res
-                .status(500)
-                .send(response('Users count unsuccessful', {}, false));
+            if (!userCount) {
+                return res
+                    .status(500)
+                    .send(response('Users count unsuccessful', {}, false));
+            }
+
+            res.send(response('Users count successful', userCount));
+        } catch (error) {
+            console.log(error.message);
         }
-
-        res.send(response('Users count successful', userCount));
     }
 
     static deleteUserById(req, res) {
