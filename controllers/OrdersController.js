@@ -5,36 +5,44 @@ const { model } = require('mongoose');
 
 class OrdersController {
     static async getListOfOrders(req, res) {
-        const orderList = await Order.find()
-            .populate('user', 'name')
-            .sort({ dateOdered: -1 });
+        try {
+            const orderList = await Order.find()
+                .populate('user', 'name')
+                .sort({ dateOdered: -1 });
 
-        if (!orderList) {
-            res.status(500).send(response('Order not found', {}, false));
+            if (!orderList) {
+                res.status(500).send(response('Order not found', {}, false));
+            }
+
+            res.send(
+                response('Fetched total count of order successfully', orderList)
+            );
+        } catch (error) {
+            console.log(error.message);
         }
-
-        res.send(
-            response('Fetched total count of order successfully', orderList)
-        );
     }
 
     static async getOrderById(req, res) {
-        const order = await Order.findOne({ orderNo: req.params.orderNo })
-            .populate('user', 'name')
-            .populate({
-                path: 'orderItems',
-                model: 'OrderItem',
-                populate: {
-                    path: 'product',
-                    model: 'Product',
-                    populate: { path: 'category', model: 'Category' },
-                },
-            });
-        if (!order) {
-            res.status(500).send(response('Order not found', {}, false));
-        }
+        try {
+            const order = await Order.findOne({ orderNo: req.params.orderNo })
+                .populate('user', 'name')
+                .populate({
+                    path: 'orderItems',
+                    model: 'OrderItem',
+                    populate: {
+                        path: 'product',
+                        model: 'Product',
+                        populate: { path: 'category', model: 'Category' },
+                    },
+                });
+            if (!order) {
+                res.status(500).send(response('Order not found', {}, false));
+            }
 
-        res.send(response('Fetched order successfully', order));
+            res.send(response('Fetched order successfully', order));
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     static async createOrder(req, res) {
@@ -107,21 +115,25 @@ class OrdersController {
     }
 
     static async updateOrderById(req, res) {
-        const update = {
-            ...req.body,
-        };
-        const filter = { _id: req.params.id };
+        try {
+            const update = {
+                ...req.body,
+            };
+            const filter = { _id: req.params.id };
 
-        const order = await Order.findOneAndUpdate(filter, update, {
-            new: true,
-        });
+            const order = await Order.findOneAndUpdate(filter, update, {
+                new: true,
+            });
 
-        if (!order)
-            return res
-                .status(404)
-                .send(response('The order can not be updated', {}, false));
+            if (!order)
+                return res
+                    .status(404)
+                    .send(response('The order can not be updated', {}, false));
 
-        res.send(response('Order was updated successfully', order));
+            res.send(response('Order was updated successfully', order));
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     static deleteOrderById(req, res) {
@@ -146,21 +158,29 @@ class OrdersController {
     }
 
     static async getTotalSales(req, res) {
-        const filteredOrders = await Order.find({ status: 'delivered' });
-        let totalOrders = 0;
-        filteredOrders.map((order) => (totalOrders += order.totalPrice));
+        try {
+            const filteredOrders = await Order.find({ status: 'delivered' });
+            let totalOrders = 0;
+            filteredOrders.map((order) => (totalOrders += order.totalPrice));
 
-        if (!totalOrders) {
-            return res
-                .status(400)
-                .send(
-                    response('The order sales can not be generated', {}, false)
-                );
+            if (!totalOrders) {
+                return res
+                    .status(400)
+                    .send(
+                        response(
+                            'The order sales can not be generated',
+                            {},
+                            false
+                        )
+                    );
+            }
+
+            return res.send(
+                response('Fetched total sales successfully', totalOrders)
+            );
+        } catch (error) {
+            console.log(error.message);
         }
-
-        return res.send(
-            response('Fetched total sales successfully', totalOrders)
-        );
     }
 
     static async getTotalNumberOfAllOrders(req, res) {
@@ -184,7 +204,7 @@ class OrdersController {
                 )
             );
         } catch (error) {
-            console.log(error);
+            console.log(error.message);
         }
     }
 
