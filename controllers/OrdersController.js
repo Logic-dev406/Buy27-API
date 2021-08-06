@@ -192,9 +192,11 @@ class OrdersController {
             if (!orderCount) {
                 return res
                     .status(500)
-                    .send(
-                        response('Fetch total count of orders faild', {}, false)
-                    );
+                    .send({
+                        message: 'Fetch total count of orders faild',
+                        data: 0,
+                        success: false,
+                    });
             }
 
             res.send(
