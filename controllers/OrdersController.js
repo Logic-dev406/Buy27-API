@@ -164,17 +164,28 @@ class OrdersController {
     }
 
     static async getTotalNumberOfAllOrders(req, res) {
-        const orderCount = await Order.countDocuments((count) => count);
+        try {
+            let orderCount = 0;
+            const filteredOrder = await Order.find({ status: 'processing' });
+            orderCount = filteredOrder.length;
 
-        if (!orderCount) {
-            return res
-                .status(500)
-                .send(response('Fetch total count of orders faild', {}, false));
+            if (!orderCount) {
+                return res
+                    .status(500)
+                    .send(
+                        response('Fetch total count of orders faild', {}, false)
+                    );
+            }
+
+            res.send(
+                response(
+                    'Fetched total count of order successfully',
+                    orderCount
+                )
+            );
+        } catch (error) {
+            console.log(error);
         }
-
-        res.send(
-            response('Fetched total count of order successfully', orderCount)
-        );
     }
 
     static async getUserOrders(req, res) {

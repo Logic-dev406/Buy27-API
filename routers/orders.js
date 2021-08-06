@@ -30,7 +30,7 @@ router.delete('/:id', [authUser, isAdmin], deleteOrderById);
 //Get total amount of all sales
 router.get('/get/totalsales', [authUser, isAdmin], getTotalSales);
 
-//Get number of all product
+//Get number of all order
 router.get('/get/count', [authUser, isAdmin], getTotalNumberOfAllOrders);
 
 //Get user orders
