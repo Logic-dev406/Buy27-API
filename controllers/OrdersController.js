@@ -146,11 +146,11 @@ class OrdersController {
     }
 
     static async getTotalSales(req, res) {
-        const totalsales = await Order.aggregate([
-            { $group: { _id: null, totalsales: { $sum: '$totalPrice' } } },
-        ]);
+        const filteredOrders = await Order.find({ status: 'delivered' });
+        let totalOrders = 0;
+        filteredOrders.map((order) => (totalOrders += order.totalPrice));
 
-        if (!totalsales) {
+        if (!totalOrders) {
             return res
                 .status(400)
                 .send(
@@ -159,10 +159,7 @@ class OrdersController {
         }
 
         return res.send(
-            response(
-                'Fetched total sales successfully',
-                totalsales.pop().totalsales
-            )
+            response('Fetched total sales successfully', totalOrders)
         );
     }
 
