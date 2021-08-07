@@ -7,7 +7,7 @@ class OrdersController {
     static async getListOfOrders(req, res) {
         try {
             const orderList = await Order.find()
-                .populate('user', 'name')
+                .populate('user', 'email')
                 .sort({ dateOrdered: -1 });
 
             if (!orderList) {
