@@ -8,7 +8,7 @@ class OrdersController {
         try {
             const orderList = await Order.find()
                 .populate('user', 'name')
-                .sort({ dateOdered: -1 });
+                .sort({ dateOrdered: -1 });
 
             if (!orderList) {
                 res.status(500).send(response('Order not found', {}, false));
