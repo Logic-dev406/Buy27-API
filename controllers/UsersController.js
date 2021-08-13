@@ -143,7 +143,6 @@ class UsersController {
                     .status(401)
                     .send(response('Access denied', {}, false));
             }
-            console.log(user.role === 'admin' ? 'isAdmin' : 'not admin');
 
             if (!user) {
                 return res
