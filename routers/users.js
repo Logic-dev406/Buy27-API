@@ -9,6 +9,7 @@ const {
     getTotalAmountOfAllUsers,
     deleteUserById,
     updateUserById,
+    loginAdminUser,
 } = require('../controllers/UsersController');
 const { authUser, isAdmin } = require('../helpers/jwt');
 
@@ -29,6 +30,9 @@ router.post('/', [authUser, isAdmin], createAdminUser);
 
 //Login user
 router.post('/login', loginUser);
+
+//Login admin user
+router.post('/admin/login', [authUser, isAdmin], loginAdminUser);
 
 //Register user
 router.post('/register', registerNewUser);

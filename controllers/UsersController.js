@@ -132,8 +132,43 @@ class UsersController {
         } catch (error) {
             console.log(error.message);
         }
+    }
 
-        // return res.status(200).send(response("",user));
+    static async loginAdminUser(req, res) {
+        try {
+            const user = await User.findOne({ email: req.body.email });
+
+            if (!user) {
+                return res
+                    .status(400)
+                    .send(response('user not found', {}, false));
+            }
+
+            if (
+                user &&
+                bcrypt.compareSync(req.body.password, user.passwordHash)
+            ) {
+                const token = jwt.sign(
+                    {
+                        userId: user.id,
+                        role: user.role,
+                    },
+                    secret,
+                    { expiresIn: '1d' }
+                );
+
+                return res.status(200).send(
+                    response('Login successful', {
+                        user: user.email,
+                        token: token,
+                    })
+                );
+            } else {
+                res.status(400).send(response('password is wrong!', {}, false));
+            }
+        } catch (error) {
+            console.log(error.message);
+        }
     }
 
     static async registerNewUser(req, res) {
