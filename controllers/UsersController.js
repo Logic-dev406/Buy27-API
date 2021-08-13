@@ -138,6 +138,13 @@ class UsersController {
         try {
             const user = await User.findOne({ email: req.body.email });
 
+            if (user.role === 'basic') {
+                return res
+                    .status(401)
+                    .send(response('Access denied', {}, false));
+            }
+            console.log(user.role === 'admin' ? 'isAdmin' : 'not admin');
+
             if (!user) {
                 return res
                     .status(400)

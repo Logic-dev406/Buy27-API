@@ -32,7 +32,7 @@ router.post('/', [authUser, isAdmin], createAdminUser);
 router.post('/login', loginUser);
 
 //Login admin user
-router.post('/admin/login', [authUser, isAdmin], loginAdminUser);
+router.post('/admin/login', loginAdminUser);
 
 //Register user
 router.post('/register', registerNewUser);
