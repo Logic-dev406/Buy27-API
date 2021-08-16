@@ -163,30 +163,24 @@ class ProductController {
             if (!mongoose.isValidObjectId(req.params.id)) {
                 res.status(400).send(response('Invalid Product id', {}, false));
             }
-            const category = await Category.findById(req.body.category);
-            if (!category) {
-                return res
-                    .status(400)
-                    .send(response('Invalid Category', {}, false));
-            }
 
-            const product = await Product.findByIdAndUpdate(
-                req.params.id,
-                {
-                    name: req.body.name,
-                    description: req.body.description,
-                    richDescription: req.body.richDescription,
-                    image: `${basePath}${fileName}`,
-                    images: req.body.images,
-                    price: req.body.price,
-                    category: req.body.category,
-                    countInStock: req.body.countInStock,
-                    dateCreated: req.body.dateCreated,
-                    isFeatured: req.body.isFeatured,
-                },
-                { new: true }
-            );
+            //Check if the category is valid
 
+            // const category = await Category.findById(req.body.category);
+            // if (!category) {
+            //     return res
+            //         .status(400)
+            //         .send(response('Invalid Category', {}, false));
+            // }
+
+            const update = {
+                ...req.body,
+            };
+            const filter = { _id: req.params.id };
+
+            const product = await Product.findOneAndUpdate(filter, update, {
+                new: true,
+            });
             if (!product)
                 return res
                     .status(500)
