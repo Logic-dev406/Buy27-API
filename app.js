@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const cors = require('cors');
 const errorHandler = require('./helpers/error-handler');
+const path = require('path');
 require('./db/mongoose');
 
 //default routs
@@ -11,6 +12,7 @@ const productRouter = require('./routers/products');
 const userRouter = require('./routers/users');
 const orderRouter = require('./routers/orders');
 const categoryRouter = require('./routers/categories');
+const { options } = require('./routers/products');
 
 app.use(cors());
 app.options('*', cors());
@@ -23,7 +25,10 @@ app.get('/', (req, res) => {
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
 // app.use(authJwt());
-app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
+// app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
+app.use(express.static('public/uploads', options));
+// app.use(express.static(__dirname + '/public/uploads'));
+// app.use(express.static(path.join(__dirname, 'public')));
 // app.use(errorHandler);
 
 //routs

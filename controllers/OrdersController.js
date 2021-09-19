@@ -24,8 +24,10 @@ class OrdersController {
 
     static async getOrderById(req, res) {
         try {
-            const order = await Order.findOne({ orderNo: req.params.orderNo })
-                .populate('user', 'name')
+            const order = await Order.findOne({
+                orderNo: req.params.orderNo,
+            })
+                .populate('user', 'email')
                 .populate({
                     path: 'orderItems',
                     model: 'OrderItem',
