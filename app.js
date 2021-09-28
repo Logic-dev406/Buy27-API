@@ -15,7 +15,7 @@ const categoryRouter = require('./routers/categories');
 const { options } = require('./routers/products');
 
 app.use(cors());
-app.options('*', cors());
+// app.options('*', cors());
 
 app.get('/', (req, res) => {
     res.send('WELCOM TO BU27 API');
