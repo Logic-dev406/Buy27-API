@@ -164,26 +164,21 @@ class OrdersController {
     static async getTotalSales(req, res) {
         try {
             const filteredOrders = await Order.find({ status: 'delivered' });
-            let totalOrders = 0;
-            filteredOrders.map((order) => (totalOrders += order.totalPrice));
-
-            if (!totalOrders) {
-                return res
-                    .status(400)
-                    .send(
-                        response(
-                            'The order sales can not be generated',
-                            {},
-                            false
-                        )
-                    );
-            }
-
-            return res.send(
-                response('Fetched total sales successfully', totalOrders)
+            let totalSales = 0;
+            await filteredOrders.map(
+                (order) => (totalSales += order.totalPrice)
             );
+
+            res.send({
+                message: 'Fetched total sales successfully',
+                data: totalSales,
+                success: true,
+            });
         } catch (error) {
             console.log(error.message);
+            res.status(400).send(
+                response('The order sales can not be generated', {}, false)
+            );
         }
     }
 
@@ -193,15 +188,16 @@ class OrdersController {
             const filteredOrder = await Order.find({ status: 'processing' });
             orderCount = filteredOrder.length;
 
-            if (!orderCount) {
-                return res
-                    .status(500)
-                    .send(response('Fetched orders count faild', {}, false));
-            }
-
-            res.send(response('Fetched orders count successfully', orderCount));
+            res.send({
+                message: 'Fetched orders count successfully',
+                data: orderCount,
+                success: true,
+            });
         } catch (error) {
             console.log(error.message);
+            res.status(500).send(
+                response('Fetched orders count faild', {}, false)
+            );
         }
     }
 
