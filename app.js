@@ -26,9 +26,6 @@ app.use(bodyParser.json());
 app.use(morgan('tiny'));
 // app.use(authJwt());
 app.use('/public/uploads', express.static(__dirname + '/public/uploads'));
-// app.use(express.static('public/uploads', options));
-// app.use(express.static(__dirname + '/public/uploads'));
-// app.use(express.static(path.join(__dirname, 'public')));
 // app.use(errorHandler);
 
 //routs

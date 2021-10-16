@@ -91,12 +91,14 @@ class OrdersController {
             );
 
             const totalPrice = totalPrices.reduce((a, b) => a + b, 0);
+            const orderStatus = 'processing';
 
             let order = new Order({
                 orderItems: orderItemsIdsResolved,
                 firstName: req.body.firstName,
                 lastName: req.body.lastName,
                 city: req.body.city,
+                status: orderStatus,
                 street: req.body.street,
                 lga: req.body.lga,
                 phone: req.body.phone,
@@ -194,17 +196,10 @@ class OrdersController {
             if (!orderCount) {
                 return res
                     .status(500)
-                    .send(
-                        response('Fetch total count of orders faild', {}, false)
-                    );
+                    .send(response('Fetched orders count faild', {}, false));
             }
 
-            res.send(
-                response(
-                    'Fetched total count of order successfully',
-                    orderCount
-                )
-            );
+            res.send(response('Fetched orders count successfully', orderCount));
         } catch (error) {
             console.log(error.message);
         }
